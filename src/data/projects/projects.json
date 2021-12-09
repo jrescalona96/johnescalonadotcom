@@ -1,0 +1,27 @@
+[
+  {
+    "name": "lfti",
+    "description": "Mobile Application to create, manage, and perform Workout routines. Available for both iOS &amp; Android.",
+    "icons": ["icon1", "icon2", "icon3"]
+  },
+  {
+    "name": "algovisualizations",
+    "description": "This react app visualizes basic Computer Science Algorithms listed below. Built using react, emphasizing on utilizing a functional approach to composing components using Hooks.",
+    "icons": ["icon1", "icon2", "icon3"]
+  },
+  {
+    "name": "debt counter",
+    "description": "This web app helps users keep track of their overall Debt by displaying to serve as a reminder to the user.",
+    "icons": ["icon1", "icon2", "icon3"]
+  },
+  {
+    "name": "truss solver",
+    "description": "Web application that calculates External and Internal Forces, Node Displacements and Stress for a Structural Truss formation based on node loads, then displays a projection of the resulting truss formation.",
+    "icons": ["icon1", "icon2", "icon3"]
+  },
+  {
+    "name": "the shufflling",
+    "description": "Web Application that helps Magic Card players manage their collection online.",
+    "icons": ["icon1", "icon2", "icon3"]
+  }
+]

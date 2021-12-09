@@ -1,0 +1,34 @@
+[
+  {
+    "sectionName": "home",
+    "slug": "/",
+    "heading": "John Escalona",
+    "subHeading": "Software Developer",
+    "description": [
+      "Currently working as a Mobile App Developer in Southern California",
+      "This site serves as a home to my some of my works as well as some of my interests. Built using React with Gatsby and deployed using AWS.",
+      "Feel free to contact me with any questions you might have about any of my works   or to connect about some of my interests."
+    ]
+  },
+  {
+    "sectionName": "projects",
+    "slug": "/projects",
+    "heading": "projects"
+  },
+  {
+    "sectionName": "experience",
+    "slug": "/experience",
+    "heading": "experience"
+  },
+
+  {
+    "sectionName": "interests",
+    "slug": "/interests",
+    "heading": "interests"
+  },
+  {
+    "sectionName": "resume",
+    "slug": "/resume",
+    "heading": "resume"
+  }
+]
