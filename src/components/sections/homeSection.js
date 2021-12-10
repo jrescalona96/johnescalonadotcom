@@ -17,7 +17,7 @@ const HomeSection = () => {
 
   return (
     <section id={sectionName}>
-      <h1 className="section-heading">{heading}</h1>
+      <h1 className="section-heading text-left">{heading}</h1>
       <h2 className="sub-heading">{subHeading}</h2>
       <ul className="section-content w-1/2">
         {description.map(item => (

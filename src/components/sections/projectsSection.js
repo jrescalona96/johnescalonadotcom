@@ -1,5 +1,6 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import ProjectTile from "../shared/projectTile"
 
 const ProjectsSection = () => {
   const { allProjectsJson, homeSectionsJson } = useStaticQuery(graphql`
@@ -19,28 +20,13 @@ const ProjectsSection = () => {
 
   const projects = allProjectsJson.nodes
   const { sectionName } = homeSectionsJson
-
   return (
     <section id={sectionName}>
       <h1 className="section-heading">{sectionName}</h1>
-      <ul className="section-content">
-        {projects.map(project => {
-          return (
-            <li>
-              {
-                <div>
-                  <h4>{project.name}</h4>
-                  <p>{project.description}</p>
-                  <ul>
-                    {project.icons.map(icon => (
-                      <p>{icon}</p>
-                    ))}
-                  </ul>
-                </div>
-              }
-            </li>
-          )
-        })}
+      <ul className="section-content space-y-10">
+        {projects.map((project, index) => (
+          <ProjectTile index={index} project={project} />
+        ))}
       </ul>
     </section>
   )
