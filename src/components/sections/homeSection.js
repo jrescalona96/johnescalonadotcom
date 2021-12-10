@@ -17,11 +17,11 @@ const HomeSection = () => {
 
   return (
     <section id={sectionName}>
-      <h1>{heading}</h1>
-      <h3>{subHeading}</h3>
-      <ul>
+      <h1 className="section-heading">{heading}</h1>
+      <h2 className="sub-heading">{subHeading}</h2>
+      <ul className="section-content w-1/2">
         {description.map(item => (
-          <li>{item}</li>
+          <li className="pt-5">{item}</li>
         ))}
       </ul>
     </section>

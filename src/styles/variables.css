@@ -1,0 +1,12 @@
+:root {
+  /* background colors */
+  --main-bg-color: #f5f5f5;
+  --nav-bg-color: #f5f5f5;
+  --btn-color: white;
+  --active-btn-color: #cecece;
+
+  /* text */
+  --text-color: #2b2b2b;
+  --section-heading-text-color: #505050;
+  --section-sub-heading-text-color: #989898;
+}

@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("./variables.css");
+
+@layer base {
+  body {
+    background-color: var(--main-bg-color);
+  }
+
+  section {
+    @apply h-screen pt-32 w-10/12 mx-auto;
+  }
+
+  p {
+    color: var(--text-color);
+  }
+}
+
+@layer components {
+  .nav {
+    @apply fixed py-5 px-20 box-border mx-auto w-full h-20;
+    background-color: var(--nav-bg-color);
+  }
+
+  .nav-items {
+    @apply w-full flex space-x-3;
+  }
+
+  .nav-btn {
+    @apply font-bold text-gray-600 py-2 px-4 rounded shadow-md;
+    background-color: var(--btn-color);
+    & .active {
+      @apply text-gray-800 shadow-inner;
+      background-color: var(--active-btn-color);
+    }
+  }
+
+  .section-heading {
+    @apply text-6xl font-black;
+    /* inner text shadow */
+    background-color: var(--section-heading-text-color);
+    color: transparent;
+    text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.5);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    /* inner text shadow */
+  }
+
+  .sub-heading {
+    @apply text-4xl font-semibold;
+    color: var(--section-sub-heading-text-color);
+  }
+
+  .section-content {
+    @apply pt-10;
+  }
+}

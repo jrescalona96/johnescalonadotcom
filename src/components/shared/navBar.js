@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link, useStaticQuery } from "gatsby"
+import { useStaticQuery } from "gatsby"
 import { graphql } from "gatsby"
 
 const NavBar = () => {
@@ -18,17 +18,21 @@ const NavBar = () => {
   const links = data.allHomeSectionsJson.nodes
 
   return (
-    <header>
-      <div>
-        <ul>
-          {links.map(l => (
-            <li key={l.id}>
-              <a href={`#${l.sectionName}`}>{l.sectionName}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </header>
+    <div className="nav">
+      <nav className="nav-items">
+        {links.map(l => (
+          <NavBarItem data={l} />
+        ))}
+      </nav>
+    </div>
+  )
+}
+
+const NavBarItem = ({ data }) => {
+  return (
+    <a key={data.id} className="nav-btn" href={`#${data.sectionName}`}>
+      {data.sectionName}
+    </a>
   )
 }
 

@@ -30,8 +30,8 @@ const ExperienceSection = () => {
 
   return (
     <section id={sectionName}>
-      <h1>{sectionName}</h1>
-      <div>
+      <h1 className="section-heading">{sectionName}</h1>
+      <div className="section-content">
         <ul>
           {education.map(({ name, details, years }) => {
             const duration = `${years.at(0)}-${years.at(-1)}`

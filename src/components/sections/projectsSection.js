@@ -22,8 +22,8 @@ const ProjectsSection = () => {
 
   return (
     <section id={sectionName}>
-      <h1>{sectionName}</h1>
-      <ul>
+      <h1 className="section-heading">{sectionName}</h1>
+      <ul className="section-content">
         {projects.map(project => {
           return (
             <li>
