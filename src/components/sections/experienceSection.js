@@ -1,5 +1,6 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import "../../styles/projects.css"
 
 const ExperienceSection = () => {
   const data = useStaticQuery(graphql`

@@ -2,16 +2,16 @@
   {
     "name": "Admanson University",
     "details": "Manila, Philippines",
-    "years": ["2007", "2008", "2009"]
+    "years": [2007, 2008, 2009]
   },
   {
     "name": "Cerritos College",
     "details": "Norwalk, California",
-    "years": ["2015", "2016", "2017", "2018"]
+    "years": [2015, 2016, 2017, 2018]
   },
   {
     "name": "California State Polytechnic University",
     "details": "Pomona, California",
-    "years": ["2018", "2019", "2020"]
+    "years": [2018, 2019, 2020]
   }
 ]

@@ -1,4 +1,5 @@
 import * as React from "react"
+import "../../styles/projects.css"
 
 const ProjectTile = ({ index, project }) => {
   return index % 2 > 0 ? (
@@ -6,7 +7,7 @@ const ProjectTile = ({ index, project }) => {
       {
         <>
           <p className="project-desc text-right">{project.description}</p>
-          <div className="project-tile">
+          <div className="project-btn tile">
             <h4 className="project-name">{project.name}</h4>
             <ul className="project-icons">
               {project.icons.map(icon => (
@@ -21,7 +22,7 @@ const ProjectTile = ({ index, project }) => {
     <li className="project-item">
       {
         <>
-          <div className="project-tile">
+          <div className="project-btn tile">
             <h4 className="project-name">{project.name}</h4>
             <ul className="project-icons">
               {project.icons.map(icon => (

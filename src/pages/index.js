@@ -5,6 +5,7 @@ import HomeSection from "../components/sections/homeSection"
 import ProjectsSection from "../components/sections/projectsSection"
 import ExperienceSection from "../components/sections/experienceSection"
 import "../styles/global.css"
+import "../styles/projects.css"
 
 const IndexPage = () => {
   return (

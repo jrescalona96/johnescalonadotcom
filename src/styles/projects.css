@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("./variables.css");
+
+@layer components {
+  .project-item {
+    @apply flex justify-center space-x-5;
+  }
+
+  .project-name {
+    @apply font-bold text-lg;
+  }
+
+  .project-icons {
+    @apply flex space-x-3;
+  }
+
+  .project-btn {
+    @apply w-56 h-56;
+  }
+
+  .project-desc {
+    @apply container w-1/3;
+  }
+}
