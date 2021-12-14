@@ -1,0 +1,65 @@
+[
+  {
+    "entity": "Mercury Insurance",
+    "startDate": { "m": 7, "d": 26, "y": 2021 },
+    "endDate": null,
+    "eventName": "Converted to Full-time Employee",
+    "description": "After 6 months working as a contractor, Mercury Insurance decided to bring me in as a Full-time Employee to continue working on their Mobile Application as a Software Developer Analyst"
+  },
+  {
+    "entity": "Genuent",
+    "startDate": { "m": 1, "d": 28, "y": 2021 },
+    "endDate": { "m": 7, "d": 23, "y": 2021 },
+    "eventName": "Hired as a Mobile App Developer",
+    "description": "Started as a contractor for Mercury Insurance working on their Mobile App"
+  },
+  {
+    "entity": "California State Polytechnic University",
+    "startDate": { "m": 8, "d": 23, "y": 2018 },
+    "endDate": { "m": 5, "d": 20, "y": 2020 },
+    "eventName": "Graduate from Cal Poly Pomona",
+    "description": "Completed my undergraduate and getting my Bachelors in Computer Science"
+  },
+  {
+    "entity": "Adamson University",
+    "startDate": { "m": 7, "d": 23, "y": 2007 },
+    "endDate": { "m": 5, "d": 20, "y": 2010 },
+    "eventName": "Temporary stop my Higher Education",
+    "description": "The opportunity to permanently move to the US was given to US. At the age of 20, we had decided to best continue my studies while we look for better pastures."
+  },
+  {
+    "entity": "",
+    "startDate": { "m": 10, "d": 10, "y": 2001 },
+    "endDate": { "m": 10, "d": 11, "y": 2011 },
+    "eventName": "Migrated to the United States",
+    "description": "13-hour flight to the US. After a few months, I started looking for a job my first Job."
+  },
+  {
+    "entity": "Paul Rohrer Structural Engineers",
+    "startDate": { "m": 4, "d": 26, "y": 2019 },
+    "endDate": { "m": 12, "d": 26, "y": 2020 },
+    "eventName": "Hired as an AutoCAD Drafter",
+    "description": "Started working as an AutoCAD Drafter for a small Structural Engineering firm"
+  },
+  {
+    "entity": "EFI Global",
+    "startDate": { "m": 6, "d": 26, "y": 2015 },
+    "endDate": { "m": 1, "d": 1, "y": 2019 },
+    "eventName": "Hired as an AutoCAD Drafter",
+    "description": "Started working as an AutoCAD Drafter for an Environmental Company"
+  },
+  {
+    "entity": "Andersen Environmental",
+    "startDate": { "m": 12, "d": 10, "y": 2012 },
+    "endDate": { "m": 6, "d": 26, "y": 2015 },
+    "eventName": "Hired as an AutoCAD Drafter",
+    "description": "Started working as an AutoCAD Drafter for an Environmental Company"
+  },
+  {
+    "entity": "Batanes National Science High School",
+    "startDate": { "m": 7, "d": 10, "y": 2003 },
+    "endDate": { "m": 5, "d": 26, "y": 2007 },
+    "eventName": "Graduated in High School",
+    "description": "Finished my Secondary Education with Honors"
+  }
+]

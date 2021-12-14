@@ -1,22 +1,38 @@
 [
   {
-    "name": "Andersen Environmental",
-    "details": "AutoCAD Drafter",
+    "entity": "Andersen Environmental",
+    "address": "Los Angeles, CA",
+    "role": "AutoCAD Drafter",
     "years": [2012, 2013, 2014, 2015]
   },
   {
-    "name": "EFI Global",
-    "details": "AutoCAD Drafter",
+    "entity": "EFI Global",
+    "address": "Los Angeles, CA",
+    "role": "AutoCAD Drafter",
     "years": [2015, 2016, 2017, 2018, 2019]
   },
   {
-    "name": "Paul Rohrer Structural Engineers",
-    "details": "Structural Drafter",
+    "entity": "Andersen Environmental",
+    "address": "Los Angeles, CA",
+    "role": "AutoCAD Drafter",
+    "years": [2012, 2013, 2014, 2015]
+  },
+  {
+    "entity": "Paul Rohrer Structural Engineers",
+    "address": "Tustin, CA",
+    "role": "Structural Drafter",
     "years": [2019, 2020]
   },
   {
-    "name": "Mercury Insurance",
-    "details": "Software Developer Analyst Associate",
+    "entity": "Genuent",
+    "address": "Remote",
+    "role": "Jr. Mobile App Developer",
+    "years": [2021]
+  },
+  {
+    "entity": "Mercury Insurance",
+    "address": "Brea, CA",
+    "role": "Software Developer Analyst Associate",
     "years": [2021, 2022]
   }
 ]

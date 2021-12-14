@@ -17,7 +17,7 @@
   }
 
   .project-btn {
-    @apply w-56 h-56;
+    @apply w-56 h-56 p-5;
   }
 
   .project-desc {

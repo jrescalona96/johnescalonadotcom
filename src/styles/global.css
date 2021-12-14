@@ -15,6 +15,10 @@
   p {
     color: var(--text-color);
   }
+
+  li {
+    @apply list-none;
+  }
 }
 
 @layer components {
@@ -62,10 +66,12 @@
   /* section general */
 
   .tile {
-    @apply rounded-md shadow-inner bg-gray-200 p-5;
+    @apply rounded-md shadow-md;
+    background-color: var(--btn-color);
   }
 
   .tile:hover {
-    @apply bg-gray-100 shadow-md;
+    @apply text-gray-800 shadow-inner;
+    background-color: var(--active-btn-color);
   }
 }
