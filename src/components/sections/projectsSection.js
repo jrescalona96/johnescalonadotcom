@@ -10,6 +10,7 @@ const ProjectsSection = () => {
           icons
           description
           name
+          id
         }
       }
       homeSectionsJson(sectionName: { eq: "projects" }) {
@@ -25,7 +26,7 @@ const ProjectsSection = () => {
       <h1 className="section-heading">{sectionName}</h1>
       <ul className="section-content space-y-10">
         {projects.map((project, index) => (
-          <ProjectTile index={index} project={project} />
+          <ProjectTile key={project.id} index={index} project={project} />
         ))}
       </ul>
     </section>

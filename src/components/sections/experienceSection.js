@@ -7,6 +7,7 @@ const ExperienceSection = () => {
     {
       allEventsJson {
         nodes {
+          id
           entity
           eventName
           description
@@ -79,13 +80,7 @@ const ExperienceSection = () => {
                   let data = grouped[key]
                   if (data) {
                     rightSide = !rightSide
-                    return (
-                      <li key={key}>
-                        <div>
-                          {ExperienceItem({ rightSide: rightSide, data: data })}
-                        </div>
-                      </li>
-                    )
+                    return ExperienceItem({ rightSide: rightSide, data: data })
                   }
                 })}
               </ul>
@@ -99,7 +94,7 @@ const ExperienceSection = () => {
 }
 
 const ExperienceItem = ({ rightSide, data }) => {
-  const { eventName, entity, description, startDate, endDate } = data
+  const { id, eventName, entity, description, startDate, endDate } = data
   const content = (
     <div className="experience-content">
       <h4 className="experience-name">{eventName}</h4>
@@ -110,7 +105,7 @@ const ExperienceItem = ({ rightSide, data }) => {
 
   if (rightSide) {
     return (
-      <li className="experience-item text-right">
+      <li key={id} className="experience-item text-right">
         <div className="w-2/3 px-10 py-5 border-r border-gray-300 box-border">
           {content}
         </div>
@@ -119,7 +114,7 @@ const ExperienceItem = ({ rightSide, data }) => {
     )
   } else {
     return (
-      <li className="experience-item">
+      <li key={id} className="experience-item">
         <div className="w-2/3 px-10 py-5 border-r border-gray-300 box-border"></div>
         <div className="w-2/3 px-10 py-5 border-l border-gray-300 box-border">
           {content}

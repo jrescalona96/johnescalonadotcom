@@ -21,7 +21,7 @@ const NavBar = () => {
     <div className="nav">
       <nav className="nav-items">
         {links.map(l => (
-          <NavBarItem data={l} />
+          <NavBarItem key={l.id} data={l} />
         ))}
       </nav>
     </div>
@@ -30,7 +30,7 @@ const NavBar = () => {
 
 const NavBarItem = ({ data }) => {
   return (
-    <a key={data.id} className="nav-btn" href={`#${data.sectionName}`}>
+    <a className="nav-btn" href={`#${data.sectionName}`}>
       {data.sectionName}
     </a>
   )

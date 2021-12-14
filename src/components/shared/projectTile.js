@@ -10,8 +10,8 @@ const ProjectTile = ({ index, project }) => {
           <div className="project-btn tile">
             <h4 className="project-name">{project.name}</h4>
             <ul className="project-icons">
-              {project.icons.map(icon => (
-                <p>{icon}</p>
+              {project.icons.map((icon, index) => (
+                <li key={index}>{icon}</li>
               ))}
             </ul>
           </div>
@@ -25,9 +25,7 @@ const ProjectTile = ({ index, project }) => {
           <div className="project-btn tile">
             <h4 className="project-name">{project.name}</h4>
             <ul className="project-icons">
-              {project.icons.map(icon => (
-                <p>{icon}</p>
-              ))}
+              <Icons icons={project.icons} />
             </ul>
           </div>
           <p className="project-desc">{project.description}</p>
@@ -38,7 +36,13 @@ const ProjectTile = ({ index, project }) => {
 }
 
 const Icons = ({ icons }) => {
-  return icons.map(icon => <p>{icon}</p>)
+  return (
+    <ul>
+      {icons.map((icon, index) => (
+        <li key={index}>{icon}</li>
+      ))}
+    </ul>
+  )
 }
 
 export default ProjectTile
