@@ -66,7 +66,7 @@ const ExperienceSection = () => {
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
   const grouped = groupEvents(events)
-  let rightSide = false
+  let leftSideContent = false
   return (
     <section id={sectionName}>
       <h1 className="section-heading">{sectionName}</h1>
@@ -79,8 +79,11 @@ const ExperienceSection = () => {
                   let key = y ? `${m}${y}` : "Present"
                   let data = grouped[key]
                   if (data) {
-                    rightSide = !rightSide
-                    return ExperienceItem({ rightSide: rightSide, data: data })
+                    leftSideContent = !leftSideContent
+                    return ExperienceItem({
+                      leftSideContent: leftSideContent,
+                      data: data,
+                    })
                   }
                 })}
               </ul>
@@ -93,7 +96,7 @@ const ExperienceSection = () => {
   )
 }
 
-const ExperienceItem = ({ rightSide, data }) => {
+const ExperienceItem = ({ leftSideContent, data }) => {
   const { id, eventName, entity, description, startDate, endDate } = data
   const content = (
     <div className="experience-content">
@@ -103,25 +106,15 @@ const ExperienceItem = ({ rightSide, data }) => {
     </div>
   )
 
-  if (rightSide) {
-    return (
-      <li key={id} className="experience-item text-right">
-        <div className="w-2/3 px-10 py-5 border-r border-gray-300 box-border">
-          {content}
-        </div>
-        <div className="w-2/3 px-10 py-5 border-l border-gray-300 box-border"></div>
-      </li>
-    )
-  } else {
-    return (
-      <li key={id} className="experience-item">
-        <div className="w-2/3 px-10 py-5 border-r border-gray-300 box-border"></div>
-        <div className="w-2/3 px-10 py-5 border-l border-gray-300 box-border">
-          {content}
-        </div>
-      </li>
-    )
-  }
+  return (
+    <li
+      key={id}
+      className={`experience-item ${leftSideContent ? "text-right" : ""}`}
+    >
+      <div className="border-r">{leftSideContent ? content : ""}</div>
+      <div className="border-l">{!leftSideContent ? content : ""}</div>
+    </li>
+  )
 }
 
 export default ExperienceSection

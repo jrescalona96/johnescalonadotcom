@@ -3,27 +3,30 @@
 @tailwind utilities;
 @import url("./variables.css");
 
-.experience-item {
-  @apply flex justify-center;
-}
+@layer components {
+  .experience-item {
+    @apply flex justify-center;
+  }
 
-.experience-name {
-  @apply font-bold text-lg;
-}
+  .experience-item > div {
+    @apply w-2/3 px-10 py-5 border-gray-300 box-border;
+  }
 
-.experience-sub-heading {
-  @apply font-semibold;
-}
+  .experience-name {
+    @apply font-bold text-lg;
+  }
 
-.experience-content {
-}
+  .experience-sub-heading {
+    @apply font-semibold;
+  }
 
-.experience-year {
-  @apply text-xl font-black text-center;
-  background-color: var(--section-heading-text-color);
-  color: transparent;
-  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.5);
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
+  .experience-year {
+    @apply text-xl font-black text-center;
+    background-color: var(--section-heading-text-color);
+    color: transparent;
+    text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.5);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+  }
 }

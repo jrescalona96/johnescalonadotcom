@@ -3,21 +3,22 @@
 @tailwind utilities;
 @import url("./variables.css");
 
-.nav {
-  @apply fixed py-5 px-20 box-border mx-auto w-full h-20;
-  background-color: var(--nav-bg-color);
-}
+@layer components {
+  .nav {
+    @apply fixed py-5 px-20 box-border mx-auto w-full h-20;
+    background-color: var(--nav-bg-color);
+  }
 
-.nav-items {
-  @apply w-full flex space-x-3;
-}
+  .nav-items {
+    @apply w-full flex space-x-3;
+  }
 
-.nav-btn {
-  @apply font-bold text-gray-600 py-2 px-4 rounded shadow-md;
-  background-color: var(--btn-color);
-}
-
-.nav-btn.active {
-  @apply text-gray-800 shadow-inner;
-  background-color: var(--active-btn-color);
+  .nav-btn {
+    @apply font-bold text-gray-600 py-2 px-4 rounded shadow-md;
+    background-color: var(--btn-color);
+    $ .active {
+      @apply text-gray-800 shadow-inner;
+      background-color: var(--active-btn-color);
+    }
+  }
 }
