@@ -21,6 +21,7 @@ const ProjectsSection = () => {
 
   const projects = allProjectsJson.nodes
   const { sectionName } = homeSectionsJson
+
   return (
     <section id={sectionName}>
       <h1 className="section-heading">{sectionName}</h1>

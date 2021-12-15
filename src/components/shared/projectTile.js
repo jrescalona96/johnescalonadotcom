@@ -1,19 +1,34 @@
 import * as React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import "../../styles/projects.css"
 
 const ProjectTile = ({ index, project }) => {
+  const data = useStaticQuery(graphql`
+    {
+      allIconsJson {
+        nodes {
+          id
+          name
+          url
+        }
+      }
+    }
+  `)
+
+  console.log(data)
+
+  const icons = data.allIconsJson.nodes.filter(node =>
+    project.icons.includes(node.name)
+  )
+
   return index % 2 > 0 ? (
     <li className="project-item">
       {
         <>
           <p className="project-desc text-right">{project.description}</p>
-          <div className="project-btn tile">
+          <div className="project-btn tile flex flex-col justify-between">
             <h4 className="project-name">{project.name}</h4>
-            <ul className="project-icons">
-              {project.icons.map((icon, index) => (
-                <li key={index}>{icon}</li>
-              ))}
-            </ul>
+            <ProjectIcons icons={icons} />
           </div>
         </>
       }
@@ -22,11 +37,9 @@ const ProjectTile = ({ index, project }) => {
     <li className="project-item">
       {
         <>
-          <div className="project-btn tile">
+          <div className="project-btn tile flex flex-col justify-between">
             <h4 className="project-name">{project.name}</h4>
-            <ul className="project-icons">
-              <Icons icons={project.icons} />
-            </ul>
+            <ProjectIcons icons={icons} />
           </div>
           <p className="project-desc">{project.description}</p>
         </>
@@ -35,11 +48,13 @@ const ProjectTile = ({ index, project }) => {
   )
 }
 
-const Icons = ({ icons }) => {
+const ProjectIcons = ({ icons }) => {
   return (
-    <ul>
-      {icons.map((icon, index) => (
-        <li key={index}>{icon}</li>
+    <ul className="project-icons">
+      {icons.map((i, index) => (
+        <li key={index}>
+          <img src={i.url} alt="" srcset="" className="w-6 h-6" />
+        </li>
       ))}
     </ul>
   )

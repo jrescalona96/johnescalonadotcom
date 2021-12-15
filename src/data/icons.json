@@ -1,0 +1,58 @@
+[
+  {
+    "name": "flutter",
+    "url": "https://img.icons8.com/color/96/000000/flutter.png"
+  },
+  {
+    "name": "firebase",
+    "url": "https://img.icons8.com/color/96/000000/google-firebase-console.png"
+  },
+  { "name": "css", "url": "https://img.icons8.com/color/96/000000/css3.png" },
+  {
+    "name": "javascript",
+    "url": "https://img.icons8.com/color/96/000000/javascript--v1.png"
+  },
+  { "name": "java", "url": "https://img.icons8.com/color/96/000000/java.png" },
+
+  {
+    "name": "python",
+    "url": "https://img.icons8.com/color/96/000000/python.png"
+  },
+  {
+    "name": "react",
+    "url": "https://img.icons8.com/external-tal-revivo-color-tal-revivo/96/000000/external-react-a-javascript-library-for-building-user-interfaces-logo-color-tal-revivo.png"
+  },
+  {
+    "name": "html",
+    "url": "https://img.icons8.com/color/96/000000/html-5.png"
+  },
+  {
+    "name": "material_ui",
+    "url": "https://img.icons8.com/color/96/000000/material-ui.png"
+  },
+  {
+    "name": "bootstrap",
+    "url": "https://img.icons8.com/color/96/000000/bootstrap.png"
+  },
+  { "name": "dart", "url": "https://img.icons8.com/color/96/000000/dart.png" },
+  {
+    "name": "node",
+    "url": "https://img.icons8.com/fluency/96/000000/node-js.png"
+  },
+  {
+    "name": "gatsby",
+    "url": "https://img.icons8.com/color/96/000000/gatsbyjs.png"
+  },
+  {
+    "name": "tailwind",
+    "url": "https://img.icons8.com/color/96/000000/css3.png"
+  },
+  {
+    "name": "monggo_db",
+    "url": "https://img.icons8.com/color/96/000000/mongodb.png"
+  },
+  {
+    "name": "sass",
+    "url": "https://img.icons8.com/color/96/000000/sass.png"
+  }
+]
