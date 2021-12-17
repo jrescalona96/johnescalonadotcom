@@ -30,7 +30,7 @@ const NavBar = () => {
 
 const NavBarItem = ({ data }) => {
   return (
-    <a className="nav-btn" href={`#${data.sectionName}`}>
+    <a className="nav-btn tile" href={`#${data.sectionName}`}>
       {data.sectionName}
     </a>
   )

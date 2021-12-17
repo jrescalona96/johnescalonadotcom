@@ -25,7 +25,7 @@ const ProjectsSection = () => {
   return (
     <section id={sectionName}>
       <h1 className="section-heading">{sectionName}</h1>
-      <ul className="section-content space-y-10">
+      <ul className="section-content">
         {projects.map((project, index) => (
           <ProjectTile key={project.id} index={index} project={project} />
         ))}

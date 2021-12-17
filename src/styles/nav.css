@@ -5,7 +5,7 @@
 
 @layer components {
   .nav {
-    @apply fixed py-5 px-20 box-border mx-auto w-full h-20;
+    @apply fixed py-5 px-20 box-border mx-auto w-full h-20 z-50;
     background-color: var(--nav-bg-color);
   }
 
@@ -14,11 +14,12 @@
   }
 
   .nav-btn {
-    @apply font-bold text-gray-600 py-2 px-4 rounded shadow-md;
+    @apply font-bold text-gray-600 py-2 px-4 rounded;
     background-color: var(--btn-color);
-    $ .active {
-      @apply text-gray-800 shadow-inner;
-      background-color: var(--active-btn-color);
-    }
+  }
+
+  .active {
+    @apply text-gray-800 shadow-inner;
+    background-color: var(--active-btn-color);
   }
 }

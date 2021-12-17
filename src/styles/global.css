@@ -9,7 +9,7 @@
   }
 
   section {
-    @apply min-h-screen pt-32 w-10/12 mx-auto;
+    @apply min-h-screen pt-32 w-10/12 mx-auto flex flex-col justify-center;
   }
 
   p {
@@ -41,12 +41,12 @@
   }
 
   .section-content {
-    @apply pt-10;
+    @apply mx-auto pt-10 lg:w-3/4 space-y-12;
   }
   /* section general */
 
   .tile {
-    @apply rounded-md shadow-md;
+    @apply shadow-md;
     background-color: var(--btn-color);
   }
 

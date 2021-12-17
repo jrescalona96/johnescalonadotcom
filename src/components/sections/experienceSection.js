@@ -30,24 +30,19 @@ const ExperienceSection = () => {
   `)
 
   const { sectionName } = data.homeSectionsJson
-  // const education = data.allEducationJson.nodes
-  // const professional = data.allProfessionalJson.nodes
-  // const allExperiences = [...education, ...professional].sort((a, b) =>
-  //   a.years[0] < b.years[0] ? 1 : -1
-  // )
+
   const events = data.allEventsJson.nodes.sort((a, b) => {
-    if (!b.endDate) {
-      return 1
-    }
-    return a.endDate.y < b.endDate.y ? 1 : -1
+    return !b.endDate || a.endDate.y < b.endDate.y ? 1 : -1
   })
 
   const getYears = (start, end) => {
-    let arr = []
-    for (let i = end; i >= start; i--) {
-      arr.push(i)
-    }
-    return arr
+    var map = new Map()
+    events.forEach(item => {
+      if (item.endDate) {
+        map.set(item.endDate.y, item.endDate.m)
+      }
+    })
+    return Array.from(map.keys())
   }
 
   const groupEvents = events => {
@@ -62,32 +57,34 @@ const ExperienceSection = () => {
     return map
   }
 
-  const years = getYears(2007, 2022)
+  const years = getYears(2007, 2021)
   const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-
   const grouped = groupEvents(events)
-  let leftSideContent = false
+
+  let right = true
   return (
     <section id={sectionName}>
       <h1 className="section-heading">{sectionName}</h1>
       <div className="section-content">
-        <ul className="mx-auto">
+        <ul className="experience-year">
           {years.map(y => (
             <li key={y}>
-              <ul>
+              <p className="experience-year-heading">{y + 1}</p>
+              <ul className="timeline">
                 {months.map(m => {
                   let key = y ? `${m}${y}` : "Present"
                   let data = grouped[key]
                   if (data) {
-                    leftSideContent = !leftSideContent
+                    right = !right
                     return ExperienceItem({
-                      leftSideContent: leftSideContent,
+                      right: right,
                       data: data,
                     })
+                  } else {
+                    return <div key={key} className="month"></div>
                   }
                 })}
               </ul>
-              <p className="experience-year">{y}</p>
             </li>
           ))}
         </ul>
@@ -96,23 +93,16 @@ const ExperienceSection = () => {
   )
 }
 
-const ExperienceItem = ({ leftSideContent, data }) => {
+const ExperienceItem = ({ right, data }) => {
   const { id, eventName, entity, description, startDate, endDate } = data
-  const content = (
-    <div className="experience-content">
-      <h4 className="experience-name">{eventName}</h4>
-      <p className="experience-sub-heading">{entity}</p>
-      <p>{description}</p>
-    </div>
-  )
 
   return (
-    <li
-      key={id}
-      className={`experience-item ${leftSideContent ? "text-right" : ""}`}
-    >
-      <div className="border-r">{leftSideContent ? content : ""}</div>
-      <div className="border-l">{!leftSideContent ? content : ""}</div>
+    <li key={id} className={`experience-item ${right ? "right" : "left"}`}>
+      <div className="experience-content tile">
+        <h4 className="experience-name">{eventName}</h4>
+        <p className="experience-sub-heading">{entity}</p>
+        <p>{description}</p>
+      </div>
     </li>
   )
 }

@@ -15,8 +15,6 @@ const ProjectTile = ({ index, project }) => {
     }
   `)
 
-  console.log(data)
-
   const icons = data.allIconsJson.nodes.filter(node =>
     project.icons.includes(node.name)
   )
@@ -53,7 +51,7 @@ const ProjectIcons = ({ icons }) => {
     <ul className="project-icons">
       {icons.map((i, index) => (
         <li key={index}>
-          <img src={i.url} alt="" srcset="" className="w-6 h-6" />
+          <img src={i.url} alt="" srcSet="" className="w-6 h-6" />
         </li>
       ))}
     </ul>
