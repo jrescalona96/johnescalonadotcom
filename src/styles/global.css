@@ -45,13 +45,8 @@
   }
   /* section general */
 
-  .tile {
+  .card {
     @apply shadow-md;
     background-color: var(--btn-color);
-  }
-
-  .tile:hover {
-    @apply text-gray-800 shadow-inner;
-    background-color: var(--active-btn-color);
   }
 }

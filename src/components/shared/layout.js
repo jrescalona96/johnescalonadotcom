@@ -7,10 +7,10 @@ import "../../styles/nav.css"
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <>
       <NavBar />
       <main>{children}</main>
-    </div>
+    </>
   )
 }
 

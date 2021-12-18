@@ -15,22 +15,18 @@ const NavBar = () => {
     }
   `)
 
-  const links = data.allHomeSectionsJson.nodes
-
   return (
-    <div className="nav">
-      <nav className="nav-items">
-        {links.map(l => (
-          <NavBarItem key={l.id} data={l} />
-        ))}
-      </nav>
-    </div>
+    <nav className="nav">
+      {data.allHomeSectionsJson.nodes.map(l => (
+        <NavBarItem key={l.id} data={l} />
+      ))}
+    </nav>
   )
 }
 
 const NavBarItem = ({ data }) => {
   return (
-    <a className="nav-btn tile" href={`#${data.sectionName}`}>
+    <a className="nav-btn" href={`#${data.sectionName}`}>
       {data.sectionName}
     </a>
   )

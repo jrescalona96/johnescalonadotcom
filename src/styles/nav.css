@@ -5,12 +5,8 @@
 
 @layer components {
   .nav {
-    @apply fixed py-5 px-20 box-border mx-auto w-full h-20 z-50;
+    @apply fixed py-5 px-20 box-border mx-auto w-full h-20 z-50 w-full flex space-x-3;
     background-color: var(--nav-bg-color);
-  }
-
-  .nav-items {
-    @apply w-full flex space-x-3;
   }
 
   .nav-btn {
