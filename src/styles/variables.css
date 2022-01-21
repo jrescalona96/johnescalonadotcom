@@ -4,9 +4,28 @@
   --nav-bg-color: #f5f5f5;
   --btn-color: white;
   --active-btn-color: #b9b9b9;
+  --timeline-color: #b9b9b9;
 
   /* text */
   --text-color: #2b2b2b;
   --section-heading-text-color: #505050;
   --section-sub-heading-text-color: #989898;
+}
+
+@keyframes slide-right-opacity {
+  from {
+    @apply opacity-0 transform translate-x-full;
+  }
+  to {
+    @apply opacity-100 transform translate-x-0;
+  }
+}
+
+@keyframes opacity-med {
+  from {
+    @apply opacity-0;
+  }
+  to {
+    @apply opacity-100;
+  }
 }

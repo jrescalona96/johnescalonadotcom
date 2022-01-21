@@ -2,10 +2,10 @@
   {
     "sectionName": "home",
     "slug": "/",
-    "heading": "John Escalona",
+    "heading": "I'm John.",
     "subHeading": "Software Developer",
     "description": [
-      "Currently working as a Mobile App Developer in Southern California",
+      "Software Developer based in Southern California. I'm currently working as a Mobile App Developer for an established Insurance Company.",
       "This site serves as a home to my some of my works as well as some of my interests. Built using React with Gatsby and deployed using AWS.",
       "Feel free to contact me with any questions you might have about any of my works   or to connect about some of my interests."
     ]

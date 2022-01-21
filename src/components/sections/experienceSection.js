@@ -31,65 +31,77 @@ const ExperienceSection = () => {
   `)
 
   const { sectionName } = data.homeSectionsJson
+  const events = data.allEventsJson.nodes
 
-  const events = data.allEventsJson.nodes.sort((a, b) => {
-    return !b.endDate || a.endDate.y < b.endDate.y ? 1 : -1
-  })
+  React.useEffect(() => {
+    // Intersection Observer
+    const timelineElements = document.querySelectorAll(".timeline")
+    const experienceItems = document.querySelectorAll(".experience-item")
+    const yearHeadingItems = document.querySelectorAll(
+      ".experience-year-heading"
+    )
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          entry.target.classList.toggle("show", entry.isIntersecting)
+          if (entry.isIntersecting) {
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { root: document.querySelector(`${sectionName}`), rootMargin: "-50px" }
+    )
+    timelineElements.forEach(item => observer.observe(item))
+    experienceItems.forEach(item => observer.observe(item))
+    yearHeadingItems.forEach(item => observer.observe(item))
+  }, [sectionName])
 
-  const getYears = (start, end) => {
+  const getSortedYears = (start, end) => {
     var map = new Map()
     events.forEach(item => {
-      if (item.endDate) {
-        map.set(item.endDate.y, item.endDate.m)
+      const date = item.startDate
+      if (date) {
+        map.set(date.y, null)
       }
     })
-    return Array.from(map.keys())
+
+    const sorted = Array.from(map.keys()).sort((a, b) => {
+      return a < b ? 1 : -1
+    })
+
+    if (!sorted.includes(end)) {
+      sorted.unshift(end)
+    }
+
+    return sorted
   }
 
   const groupEvents = events => {
     let map = {}
     events.forEach(item => {
-      if (!item.endDate) {
-        map["Present"] = item
-      } else {
-        map[`${item.endDate.m}${item.endDate.y}`] = item
-      }
+      map[`${item.startDate.m}${item.startDate.y}`] = item
     })
     return map
   }
 
-  const years = getYears(2007, 2021)
-  const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  const isOnRight = () => {
+    right = !right
+
+    return right
+  }
+
+  const years = getSortedYears(2007, 2022)
   const grouped = groupEvents(events)
-  let right = true
+
+  let right = false
+
   return (
     <section id={sectionName}>
       <h1 className="section-heading">{sectionName}</h1>
       <div className="section-content">
         <ul className="experience-year">
           {years.map(y => (
-            <li key={y}>
-              <p className="experience-year-heading">{y + 1}</p>
-              <ul className="timeline">
-                {months.map(m => {
-                  let key = y ? `${m}${y}` : "Present"
-                  let data = grouped[key]
-                  let content
-
-                  if (data) {
-                    right = !right
-                    content = ExperienceItem({
-                      right: right,
-                      data: data,
-                    })
-                  } else {
-                    content = <div className="month"></div>
-                  }
-
-                  return <li key={data ? data.id : key}>{content}</li>
-                })}
-              </ul>
-            </li>
+            <Year key={y} year={y} isOnRight={isOnRight} events={grouped} />
           ))}
         </ul>
       </div>
@@ -97,21 +109,56 @@ const ExperienceSection = () => {
   )
 }
 
-const ExperienceItem = ({ right, data }) => {
-  const { eventName, entity, description, startDate, endDate } = data
+const Year = ({ year, isOnRight, events }) => {
+  const months = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+  return (
+    <li key={year}>
+      <ul className="timeline">
+        {months.map(m => {
+          let key = `${m}${year}`
+          let data = events[key]
+          if (data) {
+            let { id } = data
+            return (
+              <li id={id} key={id}>
+                <ExperienceItem isOnRight={isOnRight} data={data} />
+              </li>
+            )
+          } else {
+            return <li key={key} className="month"></li>
+          }
+        })}
+      </ul>
+      <p className="experience-year-heading">{year}</p>
+    </li>
+  )
+}
 
+const ExperienceItem = ({ isOnRight, data }) => {
+  const { eventName, entity, description } = data
   let classes
-  if (right) {
-    classes = "transform translate-x-full text-left rounded-r-xl ml-0.5"
+  if (isOnRight()) {
+    classes = "right"
   } else {
-    classes = "rounded-l-xl"
+    classes = "left"
+  }
+
+  const toggleDesription = () => {
+    try {
+      const element = document.querySelector(
+        `#${data.id} > .experience-item > .experience-description`
+      )
+      element.classList.toggle("show")
+    } catch (error) {
+      return
+    }
   }
 
   return (
-    <Card className={`experience-item ${classes}`}>
+    <Card className={`experience-item ${classes}`} onClick={toggleDesription}>
       <h4 className="experience-name">{eventName}</h4>
       <p className="experience-sub-heading">{entity}</p>
-      <p>{description}</p>
+      <p className={"experience-description"}>{description}</p>
     </Card>
   )
 }

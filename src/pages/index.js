@@ -8,6 +8,23 @@ import "../styles/global.css"
 import "../styles/projects.css"
 
 const IndexPage = () => {
+  React.useEffect(() => {
+    // Intersection Observer
+    const headers = document.querySelectorAll(".section-heading")
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          entry.target.classList.toggle("animated", entry.isIntersecting)
+          if (entry.isIntersecting) {
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { rootMargin: "-100px" }
+    )
+    headers.forEach(item => observer.observe(item))
+  }, [])
+
   return (
     <Layout>
       <Seo title="Home" />

@@ -1,5 +1,7 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
+import "../../styles/home.css"
 
 const HomeSection = () => {
   const { homeSectionsJson } = useStaticQuery(graphql`
@@ -18,16 +20,32 @@ const HomeSection = () => {
 
   return (
     <section id={sectionName}>
-      <h1 className="section-heading text-left">{heading}</h1>
-      <h2 className="sub-heading">{subHeading}</h2>
-      <ul className="section-content md:w-2/3 lg:w-1/2">
+      <HomeTextContent
+        heading={heading}
+        subHeading={subHeading}
+        description={description}
+      />
+      <StaticImage
+        className="profile-img"
+        alt="This is me. Couple of years ago. Generally how I look like."
+        src="../../images/profile-pic-chicago.jpg"
+      />
+    </section>
+  )
+}
+
+const HomeTextContent = ({ heading, subHeading, description }) => {
+  return (
+    <div className="section-content">
+      <h1 className="greeting">{heading}</h1>
+      <ul>
         {description.map((item, index) => (
           <li key={index} className="pb-4">
             {item}
           </li>
         ))}
       </ul>
-    </section>
+    </div>
   )
 }
 

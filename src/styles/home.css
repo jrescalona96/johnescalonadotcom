@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("./variables.css");
+
+#home {
+  @apply flex space-x-10 lg:flex-row;
+}
+
+.greeting {
+  @apply text-left text-8xl;
+}
+
+#home > .section-content > .section-heading {
+  @apply text-left text-8xl;
+}
+
+#home > .section-content {
+  @apply flex flex-col justify-center space-y-4;
+}
+
+#home > .profile-img {
+  @apply rounded-lg hidden md:flex my-auto mx-auto pt-10 md:w-1/2 md:h-1/2;
+}

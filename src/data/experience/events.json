@@ -15,22 +15,22 @@
   },
   {
     "entity": "California State Polytechnic University",
-    "startDate": { "m": 8, "d": 23, "y": 2018 },
+    "startDate": { "m": 5, "d": 20, "y": 2020 },
     "endDate": { "m": 5, "d": 20, "y": 2020 },
     "eventName": "Graduate from Cal Poly Pomona",
     "description": "Completed my undergraduate and getting my Bachelors in Computer Science"
   },
   {
     "entity": "Adamson University",
-    "startDate": { "m": 7, "d": 23, "y": 2007 },
+    "startDate": { "m": 6, "d": 20, "y": 2007 },
     "endDate": { "m": 5, "d": 20, "y": 2010 },
-    "eventName": "Temporary stop my Higher Education",
+    "eventName": "Started Higher Education",
     "description": "The opportunity to permanently move to the US was given to US. At the age of 20, we had decided to best continue my studies while we look for better pastures."
   },
   {
     "entity": "",
-    "startDate": { "m": 10, "d": 10, "y": 2001 },
-    "endDate": { "m": 10, "d": 11, "y": 2011 },
+    "startDate": { "m": 10, "d": 10, "y": 2011 },
+    "endDate": null,
     "eventName": "Migrated to the United States",
     "description": "13-hour flight to the US. After a few months, I started looking for a job my first Job."
   },
@@ -57,7 +57,7 @@
   },
   {
     "entity": "Batanes National Science High School",
-    "startDate": { "m": 7, "d": 10, "y": 2003 },
+    "startDate": { "m": 5, "d": 26, "y": 2007 },
     "endDate": { "m": 5, "d": 26, "y": 2007 },
     "eventName": "Graduated in High School",
     "description": "Finished my Secondary Education with Honors"
