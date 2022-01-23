@@ -1,7 +1,7 @@
 [
   {
     "sectionName": "home",
-    "slug": "/",
+    "slug": "/#home",
     "heading": "I'm John.",
     "subHeading": "Software Developer",
     "description": [
@@ -12,12 +12,12 @@
   },
   {
     "sectionName": "projects",
-    "slug": "/projects",
+    "slug": "#projects",
     "heading": "projects"
   },
   {
     "sectionName": "experience",
-    "slug": "/experience",
+    "slug": "#experience",
     "heading": "experience"
   },
 
@@ -28,7 +28,7 @@
   },
   {
     "sectionName": "resume",
-    "slug": "/resume",
-    "heading": "resume"
+    "slug": "resume",
+    "heading": "/resume"
   }
 ]

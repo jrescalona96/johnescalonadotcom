@@ -20,5 +20,5 @@
 }
 
 #home > .profile-img {
-  @apply rounded-lg hidden md:flex my-auto mx-auto pt-10 md:w-1/2 md:h-1/2;
+  @apply rounded-lg hidden md:inline my-auto mx-auto pt-10 w-3/4;
 }

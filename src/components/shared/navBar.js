@@ -26,7 +26,7 @@ const NavBar = () => {
 
 const NavBarItem = ({ data }) => {
   return (
-    <a className="nav-btn" href={`#${data.sectionName}`}>
+    <a className="nav-btn" href={`${data.slug}`}>
       {data.sectionName}
     </a>
   )

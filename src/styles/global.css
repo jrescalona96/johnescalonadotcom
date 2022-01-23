@@ -5,12 +5,12 @@
 
 @layer base {
   body {
+    @apply pb-3;
     background-color: var(--main-bg-color);
-    padding-bottom: 100px;
   }
 
   section {
-    @apply min-h-screen pt-32 w-10/12 lg:w-2/3 mx-auto flex flex-col justify-center;
+    @apply min-h-screen flex flex-col justify-center;
   }
 
   p {
@@ -28,6 +28,10 @@
   .col-vertical-bottom {
     @apply flex flex-col justify-end;
   }
+
+  main {
+    @apply w-full sm:w-10/12 xl:w-1/2 mx-auto;
+  }
 }
 
 @layer components {
@@ -42,13 +46,13 @@
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
+    line-height: 2;
     /* inner text shadow */
   }
 
-  .section-heading.animated {
+  .section-heading.show {
     opacity: 1;
-    animation-name: opacity-med;
-    animation-duration: 0.5s;
+    transition: opacity 0.5s ease-in;
   }
 
   .sub-heading {
@@ -64,7 +68,7 @@
   }
 
   .section-content {
-    @apply mx-auto pt-10 w-9/12 lg:w-3/4 space-y-12;
+    @apply mx-auto pt-10 space-y-12 w-full;
   }
   /* section general */
 
