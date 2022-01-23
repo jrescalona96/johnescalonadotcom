@@ -4,6 +4,10 @@
 @import url("./variables.css");
 
 @layer components {
+  #projects > .section-content {
+    @apply px-40;
+  }
+
   .project-item {
     @apply flex space-x-5 invisible transform translate-y-full;
   }

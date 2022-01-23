@@ -4,6 +4,10 @@
 @import url("./variables.css");
 
 @layer components {
+  #experience > .section-content {
+    @apply px-40;
+  }
+
   .experience-item {
     @apply flex flex-col justify-center p-4 w-1/2;
     opacity: 0;
