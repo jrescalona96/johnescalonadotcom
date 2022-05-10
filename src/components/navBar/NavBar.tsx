@@ -1,22 +1,27 @@
+import { TextLink } from "../Link";
 import "./navBar.css";
 
 export const NavBar = () => {
+	const classes: string = "hover:motion-safe:animate-pulse";
+	const isActive = (path: string): string => {
+		return window.location.pathname === path
+			? " underline decoration-2 decoration-sky-500/30"
+			: "";
+	};
 	return (
-		<nav>
-			<ul className="flex flex-row gap-x-2.5">
-				<li className="hover:underline">
-					<a href="/">jre</a>
-				</li>
-				<li className="hover:underline">
-					<a href="/projects">projects</a>
-				</li>
-				<li className="hover:underline">
-					<a href="/contact">contact</a>
-				</li>
-				<li className="hover:underline">
-					<a href="/interests">interests</a>
-				</li>
-			</ul>
+		<nav className="flex flex-row gap-x-4 py-6">
+			<TextLink className={classes} href="/">
+				jre
+			</TextLink>
+			<TextLink className={classes + isActive("/")} href="/">
+				projects
+			</TextLink>
+			<TextLink className={classes + isActive("/contact")} href="/contact">
+				contact
+			</TextLink>
+			<TextLink className={classes + isActive("/interests")} href="/interests">
+				interests
+			</TextLink>
 		</nav>
 	);
 };
