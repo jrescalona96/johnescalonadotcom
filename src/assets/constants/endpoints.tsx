@@ -7,3 +7,7 @@ export class Endpoints {
 	static camping: string = "/interests/camping";
 	static fitness: string = "/interests/fitness";
 }
+
+export class ExtEndpoints {
+	static cpp: string = "https://www.cpp.edu/aboutcpp/index.shtml";
+}

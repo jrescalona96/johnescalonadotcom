@@ -2,7 +2,7 @@ import { TextLink } from "./TextLink";
 import { Endpoints } from "../assets/constants/endpoints";
 
 export const NavBar = () => {
-	const classes: string = "hover:motion-safe:animate-pulse";
+	const classes: string = "";
 	const isActive = (path: string): string => {
 		const activeDecorationClass: string = " underline";
 		return window.location.pathname.includes(path) ? activeDecorationClass : "";

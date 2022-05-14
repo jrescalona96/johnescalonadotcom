@@ -13,7 +13,7 @@ export const TextLink: React.FC<TextLinkProps> = (props) => {
 		<a
 			href={props.href}
 			onMouseOver={props.onMouseOver}
-			className={`font-semibold hover:underline hover:decoration-dotted decoration-2 cursor-pointer ${props.className}`}>
+			className={`font-semibold hover:underline decoration-2 cursor-pointer ${props.className}`}>
 			{props.text}
 		</a>
 	);
