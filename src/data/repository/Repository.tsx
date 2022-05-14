@@ -19,7 +19,7 @@ export class Repository {
 				id: "1",
 				projectName: "lfti",
 				description:
-					"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+					"Mobile Application to create, manage, and perform Workout routines. Available for both iOS & Android",
 				url: "https://wakay96.github.io/lfti/",
 				projectImage: new Image({
 					id: 1,
@@ -34,43 +34,9 @@ export class Repository {
 			}),
 			new Project({
 				id: "2",
-				projectName: "Truss Solver",
+				projectName: "Algo Visualization",
 				description:
-					"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-				url: "https://jrescalona96.github.io/truss-solver/",
-				projectImage: new Image({
-					id: 1,
-					src: "./images/truss_solver_2.png",
-					label: "Truss Solver",
-				}),
-				logo: new Image({
-					id: 1,
-					src: "./images/truss_solver_logo.ico",
-					label: "Truss Solver",
-				}),
-			}),
-			new Project({
-				id: "3",
-				projectName: "Debt Counter",
-				description:
-					"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-				url: "https://jrescalona96.github.io/debtcounter/",
-				projectImage: new Image({
-					id: 1,
-					src: "./images/debtcounter_dark_2.png",
-					label: "Debt Counter",
-				}),
-				logo: new Image({
-					id: 1,
-					src: "./images/debt_logo.ico",
-					label: "Debt Counter",
-				}),
-			}),
-			new Project({
-				id: "4",
-				projectName: "Algovisualization",
-				description:
-					"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+					" This react app visualizes basic Computer Science Algorithms listed below. Built using react, emphasizing on utilizing a functional approach to composing components using Hooks.",
 				url: "https://jrescalona96.github.io/algovisualizations",
 				projectImage: new Image({
 					id: 1,
@@ -81,6 +47,40 @@ export class Repository {
 					id: 1,
 					src: "./images/algo_logo.ico",
 					label: "Algovisualization",
+				}),
+			}),
+			new Project({
+				id: "3",
+				projectName: "Truss Solver",
+				description:
+					"Web application that calculates External and Internal Forces, Node Displacements and Stress for a Structural Truss formation based on node loads, then displays a projection of the resulting truss formation.",
+				url: "https://jrescalona96.github.io/truss-solver/",
+				projectImage: new Image({
+					id: 1,
+					src: "./images/truss_solver_1.png",
+					label: "Truss Solver",
+				}),
+				logo: new Image({
+					id: 1,
+					src: "./images/truss_solver_logo.ico",
+					label: "Truss Solver",
+				}),
+			}),
+			new Project({
+				id: "4",
+				projectName: "Debt Counter",
+				description:
+					"This web app helps users keep track of their overall Debt by displaying to serve as a reminder to the user.",
+				url: "https://jrescalona96.github.io/debtcounter/",
+				projectImage: new Image({
+					id: 1,
+					src: "./images/debtcounter_dark_2.png",
+					label: "Debt Counter",
+				}),
+				logo: new Image({
+					id: 1,
+					src: "./images/debt_logo.ico",
+					label: "Debt Counter",
 				}),
 			}),
 		];

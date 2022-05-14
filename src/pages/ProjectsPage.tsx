@@ -24,9 +24,9 @@ const ProjectSection = ({ projects }: { projects: Project[] }) => {
 				const { projectName, url, logo, description, projectImage } = project;
 				return (
 					<div key={projectName}>
-						<div className="flex flex-col md:flex-row gap-2.5">
-							<div className="flex-col">
-								<div className="flex align-bottom">
+						<div className="flex flex-col md:flex-row gap-x-10">
+							<div>
+								<div className="flex align-bottom pb-2.5">
 									<img className="rounded-md w-1/12 pr-2" src={logo?.src} />
 									<TextLink
 										className="my-auto"

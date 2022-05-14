@@ -10,4 +10,7 @@ export class Endpoints {
 
 export class ExtEndpoints {
 	static cpp: string = "https://www.cpp.edu/aboutcpp/index.shtml";
+	static github: string = "https://github.com/jrescalona96";
+	static instagram: string = "https://www.instagram.com/subimond/";
+	static linkedin: string = "https://www.linkedin.com/in/john-escalona/";
 }
