@@ -9,23 +9,25 @@ export const NavBar = () => {
 	};
 
 	return (
-		<nav className="flex flex-row gap-x-2">
-			<TextLink className={classes} href={Endpoints.home} text="jre" />
-			<TextLink
-				className={classes + isActive(Endpoints.projects)}
-				href={Endpoints.projects}
-				text="projects"
-			/>
-			<TextLink
-				className={classes + isActive(Endpoints.contact)}
-				href={Endpoints.contact}
-				text="contact"
-			/>
-			<TextLink
-				text="interests"
-				className={classes + isActive(Endpoints.interests)}
-				href={Endpoints.interests}
-			/>
+		<nav className="bg-white fixed w-screen">
+			<div className="py-5 px-40 flex flex-row gap-x-2 max-w-screen-xl mx-auto">
+				<TextLink className={classes} href={Endpoints.home} text="jre" />
+				<TextLink
+					className={classes + isActive(Endpoints.projects)}
+					href={Endpoints.projects}
+					text="projects"
+				/>
+				<TextLink
+					className={classes + isActive(Endpoints.contact)}
+					href={Endpoints.contact}
+					text="contact"
+				/>
+				<TextLink
+					text="interests"
+					className={classes + isActive(Endpoints.interests)}
+					href={Endpoints.interests}
+				/>
+			</div>
 		</nav>
 	);
 };

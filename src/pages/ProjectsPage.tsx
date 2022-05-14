@@ -7,17 +7,19 @@ import { TextLink } from "../components/TextLink";
 export const ProjectsPage = () => {
 	const projects: Project[] = Repository.getInstance().getProjects();
 	return (
-		<section className="flex flex-col gap-5 p-5">
+		<section>
 			<NavBar />
-			<Header text="Projects" />
-			<ProjectSection projects={projects} />
+			<div className="page-content">
+				<Header text="Projects" />
+				<ProjectSection projects={projects} />
+			</div>
 		</section>
 	);
 };
 
 const ProjectSection = ({ projects }: { projects: Project[] }) => {
 	return (
-		<div className="flex flex-col gap-10">
+		<div className="flex flex-col gap-y-10">
 			{projects.map((project: Project) => {
 				const { projectName, url, logo, description, projectImage } = project;
 				return (

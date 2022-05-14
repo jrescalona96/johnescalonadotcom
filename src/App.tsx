@@ -2,17 +2,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Endpoints } from "./assets/constants/endpoints";
 import { HomePage } from "./pages/HomePage";
 import { ContactPage } from "./pages/ContactPage";
-import { InterestsPage } from "./pages/InterestsPage";
+import { InterestsPage } from "./pages/interests";
 import { ProjectsPage } from "./pages/ProjectsPage";
-import { CoffeePage } from "./pages/CoffeePage";
-import { FitnessPage } from "./pages/FitnessPage";
-import { CampingPage } from "./pages/CampingPage";
+import { CoffeePage } from "./pages/interests/CoffeePage";
+import { FitnessPage } from "./pages/interests/FitnessPage";
+import { CampingPage } from "./pages/interests/CampingPage";
 
 import "./App.css";
 
 function App() {
 	return (
-		<div className="App container h-screen my-auto mx-auto max-w-4xl">
+		<div className="App">
 			<BrowserRouter>
 				<Routes>
 					<Route path={Endpoints.home} element={<HomePage />} />

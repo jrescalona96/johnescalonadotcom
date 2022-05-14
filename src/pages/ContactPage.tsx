@@ -3,9 +3,11 @@ import { NavBar } from "../components/NavBar";
 
 export const ContactPage = () => {
 	return (
-		<section className="flex flex-col gap-2 p-8">
+		<section>
 			<NavBar />
-			<Header text="Contact me" />
+			<div className="page-content">
+				<Header text="Contact me" />{" "}
+			</div>
 		</section>
 	);
 };
