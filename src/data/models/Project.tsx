@@ -2,11 +2,12 @@ import { Image } from "./Image";
 
 type ProjectParameters = {
 	id: string;
+	url?: string;
 	projectName: string;
 	description?: string;
 	projectImage?: Image;
-	url?: string;
-	logo?: Image;
+	projectIcon?: Image;
+	techStackIcons?: Image[];
 };
 
 export class Project {
@@ -15,7 +16,8 @@ export class Project {
 	description?: string;
 	url?: string;
 	projectImage?: Image;
-	logo?: Image;
+	projectIcon?: Image;
+	techStackLogos?: Image[];
 
 	constructor({
 		id,
@@ -23,13 +25,15 @@ export class Project {
 		description,
 		url,
 		projectImage,
-		logo,
+		projectIcon,
+		techStackIcons: techStackLogos,
 	}: ProjectParameters) {
 		this.id = id;
+		this.url = url;
 		this.projectName = projectName;
 		this.description = description;
-		this.url = url;
 		this.projectImage = projectImage;
-		this.logo = logo;
+		this.projectIcon = projectIcon;
+		this.techStackLogos = techStackLogos;
 	}
 }

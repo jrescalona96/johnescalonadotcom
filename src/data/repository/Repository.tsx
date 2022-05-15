@@ -13,24 +13,66 @@ export class Repository {
 		return Repository.instance;
 	}
 
+	getTechStackIcons = (keys: string[]): Image[] => {
+		const techStackIcons: Map<string, Image> = new Map<string, Image>([
+			["mongodb", new Image({ src: "./images/mongodb.png", label: "MongoDB" })],
+			["css3", new Image({ src: "./images/css3.png", label: "CSS3" })],
+			[
+				"firebase",
+				new Image({ src: "./images/firebase.png", label: "Firebase" }),
+			],
+			["flutter", new Image({ src: "./images/flutter.png", label: "Flutter" })],
+			["html", new Image({ src: "./images/html.png", label: "HTML" })],
+			["java", new Image({ src: "./images/java.png", label: "Java" })],
+			["js", new Image({ src: "./images/js.png", label: "Javascript" })],
+			[
+				"tailwind",
+				new Image({ src: "./images/tailwind.png", label: "Tailwind CSS" }),
+			],
+			["react", new Image({ src: "./images/react.png", label: "ReactJS" })],
+			["sass", new Image({ src: "./images/sass.png", label: "Sass" })],
+			[
+				"materialui",
+				new Image({ src: "./images/materialui.png", label: "Material UI" }),
+			],
+			["python", new Image({ src: "./images/python.png", label: "Python" })],
+			[
+				"bootstrap",
+				new Image({ src: "./images/bootstrap.png", label: "Bootstrap" }),
+			],
+		]);
+
+		let list: Image[] = [];
+
+		keys.forEach((k) => {
+			let found = techStackIcons.get(k);
+			if (found) {
+				list.push(found);
+			}
+		});
+
+		return list;
+	};
+
 	getProjects = (): Project[] => {
 		let projects: Project[] = [
 			new Project({
 				id: "1",
 				projectName: "lfti",
 				description:
-					"Mobile Application to create, manage, and perform Workout routines. Available for both iOS & Android",
+					"Mobile Application to create, manage, and perform Workout routines. Available for both iOS & Android.",
 				url: "https://wakay96.github.io/lfti/",
 				projectImage: new Image({
 					id: 1,
 					src: "./images/lfti_app_store.png",
 					label: "lfti",
 				}),
-				logo: new Image({
+				projectIcon: new Image({
 					id: 1,
 					src: "./images/lfti_logo.png",
 					label: "lfti",
 				}),
+				techStackIcons: this.getTechStackIcons(["flutter", "firebase"]),
 			}),
 			new Project({
 				id: "2",
@@ -43,11 +85,12 @@ export class Repository {
 					src: "./images/algovizualization_screenshot.jpeg",
 					label: "Algovisualization",
 				}),
-				logo: new Image({
+				projectIcon: new Image({
 					id: 1,
 					src: "./images/algo_logo.ico",
 					label: "Algovisualization",
 				}),
+				techStackIcons: this.getTechStackIcons(["react", "sass", "materialui"]),
 			}),
 			new Project({
 				id: "3",
@@ -60,11 +103,17 @@ export class Repository {
 					src: "./images/truss_solver_1.png",
 					label: "Truss Solver",
 				}),
-				logo: new Image({
+				projectIcon: new Image({
 					id: 1,
 					src: "./images/truss_solver_logo.ico",
 					label: "Truss Solver",
 				}),
+				techStackIcons: this.getTechStackIcons([
+					"react",
+					"sass",
+					"python",
+					"bootstrap",
+				]),
 			}),
 			new Project({
 				id: "4",
@@ -77,11 +126,12 @@ export class Repository {
 					src: "./images/debtcounter_dark_2.png",
 					label: "Debt Counter",
 				}),
-				logo: new Image({
+				projectIcon: new Image({
 					id: 1,
 					src: "./images/debt_logo.ico",
 					label: "Debt Counter",
 				}),
+				techStackIcons: this.getTechStackIcons(["react", "css", "bootstrap"]),
 			}),
 		];
 		return projects;

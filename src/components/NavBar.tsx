@@ -1,6 +1,12 @@
+import { useState } from "react";
 import { TextLink } from "./TextLink";
-import { Endpoints, ExtEndpoints } from "../assets/constants/endpoints";
+import { Endpoints, ExtEndpoints } from "../assets/constants/Endpoints";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+	faCaretLeft,
+	faCaretRight,
+} from "../../node_modules/@fortawesome/free-solid-svg-icons/index";
+
 import {
 	faGithubSquare,
 	faLinkedin,
@@ -12,7 +18,7 @@ export const NavBar = () => {
 		<nav className="bg-white fixed w-screen">
 			<div
 				id="nav-items"
-				className="flex py-5 px-10 lg:px-40 mx-auto justify-between max-w-screen-xl">
+				className="flex py-5 px-10 lg:px-52 mx-auto justify-between max-w-screen-xl">
 				<NavItems />
 				<SocialIcons />
 			</div>
@@ -21,6 +27,9 @@ export const NavBar = () => {
 };
 
 const NavItems = () => {
+	const [isCaretIconSelected, setIsCaretIconSelected] = useState(false);
+	const handleSetCaretIcon = () => setIsCaretIconSelected(!isCaretIconSelected);
+
 	const classes: string = "";
 	const isActive = (path: string): string => {
 		const activeDecorationClass: string = " underline";
@@ -35,16 +44,36 @@ const NavItems = () => {
 				href={Endpoints.projects}
 				text="projects"
 			/>
-			<TextLink
-				className={classes + isActive(Endpoints.contact)}
-				href={Endpoints.contact}
-				text="contact"
-			/>
-			<TextLink
-				text="interests"
-				className={classes + isActive(Endpoints.interests)}
-				href={Endpoints.interests}
-			/>
+			<div className="flex gap-x-1">
+				<TextLink
+					text="interests"
+					className={classes + isActive(Endpoints.interests)}
+					href={Endpoints.interests}
+				/>
+				<FontAwesomeIcon
+					className="pt-1"
+					icon={isCaretIconSelected ? faCaretRight : faCaretLeft}
+					onClick={handleSetCaretIcon}
+				/>
+				<div
+					className={`flex gap-x-2.5 ${isCaretIconSelected ? "" : "hidden"}`}>
+					<TextLink
+						text="fitness"
+						className={classes + isActive(Endpoints.interests)}
+						href={Endpoints.interests}
+					/>
+					<TextLink
+						text="camping"
+						className={classes + isActive(Endpoints.interests)}
+						href={Endpoints.interests}
+					/>
+					<TextLink
+						text="coffee"
+						className={classes + isActive(Endpoints.interests)}
+						href={Endpoints.interests}
+					/>
+				</div>
+			</div>
 		</div>
 	);
 };

@@ -2,7 +2,7 @@ import { Header } from "../components/Header";
 import { TextLink } from "../components/TextLink";
 import { Image } from "../data/models/Image";
 import { NavBar } from "../components/NavBar";
-import { Endpoints, ExtEndpoints } from "../assets/constants/endpoints";
+import { Endpoints, ExtEndpoints } from "../assets/constants/Endpoints";
 import { useState } from "react";
 import { Repository } from "../data/repository/Repository";
 
@@ -22,7 +22,7 @@ const Introduction = () => {
 	const interestImages: Image[] = Repository.getInstance().getInterestImages();
 	const [imageIndex, setImageIndex] = useState(0);
 	return (
-		<div className="flex flex-col md:flex-row">
+		<div className="flex flex-col md:flex-row gap-x-10">
 			<div id="welcomeMessage" className="flex flex-col gap-5 basis-1/2">
 				<p>
 					{" I currently a "}
@@ -71,7 +71,7 @@ const Introduction = () => {
 
 			<div id="interest-imgs" className="basis-1/2 my-auto">
 				{interestImages.map((image) => {
-					var classes: string = "rounded-lg mx-auto w-full md:w-3/4";
+					var classes: string = "rounded-lg mx-auto w-fullmd:w-3/4";
 					classes += image.id === imageIndex ? "" : " hidden";
 					return (
 						<img
