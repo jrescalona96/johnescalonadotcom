@@ -1,5 +1,7 @@
 import { Project } from "../models/Project";
 import { Image } from "../models/Image";
+import { Interest } from "../models/Interest";
+import { Endpoints } from "../../assets/constants/Endpoints";
 
 export class Repository {
 	private static instance: Repository;
@@ -162,5 +164,64 @@ export class Repository {
 		];
 
 		return interestImages;
+	};
+
+	getInterests = (): Interest[] => {
+		const interests: Interest[] = [
+			new Interest({
+				label: "Technology 📺",
+				url: Endpoints.home,
+				description:
+					"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam massa, lobortis sed purus pharetra, venenatis varius metus. Vivamus libero turpis, molestie id risus ut, interdum dignissim dolor. Aliquam accumsan.",
+				assets: [
+					new Image({
+						id: 0,
+						src: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=4470&q=80",
+						label: "technology",
+					}),
+				],
+			}),
+			new Interest({
+				label: "Camping 🏕️",
+				url: Endpoints.camping,
+				description:
+					"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam massa, lobortis sed purus pharetra, venenatis varius metus. Vivamus libero turpis, molestie id risus ut, interdum dignissim dolor. Aliquam accumsan.",
+				assets: [
+					new Image({
+						id: 1,
+						src: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=4498&q=80",
+						label: "camping",
+					}),
+				],
+			}),
+			new Interest({
+				label: "Fitness 💪",
+				url: Endpoints.fitness,
+				description:
+					"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam massa, lobortis sed purus pharetra, venenatis varius metus. Vivamus libero turpis, molestie id risus ut, interdum dignissim dolor. Aliquam accumsan.",
+				assets: [
+					new Image({
+						id: 2,
+						src: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=4275&q=80",
+						label: "fitness",
+					}),
+				],
+			}),
+			new Interest({
+				label: "Coffee ☕",
+				url: Endpoints.coffee,
+				description:
+					"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam massa, lobortis sed purus pharetra, venenatis varius metus. Vivamus libero turpis, molestie id risus ut, interdum dignissim dolor. Aliquam accumsan.",
+				assets: [
+					new Image({
+						id: 3,
+						src: "https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=5537&q=80",
+						label: "coffee",
+					}),
+				],
+			}),
+		];
+
+		return interests;
 	};
 }

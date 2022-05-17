@@ -32,27 +32,23 @@ const ProjectSection = ({ projects }: { projects: Project[] }) => {
 						/>
 						<div className="flex flex-col md:flex-row gap-x-10">
 							<p className="w-2/3">{description}</p>
-							<ul className="flex flex-col justify-start">
-								{project.techStackLogos?.map((img) => {
-									return (
-										<li className="flex gap-x-2.5">
-											<img
-												className="w-6"
-												src={img.src}
-												alt=""
-												title={img.label}
-											/>
-											<p className="w-full">{img.label}</p>
-										</li>
-									);
-								})}
-							</ul>
-
-							{/* todo: make images expandable */}
-							{/* <img
-								className="rounded-md w-full md:w-1/2"
-								src={projectImage?.src}
-							/> */}
+							<div className="tech-stack">
+								<ul className="flex flex-col justify-start">
+									{project.techStackLogos?.map((img) => {
+										return (
+											<li className="flex gap-x-2.5">
+												<img
+													className="w-6"
+													src={img.src}
+													alt=""
+													title={img.label}
+												/>
+												<p className="w-full">{img.label}</p>
+											</li>
+										);
+									})}
+								</ul>
+							</div>
 						</div>
 					</div>
 				);

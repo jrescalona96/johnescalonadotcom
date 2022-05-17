@@ -30,7 +30,7 @@ const NavItems = () => {
 	const [isCaretIconSelected, setIsCaretIconSelected] = useState(false);
 	const handleSetCaretIcon = () => setIsCaretIconSelected(!isCaretIconSelected);
 
-	const classes: string = "";
+	const classes: string = " hover:bg-green-200";
 	const isActive = (path: string): string => {
 		const activeDecorationClass: string = " underline";
 		return window.location.pathname.includes(path) ? activeDecorationClass : "";
@@ -44,19 +44,15 @@ const NavItems = () => {
 				href={Endpoints.projects}
 				text="projects"
 			/>
-			<div className="flex gap-x-1">
+			<div className="flex gap-x-2.5">
 				<TextLink
 					text="interests"
 					className={classes + isActive(Endpoints.interests)}
 					href={Endpoints.interests}
 				/>
-				<FontAwesomeIcon
-					className="pt-1"
-					icon={isCaretIconSelected ? faCaretRight : faCaretLeft}
-					onClick={handleSetCaretIcon}
-				/>
 				<div
-					className={`flex gap-x-2.5 ${isCaretIconSelected ? "" : "hidden"}`}>
+					className={`flex gap-x-2.5 ${isCaretIconSelected ? "" : "hidden"}`}
+					onMouseLeave={handleSetCaretIcon}>
 					<TextLink
 						text="fitness"
 						className={classes + isActive(Endpoints.interests)}
@@ -73,6 +69,11 @@ const NavItems = () => {
 						href={Endpoints.interests}
 					/>
 				</div>
+				<FontAwesomeIcon
+					className={`pt-1 ${!isCaretIconSelected ? "" : "hidden"}`}
+					icon={faCaretRight}
+					onMouseOver={handleSetCaretIcon}
+				/>
 			</div>
 		</div>
 	);
