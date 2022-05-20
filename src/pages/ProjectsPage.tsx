@@ -26,7 +26,7 @@ const ProjectSection = ({ projects }: { projects: Project[] }) => {
 				return (
 					<div key={projectName}>
 						<TextLink
-							className="font-black hover:bg-green-200"
+							className="font-black"
 							text={projectName}
 							href={url ?? ""}
 						/>

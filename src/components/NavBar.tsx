@@ -2,10 +2,7 @@ import { useState } from "react";
 import { TextLink } from "./TextLink";
 import { Endpoints, ExtEndpoints } from "../assets/constants/Endpoints";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faCaretLeft,
-	faCaretRight,
-} from "../../node_modules/@fortawesome/free-solid-svg-icons/index";
+import { faCaretRight } from "../../node_modules/@fortawesome/free-solid-svg-icons/index";
 
 import {
 	faGithubSquare,
@@ -18,7 +15,7 @@ export const NavBar = () => {
 		<nav className="bg-white fixed w-screen">
 			<div
 				id="nav-items"
-				className="flex py-5 px-10 lg:px-52 mx-auto justify-between max-w-screen-xl">
+				className="flex py-10 px-10 lg:px-52 mx-auto justify-between max-w-screen-xl">
 				<NavItems />
 				<SocialIcons />
 			</div>
@@ -30,28 +27,28 @@ const NavItems = () => {
 	const [isCaretIconSelected, setIsCaretIconSelected] = useState(false);
 	const handleSetCaretIcon = () => setIsCaretIconSelected(!isCaretIconSelected);
 
-	const classes: string = " hover:bg-green-200";
+	const classes: string = "";
 	const isActive = (path: string): string => {
 		const activeDecorationClass: string = " underline";
 		return window.location.pathname.includes(path) ? activeDecorationClass : "";
 	};
 
 	return (
-		<div className="flex gap-x-2.5">
+		<div className="flex gap-x-4">
 			<TextLink className={classes} href={Endpoints.home} text="jre" />
 			<TextLink
 				className={classes + isActive(Endpoints.projects)}
 				href={Endpoints.projects}
 				text="projects"
 			/>
-			<div className="flex gap-x-2.5">
+			<div className="flex gap-x-4">
 				<TextLink
 					text="interests"
 					className={classes + isActive(Endpoints.interests)}
 					href={Endpoints.interests}
 				/>
 				<div
-					className={`flex gap-x-2.5 ${isCaretIconSelected ? "" : "hidden"}`}
+					className={`flex gap-x-4 ${isCaretIconSelected ? "" : "hidden"}`}
 					onMouseLeave={handleSetCaretIcon}>
 					<TextLink
 						text="fitness"
@@ -70,7 +67,7 @@ const NavItems = () => {
 					/>
 				</div>
 				<FontAwesomeIcon
-					className={`pt-1 ${!isCaretIconSelected ? "" : "hidden"}`}
+					className={`p-1 ${!isCaretIconSelected ? "" : "hidden"}`}
 					icon={faCaretRight}
 					onMouseOver={handleSetCaretIcon}
 				/>
@@ -81,9 +78,9 @@ const NavItems = () => {
 
 const SocialIcons = () => {
 	const socialIconClasses: string =
-		"transition ease-in-out delay-100 hover:scale-125 duration-300 text-2xl";
+		"transition ease-in-out delay-80 hover:scale-125 duration-300 text-2xl";
 	return (
-		<div id="social-media-links" className="flex gap-x-2.5">
+		<div id="social-media-links" className="flex gap-x-4">
 			<a href={ExtEndpoints.github}>
 				<FontAwesomeIcon icon={faGithubSquare} className={socialIconClasses} />
 			</a>

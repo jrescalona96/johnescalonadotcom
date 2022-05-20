@@ -11,8 +11,20 @@ export const HomePage = () => {
 		<section>
 			<NavBar />
 			<div className="page-content">
-				<Header text="Hi there! I'm John." />
-				<Introduction />
+				<div className="flex align-baseline gap-x-10">
+					<div className="basis-1/2">
+						<Header text="Hi there! I'm John." />
+						<Introduction />
+					</div>
+					<div className="basis-1/2 my-auto pt-24 flex justify-end">
+						<img
+							id="profile-pic"
+							src="./images/grad_pic.png"
+							alt=""
+							className="rounded-lg my-auto"
+						/>
+					</div>
+				</div>
 			</div>
 		</section>
 	);
@@ -22,8 +34,8 @@ const Introduction = () => {
 	const interestImages: Image[] = Repository.getInstance().getInterestImages();
 	const [imageIndex, setImageIndex] = useState(0);
 	return (
-		<div className="flex flex-col md:flex-row gap-x-10">
-			<div id="welcomeMessage" className="flex flex-col gap-5 basis-1/2">
+		<div className="flex flex-col md:flex-row gap-x-5 pt-10">
+			<div id="welcomeMessage" className="flex flex-col gap-y-5 justify-end">
 				<p>
 					{" I currently a "}
 					<TextLink href="/projects" text="Software Developer" />
@@ -62,14 +74,14 @@ const Introduction = () => {
 				</p>
 				<p>
 					<TextLink
-						className="hover:bg-green-200 font-black"
+						className="font-black"
 						href={Endpoints.projects}
 						text="Take a look!"
 					/>
 				</p>
 			</div>
 
-			<div id="interest-imgs" className="basis-1/2 my-auto">
+			{/* <div id="interest-imgs" className="basis-1/2 my-auto">
 				{interestImages.map((image) => {
 					var classes: string = "rounded-lg mx-auto w-fullmd:w-3/4";
 					classes += image.id === imageIndex ? "" : " hidden";
@@ -82,7 +94,7 @@ const Introduction = () => {
 						/>
 					);
 				})}
-			</div>
+			</div> */}
 		</div>
 	);
 };
