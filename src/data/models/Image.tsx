@@ -1,11 +1,11 @@
 type ImageParameters = {
-	id?: number;
+	id?: string;
 	src: string;
 	label: string;
 };
 
 export class Image {
-	public id?: number;
+	public id?: string;
 	public src!: string;
 	public label?: string;
 	constructor({ id, src, label }: ImageParameters) {

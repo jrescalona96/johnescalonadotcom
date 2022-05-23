@@ -77,11 +77,12 @@ const Introduction = () => {
 						text="Take a look!"
 					/>
 				</p>
-				<TextLink
-					className="font-black motion-safe:animate-bounce"
-					href={Endpoints.resume}
-					text="Click here for my Resume!"
-				/>
+				<a
+					download="John Escalona Resume"
+					className="font-bold motion-safe:animate-bounce"
+					href={Endpoints.resume}>
+					Click here for my Resume!
+				</a>
 			</div>
 		</div>
 	);

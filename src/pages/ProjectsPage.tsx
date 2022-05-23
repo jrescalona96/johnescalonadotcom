@@ -36,7 +36,7 @@ const ProjectSection = ({ projects }: { projects: Project[] }) => {
 								<ul className="flex flex-col justify-start">
 									{project.techStackLogos?.map((img) => {
 										return (
-											<li className="flex gap-x-2.5">
+											<li className="flex gap-x-2.5" key={img.label}>
 												<img
 													className="w-6"
 													src={img.src}
