@@ -71,30 +71,18 @@ const Introduction = () => {
 					}
 					<TextLink href={ExtEndpoints.cpp} text="Computer Science Degree," />
 					{" and working on some projects on the side. "}
-				</p>
-				<p>
 					<TextLink
 						className="font-black"
 						href={Endpoints.projects}
 						text="Take a look!"
 					/>
 				</p>
+				<TextLink
+					className="font-black motion-safe:animate-bounce"
+					href={Endpoints.resume}
+					text="Click here for my Resume!"
+				/>
 			</div>
-
-			{/* <div id="interest-imgs" className="basis-1/2 my-auto">
-				{interestImages.map((image) => {
-					var classes: string = "rounded-lg mx-auto w-fullmd:w-3/4";
-					classes += image.id === imageIndex ? "" : " hidden";
-					return (
-						<img
-							key={image.id}
-							src={image.src}
-							alt={image?.label ?? ""}
-							className={classes}
-						/>
-					);
-				})}
-			</div> */}
 		</div>
 	);
 };

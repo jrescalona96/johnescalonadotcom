@@ -3,6 +3,7 @@ export class Endpoints {
 	static projects: string = "/projects";
 	static contact: string = "/contact";
 	static interests: string = "/interests";
+	static resume: string = "/resume";
 	static coffee: string = "/interests/coffee";
 	static camping: string = "/interests/camping";
 	static fitness: string = "/interests/fitness";

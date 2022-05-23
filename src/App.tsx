@@ -8,6 +8,7 @@ import { FitnessPage } from "./pages/interests/FitnessPage";
 import { CampingPage } from "./pages/interests/CampingPage";
 
 import "./App.css";
+import { ResumePage } from "./pages/Resume";
 
 function App() {
 	return (
@@ -20,6 +21,7 @@ function App() {
 					<Route path={Endpoints.coffee} element={<CoffeePage />} />
 					<Route path={Endpoints.fitness} element={<FitnessPage />} />
 					<Route path={Endpoints.camping} element={<CampingPage />} />
+					<Route path={Endpoints.resume} element={<ResumePage />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
