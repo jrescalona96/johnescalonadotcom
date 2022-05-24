@@ -23,7 +23,7 @@ export class Repository {
 	getTechStackIcons = (keys: string[]): Image[] => {
 		const techStackIcons: Map<string, Image> = new Map<string, Image>([
 			["mongodb", new Image({ src: "./images/mongodb.png", label: "MongoDB" })],
-			["css3", new Image({ src: "./images/css3.png", label: "CSS3" })],
+			["css", new Image({ src: "./images/css3.png", label: "CSS3" })],
 			[
 				"firebase",
 				new Image({ src: "./images/firebase.png", label: "Firebase" }),
@@ -47,6 +47,7 @@ export class Repository {
 				"bootstrap",
 				new Image({ src: "./images/bootstrap.png", label: "Bootstrap" }),
 			],
+			["node", new Image({ src: "./images/node.png", label: "NodeJS" })],
 		]);
 
 		let list: Image[] = [];
@@ -65,7 +66,7 @@ export class Repository {
 	getProjects = (): Project[] => {
 		let projects: Project[] = [
 			new Project({
-				id: "1",
+				id: this.generateRandomID.toString(),
 				projectName: "lfti",
 				description:
 					"Mobile Application to create, manage, and perform Workout routines. Available for both iOS & Android.",
@@ -83,10 +84,10 @@ export class Repository {
 				techStackIcons: this.getTechStackIcons(["flutter", "firebase"]),
 			}),
 			new Project({
-				id: "2",
+				id: this.generateRandomID.toString(),
 				projectName: "Algo Visualization",
 				description:
-					" This react app visualizes basic Computer Science Algorithms listed below. Built using react, emphasizing on utilizing a functional approach to composing components using Hooks.",
+					"This react app visualizes some of the basic Computer Science Algorithms. Built using react, emphasizing on utilizing a functional approach to composing components using Hooks.",
 				url: "https://jrescalona96.github.io/algovisualizations",
 				projectImage: new Image({
 					id: this.generateRandomID.toString(),
@@ -101,7 +102,7 @@ export class Repository {
 				techStackIcons: this.getTechStackIcons(["react", "sass", "materialui"]),
 			}),
 			new Project({
-				id: "3",
+				id: this.generateRandomID.toString(),
 				projectName: "Truss Solver",
 				description:
 					"Web application that calculates External and Internal Forces, Node Displacements and Stress for a Structural Truss formation based on node loads, then displays a projection of the resulting truss formation.",
@@ -124,7 +125,7 @@ export class Repository {
 				]),
 			}),
 			new Project({
-				id: "4",
+				id: this.generateRandomID.toString(),
 				projectName: "Debt Counter",
 				description:
 					"This web app helps users keep track of their overall Debt by displaying to serve as a reminder to the user.",
@@ -140,6 +141,30 @@ export class Repository {
 					label: "Debt Counter",
 				}),
 				techStackIcons: this.getTechStackIcons(["react", "css", "bootstrap"]),
+			}),
+			new Project({
+				id: this.generateRandomID.toString(),
+				projectName: "The Shuffling",
+				description:
+					"A Magic: The Gathering Web application built using The Gathering API to virtually catalog Magic Cards.",
+				url: "https://www.youtube.com/watch?v=Tv1DGACwy1U",
+				projectImage: new Image({
+					id: this.generateRandomID.toString(),
+					src: "",
+					label: "The Shuffling",
+				}),
+				projectIcon: new Image({
+					id: this.generateRandomID.toString(),
+					src: "./images/ts-logo.png",
+					label: "The Shuffling",
+				}),
+				techStackIcons: this.getTechStackIcons([
+					"js",
+					"node",
+					"html",
+					"css",
+					"mongodb",
+				]),
 			}),
 		];
 		return projects;
