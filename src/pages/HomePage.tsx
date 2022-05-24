@@ -1,10 +1,12 @@
 import { Header } from "../components/Header";
 import { TextLink } from "../components/TextLink";
-import { Image } from "../data/models/Image";
 import { NavBar } from "../components/NavBar";
 import { Endpoints, ExtEndpoints } from "../assets/constants/Endpoints";
-import { useState } from "react";
-import { Repository } from "../data/repository/Repository";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+	faArrowDown,
+	faSquareCaretDown,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const HomePage = () => {
 	return (
@@ -31,38 +33,20 @@ export const HomePage = () => {
 };
 
 const Introduction = () => {
-	const interestImages: Image[] = Repository.getInstance().getInterestImages();
-	const [imageIndex, setImageIndex] = useState(0);
 	return (
-		<div className="flex flex-col md:flex-row gap-x-5 pt-10">
+		<div className="flex flex-col md:flex-row gap-x-5 pt-5">
 			<div id="welcomeMessage" className="flex flex-col gap-y-5 justify-end">
 				<p>
 					{" I currently a "}
 					<TextLink href="/projects" text="Software Developer" />
 					{" living in Southern California with interests in "}
-					<TextLink
-						href={Endpoints.home}
-						onMouseOver={() => setImageIndex(0)}
-						text="technology 📺"
-					/>
+					<TextLink href={Endpoints.home} text="technology 📺" />
 					{", "}
-					<TextLink
-						href={Endpoints.camping}
-						onMouseOver={() => setImageIndex(1)}
-						text={interestImages[1].label}
-					/>
+					<TextLink href={Endpoints.camping} text="camping 🏕️" />
 					{", "}
-					<TextLink
-						href={Endpoints.fitness}
-						onMouseOver={() => setImageIndex(2)}
-						text="fitness 💪"
-					/>
+					<TextLink href={Endpoints.fitness} text="fitness 💪" />
 					{" , & "}
-					<TextLink
-						href={Endpoints.coffee}
-						onMouseOver={() => setImageIndex(3)}
-						text="coffee ☕ "
-					/>
+					<TextLink href={Endpoints.coffee} text="coffee ☕ " />
 					{" ..."}
 				</p>
 				<p>
@@ -79,11 +63,28 @@ const Introduction = () => {
 				</p>
 				<a
 					download="John Escalona Resume"
-					className="font-bold motion-safe:animate-bounce"
+					className="flex font-bold"
 					href={Endpoints.resume}>
-					Click here for my Resume!
+					<FontAwesomeIcon
+						icon={faArrowDown}
+						className="motion-safe:animate-bounce my-auto pr-2 text-lg"
+					/>
+					<p>Here's a copy of my Resume!</p>
 				</a>
 			</div>
 		</div>
 	);
 };
+
+function undefined({}) {
+	return (
+		<div className="basis-1/2 my-auto pt-24 flex justify-end">
+			<img
+				id="profile-pic"
+				src="./images/grad_pic.png"
+				alt=""
+				className="rounded-lg my-auto"
+			/>
+		</div>
+	);
+}
