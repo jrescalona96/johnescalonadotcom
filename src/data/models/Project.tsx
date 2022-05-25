@@ -1,13 +1,13 @@
 import { Image } from "./Image";
 
-type ProjectParameters = {
+type Params = {
 	id: string;
 	url?: string;
 	projectName: string;
 	description?: string;
 	projectImage?: Image;
 	projectIcon?: Image;
-	techStackIcons?: Image[];
+	techStackLogos?: Image[];
 };
 
 export class Project {
@@ -26,8 +26,8 @@ export class Project {
 		url,
 		projectImage,
 		projectIcon,
-		techStackIcons: techStackLogos,
-	}: ProjectParameters) {
+		techStackLogos,
+	}: Params) {
 		this.id = id;
 		this.url = url;
 		this.projectName = projectName;

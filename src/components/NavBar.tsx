@@ -12,7 +12,7 @@ import {
 
 export const NavBar = () => {
 	return (
-		<nav className="bg-white fixed w-screen">
+		<nav className="bg-white fixed w-screen z-10">
 			<div
 				id="nav-items"
 				className="flex py-10 px-10 lg:px-52 mx-auto justify-between max-w-screen-xl">
@@ -40,6 +40,11 @@ const NavItems = () => {
 				className={classes + isActive(Endpoints.projects)}
 				href={Endpoints.projects}
 				text="projects"
+			/>
+			<TextLink
+				className={classes + isActive(Endpoints.resume)}
+				href={Endpoints.resume}
+				text="resume"
 			/>
 			{/* <div className="flex gap-x-4">
 				<TextLink

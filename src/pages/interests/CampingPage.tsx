@@ -1,4 +1,4 @@
-import { Header } from "../../components/Header";
+import { PageTitle } from "../../components/PageTitle";
 import { NavBar } from "../../components/NavBar";
 
 export const CampingPage = () => {
@@ -6,7 +6,7 @@ export const CampingPage = () => {
 		<section>
 			<NavBar />
 			<div className="page-content">
-				<Header text="Camping" />
+				<PageTitle text="Camping" />
 			</div>
 		</section>
 	);

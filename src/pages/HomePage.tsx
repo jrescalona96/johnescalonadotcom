@@ -1,4 +1,4 @@
-import { Header } from "../components/Header";
+import { PageTitle } from "../components/PageTitle";
 import { TextLink } from "../components/TextLink";
 import { NavBar } from "../components/NavBar";
 import { Endpoints, ExtEndpoints } from "../assets/constants/Endpoints";
@@ -16,7 +16,7 @@ export const HomePage = () => {
 			<div className="page-content">
 				<div className="flex align-baseline gap-x-10">
 					<div className="basis-1/2">
-						<Header text="Hi there! I'm John." />
+						<PageTitle text="Hi there! I'm John." />
 						<Introduction />
 					</div>
 					<div className="basis-1/2 my-auto pt-24 flex justify-end">
@@ -78,7 +78,7 @@ const Introduction = () => {
 				<a
 					download="John Escalona Resume"
 					className="flex font-bold"
-					href={Endpoints.resume}>
+					href={Endpoints.download_resume}>
 					<FontAwesomeIcon
 						icon={faArrowDown}
 						className="motion-safe:animate-bounce my-auto pr-2 text-lg"

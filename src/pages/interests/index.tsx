@@ -1,5 +1,5 @@
 import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
+import { PageTitle } from "../../components/PageTitle";
 import { NavBar } from "../../components/NavBar";
 import { TextLink } from "../../components/TextLink";
 import { Interest } from "../../data/models/Interest";
@@ -12,7 +12,7 @@ export const InterestsPage = () => {
 		<section>
 			<NavBar />
 			<div className="page-content">
-				<Header text="Interests" />
+				<PageTitle text="Interests" />
 				<div className="flex flex-col gap-y-10 mx-auto">
 					{interests.map((item: Interest) => {
 						const { label, url, description, assets } = item;

@@ -1,4 +1,4 @@
-import { Header } from "../components/Header";
+import { PageTitle } from "../components/PageTitle";
 import { NavBar } from "../components/NavBar";
 import { Project } from "../data/models/Project";
 import { Repository } from "../data/repository/Repository";
@@ -11,7 +11,7 @@ export const ProjectsPage = () => {
 		<section>
 			<NavBar />
 			<div className="page-content">
-				<Header text="Projects" />
+				<PageTitle text="Projects" />
 				<ProjectSection projects={projects} />
 			</div>
 			<Footer />
@@ -33,7 +33,7 @@ const ProjectSection = ({ projects }: { projects: Project[] }) => {
 							href={url ?? ""}
 						/>
 						<div className="flex flex-col md:flex-row gap-x-10">
-							<p className="w-2/3 text-gray-500">{description}</p>
+							<p className="w-2/3">{description}</p>
 							<div className="tech-stack">
 								<ul className="flex flex-col justify-start">
 									{project.techStackLogos?.map((img) => {
