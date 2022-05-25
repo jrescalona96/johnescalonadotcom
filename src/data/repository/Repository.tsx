@@ -23,7 +23,7 @@ export class Repository {
 	getTechStackIcons = (keys: string[]): Image[] => {
 		const techStackIcons: Map<string, Image> = new Map<string, Image>([
 			["mongodb", new Image({ src: "./images/mongodb.png", label: "MongoDB" })],
-			["css", new Image({ src: "./images/css3.png", label: "CSS3" })],
+			["css", new Image({ src: "./images/css3.png", label: "CSS" })],
 			[
 				"firebase",
 				new Image({ src: "./images/firebase.png", label: "Firebase" }),

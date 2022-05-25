@@ -7,6 +7,7 @@ import {
 	faArrowDown,
 	faSquareCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
+import { Footer } from "../components/Footer";
 
 export const HomePage = () => {
 	return (
@@ -28,6 +29,7 @@ export const HomePage = () => {
 					</div>
 				</div>
 			</div>
+			<Footer />
 		</section>
 	);
 };
@@ -40,13 +42,25 @@ const Introduction = () => {
 					{" I currently a "}
 					<TextLink href="/projects" text="Software Developer" />
 					{" living in Southern California with interests in "}
-					<TextLink href={Endpoints.home} text="technology 📺" />
+					<TextLink
+						href={Endpoints.home}
+						text="technology 📺"
+						disabled={true}
+					/>
 					{", "}
-					<TextLink href={Endpoints.camping} text="camping 🏕️" />
+					<TextLink
+						href={Endpoints.camping}
+						text="camping 🏕️"
+						disabled={true}
+					/>
 					{", "}
-					<TextLink href={Endpoints.fitness} text="fitness 💪" />
+					<TextLink
+						href={Endpoints.fitness}
+						text="fitness 💪"
+						disabled={true}
+					/>
 					{" , & "}
-					<TextLink href={Endpoints.coffee} text="coffee ☕ " />
+					<TextLink href={Endpoints.coffee} text="coffee ☕ " disabled={true} />
 					{" ..."}
 				</p>
 				<p>

@@ -41,7 +41,7 @@ const NavItems = () => {
 				href={Endpoints.projects}
 				text="projects"
 			/>
-			<div className="flex gap-x-4">
+			{/* <div className="flex gap-x-4">
 				<TextLink
 					text="interests"
 					className={classes + isActive(Endpoints.interests)}
@@ -71,7 +71,7 @@ const NavItems = () => {
 					icon={faCaretRight}
 					onMouseOver={handleSetCaretIcon}
 				/>
-			</div>
+			</div> */}
 		</div>
 	);
 };

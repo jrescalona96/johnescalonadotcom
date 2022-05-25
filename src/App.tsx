@@ -17,11 +17,11 @@ function App() {
 				<Routes>
 					<Route path={Endpoints.home} element={<HomePage />} />
 					<Route path={Endpoints.projects} element={<ProjectsPage />} />
-					<Route path={Endpoints.interests} element={<InterestsPage />} />
+					{/* <Route path={Endpoints.interests} element={<InterestsPage />} />
 					<Route path={Endpoints.coffee} element={<CoffeePage />} />
 					<Route path={Endpoints.fitness} element={<FitnessPage />} />
-					<Route path={Endpoints.camping} element={<CampingPage />} />
-					{/* <Route path={Endpoints.resume} element={<ResumePage />} /> */}
+					<Route path={Endpoints.camping} element={<CampingPage />} /> 
+					<Route path={Endpoints.resume} element={<ResumePage />} /> */}
 				</Routes>
 			</BrowserRouter>
 		</div>

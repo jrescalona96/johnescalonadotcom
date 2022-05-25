@@ -1,3 +1,4 @@
+import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { NavBar } from "../../components/NavBar";
 import { TextLink } from "../../components/TextLink";
@@ -37,6 +38,7 @@ export const InterestsPage = () => {
 					})}
 				</div>
 			</div>
+			<Footer />
 		</section>
 	);
 };
