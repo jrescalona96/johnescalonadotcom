@@ -3,6 +3,8 @@ import { Image } from "../models/Image";
 import { Interest } from "../models/Interest";
 import { Endpoints, ExtEndpoints } from "../../assets/constants/Endpoints";
 import { Experience } from "../models/Experience";
+import { Skill } from "../models/Skill";
+import generate from "../../../node_modules/@types/babel__generator/index.d";
 
 export class Repository {
 	private static instance: Repository;
@@ -330,5 +332,83 @@ export class Repository {
 			}),
 		];
 		return schools;
+	};
+
+	getSkills = (): Skill[] => {
+		const skills: Skill[] = [
+			new Skill({
+				id: this.generateRandomID(),
+				name: "Flutter/ Dart",
+				isPrimary: true,
+			}),
+			new Skill({
+				id: this.generateRandomID(),
+				name: "JavaScript/ React",
+				isPrimary: true,
+			}),
+			new Skill({ id: this.generateRandomID(), name: "HTML", isPrimary: true }),
+			new Skill({ id: this.generateRandomID(), name: "CSS", isPrimary: true }),
+			new Skill({
+				id: this.generateRandomID(),
+				name: "Tailwind",
+				isPrimary: true,
+			}),
+			new Skill({ id: this.generateRandomID(), name: "Git", isPrimary: true }),
+			new Skill({
+				id: this.generateRandomID(),
+				name: "Bootstrap",
+				isPrimary: false,
+			}),
+			new Skill({
+				id: this.generateRandomID(),
+				name: "Java/Spring Boot",
+				isPrimary: false,
+			}),
+			new Skill({
+				id: this.generateRandomID(),
+				name: "Python",
+				isPrimary: false,
+			}),
+			new Skill({ id: this.generateRandomID(), name: "C++", isPrimary: false }),
+			new Skill({ id: this.generateRandomID(), name: "C#", isPrimary: false }),
+			new Skill({
+				id: this.generateRandomID(),
+				name: "NoSQL",
+				isPrimary: false,
+			}),
+			new Skill({ id: this.generateRandomID(), name: "SQL", isPrimary: false }),
+			new Skill({
+				id: this.generateRandomID(),
+				name: "NodeJS",
+				isPrimary: false,
+			}),
+			new Skill({
+				id: this.generateRandomID(),
+				name: "JavaScript/ Angular",
+				isPrimary: false,
+			}),
+			new Skill({
+				id: this.generateRandomID(),
+				name: "SASS",
+				isPrimary: false,
+			}),
+			new Skill({
+				id: this.generateRandomID(),
+				name: "Material UI",
+				isPrimary: false,
+			}),
+			new Skill({
+				id: this.generateRandomID(),
+				name: "ExpressJS",
+				isPrimary: false,
+			}),
+			new Skill({
+				id: this.generateRandomID(),
+				name: "AutoCad",
+				isPrimary: true,
+			}),
+		];
+
+		return skills;
 	};
 }

@@ -1,6 +1,6 @@
 import React, { MouseEventHandler } from "react";
 
-type TextLinkProps = {
+type Parameters = {
 	href: string;
 	text?: string;
 	className?: string;
@@ -9,7 +9,7 @@ type TextLinkProps = {
 	disabled?: boolean;
 };
 
-export const TextLink: React.FC<TextLinkProps> = (props) => {
+export const TextLink: React.FC<Parameters> = (props) => {
 	const isDisabled: boolean = props.disabled ?? false;
 	return isDisabled ? (
 		<p className={`inline ${props.className}`}>

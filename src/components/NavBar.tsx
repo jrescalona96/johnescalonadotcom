@@ -15,7 +15,7 @@ export const NavBar = () => {
 		<nav className="bg-white fixed w-screen z-10">
 			<div
 				id="nav-items"
-				className="flex py-10 px-10 lg:px-52 mx-auto justify-between max-w-screen-xl">
+				className="flex py-10 px-5 sm:px-10 lg:px-52 mx-auto justify-between max-w-screen-xl">
 				<NavItems />
 				<SocialIcons />
 			</div>
