@@ -1,7 +1,7 @@
 type Params = {
 	id?: string;
 	entity: string;
-	title?: string;
+	role?: string;
 	location: string;
 	description: string[];
 	url: string;
@@ -12,7 +12,7 @@ type Params = {
 export class Experience {
 	public id?: string;
 	public entity!: string;
-	public title?: string;
+	public role?: string;
 	public location?: string;
 	public description!: string[];
 	public url?: string;
@@ -22,7 +22,7 @@ export class Experience {
 	constructor({
 		id,
 		entity,
-		title,
+		role,
 		location,
 		description,
 		url,
@@ -31,7 +31,7 @@ export class Experience {
 	}: Params) {
 		this.id = id;
 		this.entity = entity;
-		this.title = title;
+		this.role = role;
 		this.location = location;
 		this.description = description;
 		this.url = url;

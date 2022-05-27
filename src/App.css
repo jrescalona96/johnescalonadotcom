@@ -3,5 +3,5 @@
 }
 
 a {
-	@apply underline-offset-4 cursor-pointer;
+	@apply underline-offset-2 cursor-pointer;
 }

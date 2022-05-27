@@ -12,7 +12,7 @@ export const ResumePage = () => {
 		Repository.getInstance().getProfessionalExperiences();
 	const academicExperiences: Experience[] =
 		Repository.getInstance().getAcademicExperiences();
-	const allProjects: Project[] = Repository.getInstance().getProjects();
+	const allProjects: Project[] = Repository.getInstance().getAllProjects();
 	const secondarySkills: string[] = [];
 	const primarySkills: string[] = [];
 	Repository.getInstance()
@@ -43,126 +43,114 @@ export const ResumePage = () => {
 				{/* Pesonal contact end  */}
 
 				<section id="projects" className="flex flex-col gap-4">
-					<div className="border-b-2 border-gray-500">
-						<Header text="PROJECTS" />
-					</div>
-					{allProjects.map((proj: Project) => {
-						const {
-							id,
-							url,
-							projectName,
-							description,
-							projectImage,
-							projectIcon,
-							techStackLogos,
-						} = proj;
+					<Header text="PROJECTS" className="border-b border-gray-600" />
+					{allProjects.map(({ id, url, projectName, description }) => {
 						return (
-							<a href={url} className="flex flex-col sm:flex-row ">
-								<div
+							<a key={id} href={url} className="flex flex-col sm:flex-row">
+								<SectionEntry
 									key={id}
-									className="flex flex-col gap-x-6 w-full md:w-2/3 basis-full">
-									<p className="font-bold hover:underline">{projectName}</p>
-									<p className="font-light">{description}</p>
-								</div>
-								<div className="flex md:flex-row basis-1/3 gap-x-2 sm:justify-end py-5">
-									<img
-										className="w-12 h-12 rounded-md"
-										src={`${projectIcon?.src}`}
-										alt=""
-									/>
-									<ul className="flex sm:grid sm:grid-cols-3 gap-x-2">
-										{techStackLogos?.map((icon) => {
-											return (
-												<img
-													key={icon.id}
-													src={`${icon.src}`}
-													alt=""
-													className="w-6 h-6"
-												/>
-											);
-										})}
-									</ul>
-								</div>
+									title={projectName}
+									subTitle={description}
+								/>
 							</a>
 						);
 					})}
 				</section>
 
 				<section id="professional-experience" className="flex flex-col gap-4">
-					<div className="border-b-2 border-gray-500">
-						<Header text="PROFESSIONAL EXPERIENCE" />
-					</div>
-					{professionalExperience.map((exp) => {
-						const { url, entity, title, description, startDate, endDate } = exp;
-						return (
-							<div className="flex flex-col sm:flex-row gap-x-6">
-								<div className="basis-full">
-									<TextLink href={url ?? ""} text={entity} className="inline" />
-									<p className="font-extralight">{title}</p>
-									<ul className="pl-5">
-										{description.map((text) => {
-											const id: string =
-												Repository.getInstance().generateRandomID();
-											return (
-												<li key={id} className="list-disc">
-													{text}
-												</li>
-											);
-										})}
-									</ul>
-								</div>
-								<div className="basis-1/3 sm:text-right hidden sm:inline">
-									{`${startDate} - ${endDate ?? "Present"}`}
-								</div>
-							</div>
-						);
-					})}
+					<Header
+						text="PROFESSIONAL EXPERIENCE"
+						className="border-b border-gray-600"
+					/>
+					{professionalExperience.map(
+						({ id, url, entity, role, description, startDate, endDate }) => {
+							return (
+								<a
+									key={id}
+									href={url}
+									className="flex flex-col sm:flex-row gap-x-6">
+									<SectionEntry
+										key={id}
+										title={entity}
+										subTitle={role}
+										details={description}
+									/>
+									<ExperienceYears from={startDate} to={endDate} />
+								</a>
+							);
+						}
+					)}
 				</section>
 
 				<section id="education" className="flex flex-col gap-4">
-					<div className="border-b-2 border-gray-500">
-						<Header text="EDUCATION" />
-					</div>
-					{academicExperiences.map((exp) => {
-						const { id, url, entity, description, startDate, endDate } = exp;
-						return (
-							<div key={id} className="flex flex-col sm:flex-row gap-x-6">
-								<div className="basis-full">
-									<TextLink href={url ?? ""} text={entity} />
-									<ul className="pl-5">
-										<li key={Repository.getInstance().generateRandomID()}>
-											{description[0]}
-										</li>
-										{description.map((text: string, index: number) => {
-											const id: string =
-												Repository.getInstance().generateRandomID();
-											if (index == 0) return;
-											return (
-												<li key={id} className="list-disc">
-													{text}
-												</li>
-											);
-										})}
-									</ul>
-								</div>
-								<div className="basis-1/3 text-right hidden sm:inline">
-									{`${startDate} - ${endDate ?? "Present"}`}
-								</div>
-							</div>
-						);
-					})}
+					<Header text="EDUCATION" className="border-b border-gray-600" />
+					{academicExperiences.map(
+						({ id, url, role, entity, description, startDate, endDate }) => {
+							return (
+								<a
+									key={id}
+									href={url}
+									className="flex flex-col sm:flex-row gap-x-6">
+									<SectionEntry
+										key={id}
+										title={entity}
+										subTitle={role}
+										details={description}
+									/>
+									<ExperienceYears from={startDate} to={endDate} />
+								</a>
+							);
+						}
+					)}
 				</section>
 
 				<section id="skills" className="flex flex-col gap-4">
-					<div className="border-b-2 border-gray-500">
+					<div className="border-b border-gray-500">
 						<Header text="SKILLS" />
 					</div>
-					<p id="primary-skills">{primarySkills.join(", ")}</p>
-					<p id="secondary-skills" className="font-extralight">
-						{secondarySkills.join(", ")}
-					</p>
+					<SectionEntry
+						title={primarySkills.join(", ")}
+						subTitle={secondarySkills.join(", ")}
+					/>
 				</section>
 			</div>
 		</section>
+	);
+};
+
+const ExperienceYears = ({ from, to }: { from: any; to: any }) => {
+	return (
+		<div className="basis-1/3 text-right hidden sm:inline font-extralight">
+			{`${from} - ${to ?? "Present"}`}
+		</div>
+	);
+};
+
+const SectionEntry = ({
+	title,
+	subTitle,
+	details,
+}: {
+	key?: any;
+	title: string;
+	subTitle?: string;
+	details?: string[];
+}) => {
+	return (
+		<div className="flex flex-col w-full basis-full">
+			<p className="font-bold">{title}</p>
+			<p className="font-extralight">{subTitle}</p>
+			{
+				<ul className="ml-4">
+					{details?.map((item, index) => {
+						return (
+							<li key={index} className="list-disc font-light">
+								{item}
+							</li>
+						);
+					})}
+				</ul>
+			}
+		</div>
 	);
 };

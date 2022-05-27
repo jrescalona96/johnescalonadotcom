@@ -6,7 +6,7 @@ import { TextLink } from "../components/TextLink";
 import { Footer } from "../components/Footer";
 
 export const ProjectsPage = () => {
-	const projects: Project[] = Repository.getInstance().getProjects();
+	const projects: Project[] = Repository.getInstance().getAllProjects();
 	return (
 		<section>
 			<NavBar />
@@ -23,34 +23,48 @@ const ProjectSection = ({ projects }: { projects: Project[] }) => {
 	return (
 		<div className="flex flex-col gap-y-10">
 			{projects.map((project: Project) => {
-				const { projectName, url, projectIcon, description, projectImage } =
-					project;
+				const {
+					projectName,
+					url,
+					projectIcon,
+					description,
+					projectImage,
+					techStackLogos,
+				} = project;
 				return (
-					<div key={projectName}>
-						<TextLink
-							className="font-black"
-							text={projectName}
-							href={url ?? ""}
-						/>
-						<div className="flex flex-col md:flex-row gap-x-10">
-							<p className="w-2/3">{description}</p>
-							<div className="tech-stack">
-								<ul className="flex flex-col justify-start">
-									{project.techStackLogos?.map((img) => {
-										return (
-											<li className="flex gap-x-2" key={img.label}>
-												<img
-													className="w-5 h-5 my-auto"
-													src={img.src}
-													alt=""
-													title={img.label}
-												/>
-												<p className="w-full">{img.label}</p>
-											</li>
-										);
-									})}
-								</ul>
-							</div>
+					<div
+						id={projectName}
+						key={projectName}
+						className="flex flex-col sm:flex-row gap-4">
+						<div className="w-full sm:w-2/3">
+							<TextLink
+								className="font-bold"
+								text={projectName}
+								href={url ?? ""}
+							/>
+							<p className="font-light">{description}</p>
+						</div>
+						<div className="flex sm:w-1/3 gap-x-4 sm:justify-end">
+							<img
+								className="w-16 h-16 rounded-md my-auto"
+								src={`${projectIcon?.src}`}
+								title={projectName}
+							/>
+							<ul className="my-auto">
+								{techStackLogos?.map((icon) => {
+									return (
+										<li key={icon.id} className="flex">
+											<img
+												src={`${icon.src}`}
+												alt=""
+												className="w-6 h-6 cover-fill"
+												title={icon.label}
+											/>
+											<p className="font-thin pl-1">{icon.label}</p>
+										</li>
+									);
+								})}
+							</ul>
 						</div>
 					</div>
 				);

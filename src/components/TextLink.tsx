@@ -19,7 +19,7 @@ export const TextLink: React.FC<Parameters> = (props) => {
 		<a
 			href={props.href}
 			onMouseOver={props.onMouseOver}
-			className={`font-semibold hover:underline decoration-2 ${props.className}`}>
+			className={`font-semibold decoration-2 ${props.className}`}>
 			{props.text ?? props.children}
 		</a>
 	);

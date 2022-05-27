@@ -37,13 +37,13 @@ export class Repository {
 			["js", new Image({ src: "./images/js.png", label: "Javascript" })],
 			[
 				"tailwind",
-				new Image({ src: "./images/tailwind.png", label: "Tailwind CSS" }),
+				new Image({ src: "./images/tailwind.png", label: "Tailwind" }),
 			],
 			["react", new Image({ src: "./images/react.png", label: "ReactJS" })],
 			["sass", new Image({ src: "./images/sass.png", label: "Sass" })],
 			[
 				"materialui",
-				new Image({ src: "./images/materialui.png", label: "Material UI" }),
+				new Image({ src: "./images/materialui.png", label: "MaterialUI" }),
 			],
 			["python", new Image({ src: "./images/python.png", label: "Python" })],
 			[
@@ -66,7 +66,7 @@ export class Repository {
 		return list;
 	};
 
-	getProjects = (): Project[] => {
+	getAllProjects = (): Project[] => {
 		let projects: Project[] = [
 			new Project({
 				id: this.generateRandomID(),
@@ -264,7 +264,7 @@ export class Repository {
 			new Experience({
 				id: this.generateRandomID(),
 				entity: "Mercury Insurace",
-				title: "Software Developer Analyst Associate",
+				role: "Software Developer Analyst Associate",
 				location: "Brea, CA",
 				description: [
 					"Successfully implemented feature to provide the ability to provide in-app feedback that increased mobile app store reviews as well as overall app ratings.",
@@ -277,7 +277,7 @@ export class Repository {
 			new Experience({
 				id: this.generateRandomID(),
 				entity: "PRSE, Inc.",
-				title: "AutoCAD Drafter",
+				role: "AutoCAD Drafter",
 				location: "Tustin, CA",
 				description: [
 					"Prepare and maintain Structural construction plan sets per Engineering designs.",
@@ -289,7 +289,7 @@ export class Repository {
 			new Experience({
 				id: this.generateRandomID(),
 				entity: "EFI Global",
-				title: "AutoCAD Drafter",
+				role: "AutoCAD Drafter",
 				location: "Los Angeles, CA",
 				description: [
 					"Create, modify, and maintain technical drawings such as site plans, boring logs, cross-section views, and various other CAD-related work for project managers.",
@@ -309,11 +309,8 @@ export class Repository {
 				id: this.generateRandomID(),
 				entity: "Cal Poly Pomona",
 				location: "Pomona, CA",
-				description: [
-					"B.S. Computer Science",
-					"Cumulative GPA: 3.70",
-					"Magna Cum Laude",
-				],
+				role: "B.S. Computer Science",
+				description: ["Cumulative GPA: 3.70", "Magna Cum Laude"],
 				url: ExtEndpoints.cpp,
 				startDate: 2018,
 				endDate: 2020,
@@ -322,10 +319,8 @@ export class Repository {
 				id: this.generateRandomID(),
 				entity: "Cerritos College",
 				location: "Norwalk, CA",
-				description: [
-					"Computer Science Transfer Program",
-					"Cumulative GPA: 3.78",
-				],
+				role: "Computer Science Transfer Program",
+				description: ["Cumulative GPA: 3.78"],
 				url: ExtEndpoints.cc,
 				startDate: 2014,
 				endDate: 2018,
@@ -351,7 +346,7 @@ export class Repository {
 			new Skill({
 				id: this.generateRandomID(),
 				name: "Tailwind",
-				isPrimary: true,
+				isPrimary: false,
 			}),
 			new Skill({ id: this.generateRandomID(), name: "Git", isPrimary: true }),
 			new Skill({
