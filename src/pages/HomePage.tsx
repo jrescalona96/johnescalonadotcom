@@ -14,12 +14,12 @@ export const HomePage = () => {
 		<section>
 			<NavBar />
 			<div className="page-content">
-				<div className="flex align-baseline gap-x-10">
-					<div className="basis-1/2">
+				<div className="flex flex-col sm:flex-row align-baseline gap-x-10">
+					<div className="sm:basis-1/2">
 						<PageTitle text="Hi there! I'm John." />
 						<Introduction />
 					</div>
-					<div className="basis-1/2 my-auto pt-24 flex justify-end">
+					<div className="sm:basis-1/2 my-auto sm:pt-24 flex justify-end">
 						<img
 							id="profile-pic"
 							src="./images/grad_pic.png"
@@ -36,7 +36,7 @@ export const HomePage = () => {
 
 const Introduction = () => {
 	return (
-		<div className="flex flex-col md:flex-row gap-x-5 pt-5">
+		<div className="flex flex-col md:flex-row gap-5 pt-5 ">
 			<div id="welcomeMessage" className="flex flex-col gap-y-5 justify-end">
 				<p>
 					{" I currently a "}
@@ -75,30 +75,7 @@ const Introduction = () => {
 						text="Take a look!"
 					/>
 				</p>
-				<a
-					download="John Escalona Resume"
-					className="flex font-bold"
-					href={Endpoints.download_resume}>
-					<FontAwesomeIcon
-						icon={faArrowDown}
-						className="motion-safe:animate-bounce my-auto pr-2 text-lg"
-					/>
-					<p>Here's a copy of my Resume!</p>
-				</a>
 			</div>
 		</div>
 	);
 };
-
-function undefined({}) {
-	return (
-		<div className="basis-1/2 my-auto pt-24 flex justify-end">
-			<img
-				id="profile-pic"
-				src="./images/grad_pic.png"
-				alt=""
-				className="rounded-lg my-auto"
-			/>
-		</div>
-	);
-}

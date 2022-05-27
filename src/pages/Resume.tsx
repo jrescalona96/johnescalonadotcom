@@ -6,6 +6,9 @@ import { Header } from "../components/Header";
 import { Experience } from "../data/models/Experience";
 import { Repository } from "../data/repository/Repository";
 import { Project } from "../data/models/Project";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
+import { RoundedButton } from "../components/RoundedButton";
 
 export const ResumePage = () => {
 	const professionalExperience: Experience[] =
@@ -43,6 +46,11 @@ export const ResumePage = () => {
 				{/* Pesonal contact end  */}
 
 				<section id="projects" className="flex flex-col gap-4">
+					<RoundedButton
+						text="Download"
+						icon={<FontAwesomeIcon icon={faFileDownload} className="pr-2" />}
+					/>
+
 					<Header text="PROJECTS" className="border-b border-gray-600" />
 					{allProjects.map(({ id, url, projectName, description }) => {
 						return (
@@ -62,6 +70,7 @@ export const ResumePage = () => {
 						text="PROFESSIONAL EXPERIENCE"
 						className="border-b border-gray-600"
 					/>
+
 					{professionalExperience.map(
 						({ id, url, entity, role, description, startDate, endDate }) => {
 							return (
