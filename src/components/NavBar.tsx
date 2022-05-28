@@ -2,13 +2,17 @@ import { useState } from "react";
 import { TextLink } from "./TextLink";
 import { Endpoints, ExtEndpoints } from "../assets/constants/Endpoints";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretRight } from "../../node_modules/@fortawesome/free-solid-svg-icons/index";
+import {
+	faCaretRight,
+	faFileDownload,
+} from "../../node_modules/@fortawesome/free-solid-svg-icons/index";
 
 import {
 	faGithubSquare,
 	faLinkedin,
 	faInstagramSquare,
 } from "../../node_modules/@fortawesome/free-brands-svg-icons/index";
+import { RoundedButton } from "./RoundedButton";
 
 export const NavBar = () => {
 	return (
@@ -17,7 +21,7 @@ export const NavBar = () => {
 				id="nav-items"
 				className="flex py-10 px-5 sm:px-10 lg:px-52 mx-auto justify-between max-w-screen-xl">
 				<NavItems />
-				<SocialIcons />
+				<NavActionItems />
 			</div>
 		</nav>
 	);
@@ -81,11 +85,21 @@ const NavItems = () => {
 	);
 };
 
-const SocialIcons = () => {
+const NavActionItems = () => {
 	const socialIconClasses: string =
-		"transition ease-in-out delay-80 hover:scale-125 duration-300 text-2xl";
+		"transition ease-in-out delay-80 hover:scale-125 duration-300 text-2xl pt-1";
 	return (
-		<div id="social-media-links" className="flex gap-x-4">
+		<div id="social-media-links" className="flex gap-x-4 items-center">
+			{window.location.pathname.includes("resume") && (
+				<RoundedButton
+					className="transition ease-in-out delay-80 hover:scale-110 duration-200 focus:scale-90"
+					text="Download"
+					icon={<FontAwesomeIcon icon={faFileDownload} className="pr-1" />}
+					onClick={() => {
+						window.open(Endpoints.download_resume, "_self");
+					}}
+				/>
+			)}
 			<a href={ExtEndpoints.github}>
 				<FontAwesomeIcon icon={faGithubSquare} className={socialIconClasses} />
 			</a>

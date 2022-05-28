@@ -9,6 +9,7 @@ import { Project } from "../data/models/Project";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { RoundedButton } from "../components/RoundedButton";
+import { Endpoints } from "../assets/constants/Endpoints";
 
 export const ResumePage = () => {
 	const professionalExperience: Experience[] =
@@ -28,12 +29,15 @@ export const ResumePage = () => {
 			}
 		});
 
+	const handleViewDownloadableResume = () => {
+		window.open(Endpoints.download_resume, "_self");
+	};
 	return (
 		<section>
 			<NavBar />
 			<div className="page-content">
 				<PageTitle text="John Escalona" />
-				{/* Pesonal contact start*/}
+
 				<div className="flex flex-col sm:flex-row gap-x-1 -translate-y-4">
 					<span className="font-thin">{StringConstants.phoneNumber}</span>
 					<span className="text-md hidden sm:inline">•</span>
@@ -43,14 +47,8 @@ export const ResumePage = () => {
 						text={StringConstants.emailAddress}
 					/>
 				</div>
-				{/* Pesonal contact end  */}
 
 				<section id="projects" className="flex flex-col gap-4">
-					<RoundedButton
-						text="Download"
-						icon={<FontAwesomeIcon icon={faFileDownload} className="pr-2" />}
-					/>
-
 					<Header text="PROJECTS" className="border-b border-gray-600" />
 					{allProjects.map(({ id, url, projectName, description }) => {
 						return (
