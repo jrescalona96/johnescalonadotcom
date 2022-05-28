@@ -91,22 +91,24 @@ const NavActionItems = () => {
 	return (
 		<div id="social-media-links" className="flex gap-x-4 items-center">
 			{window.location.pathname.includes("resume") && (
-				<RoundedButton
-					className="transition ease-in-out delay-80 hover:scale-110 duration-200 focus:scale-90"
-					text="Download"
-					icon={<FontAwesomeIcon icon={faFileDownload} className="pr-1" />}
-					onClick={() => {
-						window.open(Endpoints.download_resume, "_self");
-					}}
-				/>
+				<div title="View Downloadable PDF">
+					<RoundedButton
+						className="transition ease-in-out delay-80 hover:scale-110 duration-200 focus:scale-90"
+						text="Download"
+						icon={<FontAwesomeIcon icon={faFileDownload} className="pr-1" />}
+						onClick={() => {
+							window.open(Endpoints.download_resume, "_self");
+						}}
+					/>
+				</div>
 			)}
-			<a href={ExtEndpoints.github}>
+			<a href={ExtEndpoints.github} title="GitHub">
 				<FontAwesomeIcon icon={faGithubSquare} className={socialIconClasses} />
 			</a>
-			<a href={ExtEndpoints.linkedin}>
+			<a href={ExtEndpoints.linkedin} title="LinkedIn">
 				<FontAwesomeIcon icon={faLinkedin} className={socialIconClasses} />
 			</a>
-			<a href={ExtEndpoints.instagram}>
+			<a href={ExtEndpoints.instagram} title="Instagram">
 				<FontAwesomeIcon
 					icon={faInstagramSquare}
 					className={socialIconClasses}

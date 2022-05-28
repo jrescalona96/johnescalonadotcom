@@ -29,15 +29,11 @@ export const ResumePage = () => {
 			}
 		});
 
-	const handleViewDownloadableResume = () => {
-		window.open(Endpoints.download_resume, "_self");
-	};
 	return (
 		<section>
 			<NavBar />
 			<div className="page-content">
-				<PageTitle text="John Escalona" />
-
+				<PageTitle text="JOHN ESCALONA" />
 				<div className="flex flex-col sm:flex-row gap-x-1 -translate-y-4">
 					<span className="font-thin">{StringConstants.phoneNumber}</span>
 					<span className="text-md hidden sm:inline">•</span>

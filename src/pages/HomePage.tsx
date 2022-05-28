@@ -2,11 +2,6 @@ import { PageTitle } from "../components/PageTitle";
 import { TextLink } from "../components/TextLink";
 import { NavBar } from "../components/NavBar";
 import { Endpoints, ExtEndpoints } from "../assets/constants/Endpoints";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faArrowDown,
-	faSquareCaretDown,
-} from "@fortawesome/free-solid-svg-icons";
 import { Footer } from "../components/Footer";
 
 export const HomePage = () => {
