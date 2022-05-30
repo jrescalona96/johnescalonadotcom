@@ -1,14 +1,11 @@
-type Params = {
-	id?: string;
-	src: string;
-	label: string;
-};
+import { Media } from "./interface/Media";
 
-export class Image {
-	public id?: string;
-	public src!: string;
+export class Image implements Media {
 	public label?: string;
-	constructor({ id, src, label }: Params) {
+	public id?: string;
+	public src?: string;
+
+	constructor({ id, src, label }: Media) {
 		this.id = id;
 		this.src = src;
 		this.label = label;

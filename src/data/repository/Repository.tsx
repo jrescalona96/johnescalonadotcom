@@ -1,10 +1,10 @@
 import { Project } from "../models/Project";
 import { Image } from "../models/Image";
-import { Interest } from "../models/Interest";
 import { Endpoints, ExtEndpoints } from "../../assets/constants/Endpoints";
-import { Experience } from "../models/Experience";
 import { Skill } from "../models/Skill";
-import generate from "../../../node_modules/@types/babel__generator/index.d";
+import { Video } from "../models/Video";
+import { Experience } from "../models/Experience";
+import { Interest } from "../models/Interest";
 
 export class Repository {
 	private static instance: Repository;
@@ -23,7 +23,7 @@ export class Repository {
 		return id.toString();
 	};
 
-	getTechStackIcons = (keys: string[]): Image[] => {
+	getTechStackIcons = (keys: string[]): Set<Image> => {
 		const techStackIcons: Map<string, Image> = new Map<string, Image>([
 			["mongodb", new Image({ src: "./images/mongodb.png", label: "MongoDB" })],
 			["css", new Image({ src: "./images/css3.png", label: "CSS" })],
@@ -53,17 +53,17 @@ export class Repository {
 			["node", new Image({ src: "./images/node.png", label: "NodeJS" })],
 		]);
 
-		let list: Image[] = [];
+		let set: Set<Image> = new Set();
 
 		keys.forEach((k) => {
 			let found = techStackIcons.get(k);
 			if (found) {
 				found.id = this.generateRandomID();
-				list.push(found);
+				set.add(found);
 			}
 		});
 
-		return list;
+		return set;
 	};
 
 	getAllProjects = (): Project[] => {
@@ -74,7 +74,7 @@ export class Repository {
 				description:
 					"Mobile Application to create, manage, and perform Workout routines. Available for both iOS & Android.",
 				url: "https://wakay96.github.io/lfti/",
-				projectImage: new Image({
+				projectMedia: new Image({
 					id: this.generateRandomID(),
 					src: "./images/lfti_app_store.png",
 					label: "lfti",
@@ -84,7 +84,9 @@ export class Repository {
 					src: "./images/lfti_logo.png",
 					label: "lfti",
 				}),
-				techStackLogos: this.getTechStackIcons(["flutter", "firebase"]),
+				techStackLogos: Array.from(
+					this.getTechStackIcons(["flutter", "firebase"])
+				),
 			}),
 			new Project({
 				id: this.generateRandomID(),
@@ -92,7 +94,7 @@ export class Repository {
 				description:
 					"This react app visualizes some of the basic Computer Science Algorithms. Built using react, emphasizing on utilizing a functional approach to composing components using Hooks.",
 				url: "https://jrescalona96.github.io/algovisualizations",
-				projectImage: new Image({
+				projectMedia: new Image({
 					id: this.generateRandomID(),
 					src: "./images/algovizualization_screenshot.jpeg",
 					label: "Algovisualization",
@@ -102,7 +104,9 @@ export class Repository {
 					src: "./images/algo_logo.ico",
 					label: "Algovisualization",
 				}),
-				techStackLogos: this.getTechStackIcons(["react", "sass", "materialui"]),
+				techStackLogos: Array.from(
+					this.getTechStackIcons(["react", "sass", "materialui"])
+				),
 			}),
 			new Project({
 				id: this.generateRandomID(),
@@ -110,7 +114,7 @@ export class Repository {
 				description:
 					"Web application that calculates External and Internal Forces, Node Displacements and Stress for a Structural Truss formation based on node loads, then displays a projection of the resulting truss formation.",
 				url: "https://jrescalona96.github.io/truss-solver/",
-				projectImage: new Image({
+				projectMedia: new Image({
 					id: this.generateRandomID(),
 					src: "./images/truss_solver_1.png",
 					label: "Truss Solver",
@@ -120,12 +124,9 @@ export class Repository {
 					src: "./images/truss_solver_logo.ico",
 					label: "Truss Solver",
 				}),
-				techStackLogos: this.getTechStackIcons([
-					"react",
-					"sass",
-					"python",
-					"bootstrap",
-				]),
+				techStackLogos: Array.from(
+					this.getTechStackIcons(["react", "sass", "python", "bootstrap"])
+				),
 			}),
 			new Project({
 				id: this.generateRandomID(),
@@ -133,7 +134,7 @@ export class Repository {
 				description:
 					"This web app helps users keep track of their overall Debt by displaying to serve as a reminder to the user.",
 				url: "https://jrescalona96.github.io/debtcounter/",
-				projectImage: new Image({
+				projectMedia: new Image({
 					id: this.generateRandomID(),
 					src: "./images/debtcounter_dark_2.png",
 					label: "Debt Counter",
@@ -143,7 +144,9 @@ export class Repository {
 					src: "./images/debt_logo.ico",
 					label: "Debt Counter",
 				}),
-				techStackLogos: this.getTechStackIcons(["react", "css", "bootstrap"]),
+				techStackLogos: Array.from(
+					this.getTechStackIcons(["react", "css", "bootstrap"])
+				),
 			}),
 			new Project({
 				id: this.generateRandomID(),
@@ -151,9 +154,9 @@ export class Repository {
 				description:
 					"A Magic: The Gathering Web application built using The Gathering API to virtually catalog Magic Cards.",
 				url: "https://www.youtube.com/watch?v=Tv1DGACwy1U",
-				projectImage: new Image({
+				projectMedia: new Video({
 					id: this.generateRandomID(),
-					src: "",
+					src: "https://www.youtube.com/embed/Tv1DGACwy1U",
 					label: "The Shuffling",
 				}),
 				projectIcon: new Image({
@@ -161,43 +164,12 @@ export class Repository {
 					src: "./images/ts-logo.png",
 					label: "The Shuffling",
 				}),
-				techStackLogos: this.getTechStackIcons([
-					"js",
-					"node",
-					"html",
-					"css",
-					"mongodb",
-				]),
+				techStackLogos: Array.from(
+					this.getTechStackIcons(["js", "node", "html", "css", "mongodb"])
+				),
 			}),
 		];
 		return projects;
-	};
-
-	getInterestImages = (): Image[] => {
-		const interestImages: Image[] = [
-			new Image({
-				id: this.generateRandomID(),
-				src: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=4470&q=80",
-				label: "technology 📺",
-			}),
-			new Image({
-				id: this.generateRandomID(),
-				src: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=4498&q=80",
-				label: "camping 🏕️",
-			}),
-			new Image({
-				id: this.generateRandomID(),
-				src: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=4275&q=80",
-				label: "fitness 💪",
-			}),
-			new Image({
-				id: this.generateRandomID(),
-				src: "https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=5537&q=80",
-				label: "coffee ☕",
-			}),
-		];
-
-		return interestImages;
 	};
 
 	getInterests = (): Interest[] => {

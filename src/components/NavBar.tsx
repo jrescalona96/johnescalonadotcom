@@ -6,7 +6,6 @@ import {
 	faCaretRight,
 	faFileDownload,
 } from "../../node_modules/@fortawesome/free-solid-svg-icons/index";
-
 import {
 	faGithubSquare,
 	faLinkedin,
@@ -33,7 +32,7 @@ const NavItems = () => {
 
 	const classes: string = "";
 	const isActive = (path: string): string => {
-		const activeDecorationClass: string = " underline";
+		const activeDecorationClass: string = " font-black";
 		return window.location.pathname.includes(path) ? activeDecorationClass : "";
 	};
 
@@ -91,7 +90,7 @@ const NavActionItems = () => {
 	return (
 		<div id="social-media-links" className="flex gap-x-4 items-center">
 			{window.location.pathname.includes("resume") && (
-				<div title="View Downloadable PDF">
+				<div title="View downloadable PDF">
 					<RoundedButton
 						className="transition ease-in-out delay-80 hover:scale-110 duration-200 focus:scale-90"
 						text="Download"

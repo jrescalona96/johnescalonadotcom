@@ -6,10 +6,6 @@ import { Header } from "../components/Header";
 import { Experience } from "../data/models/Experience";
 import { Repository } from "../data/repository/Repository";
 import { Project } from "../data/models/Project";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
-import { RoundedButton } from "../components/RoundedButton";
-import { Endpoints } from "../assets/constants/Endpoints";
 
 export const ResumePage = () => {
 	const professionalExperience: Experience[] =

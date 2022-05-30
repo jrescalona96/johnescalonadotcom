@@ -1,11 +1,12 @@
 import { Image } from "./Image";
+import { Video } from "./Video";
 
 type Params = {
 	id: string;
 	url?: string;
 	projectName: string;
 	description?: string;
-	projectImage?: Image;
+	projectMedia?: Image | Video;
 	projectIcon?: Image;
 	techStackLogos?: Image[];
 };
@@ -15,7 +16,7 @@ export class Project {
 	projectName: string;
 	description?: string;
 	url?: string;
-	projectImage?: Image;
+	projectMedia?: Image | Video;
 	projectIcon?: Image;
 	techStackLogos?: Image[];
 
@@ -24,7 +25,7 @@ export class Project {
 		projectName,
 		description,
 		url,
-		projectImage,
+		projectMedia,
 		projectIcon,
 		techStackLogos,
 	}: Params) {
@@ -32,7 +33,7 @@ export class Project {
 		this.url = url;
 		this.projectName = projectName;
 		this.description = description;
-		this.projectImage = projectImage;
+		this.projectMedia = projectMedia;
 		this.projectIcon = projectIcon;
 		this.techStackLogos = techStackLogos;
 	}
