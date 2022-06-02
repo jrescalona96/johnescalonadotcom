@@ -62,7 +62,7 @@ export const HomePage = () => {
 					<div className="sm:basis-1/2 my-auto sm:pt-24 flex justify-end">
 						<img
 							id="profile-pic"
-							src="./images/grad_pic.png"
+							src="./images/john_escalona_desktop.jpg"
 							alt=""
 							className="rounded-lg my-auto"
 						/>
