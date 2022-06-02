@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
-import { Endpoints } from "./assets/constants/Endpoints";
+import { Endpoints } from "./assets/constants/AppUrls";
 import { InterestsPage } from "./pages/interests";
 import { ProjectsPage } from "./pages/ProjectsPage";
 import { CoffeePage } from "./pages/interests/CoffeePage";

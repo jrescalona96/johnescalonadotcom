@@ -1,6 +1,6 @@
 import { Project } from "../models/Project";
 import { Image } from "../models/Image";
-import { Endpoints, ExtEndpoints } from "../../assets/constants/Endpoints";
+import { Endpoints, ExtEndpoints } from "../../assets/constants/AppUrls";
 import { Skill } from "../models/Skill";
 import { Video } from "../models/Video";
 import { Experience } from "../models/Experience";

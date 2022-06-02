@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TextLink } from "./TextLink";
-import { Endpoints, ExtEndpoints } from "../assets/constants/Endpoints";
+import { Endpoints, ExtEndpoints } from "../assets/constants/AppUrls";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faCaretRight,

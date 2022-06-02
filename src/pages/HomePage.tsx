@@ -1,7 +1,7 @@
 import { PageTitle } from "../components/PageTitle";
 import { TextLink } from "../components/TextLink";
 import { NavBar } from "../components/NavBar";
-import { Endpoints, ExtEndpoints } from "../assets/constants/Endpoints";
+import { Endpoints, ExtEndpoints } from "../assets/constants/AppUrls";
 import { Footer } from "../components/Footer";
 
 export const HomePage = () => {
