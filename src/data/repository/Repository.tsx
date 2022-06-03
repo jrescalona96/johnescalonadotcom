@@ -25,32 +25,47 @@ export class Repository {
 
 	getTechStackIcons = (keys: string[]): Set<Image> => {
 		const techStackIcons: Map<string, Image> = new Map<string, Image>([
-			["mongodb", new Image({ src: "./images/mongodb.png", label: "MongoDB" })],
-			["css", new Image({ src: "./images/css3.png", label: "CSS" })],
+			[
+				"mongodb",
+				new Image({ src: "./images/icons/mongodb.png", label: "MongoDB" }),
+			],
+			["css", new Image({ src: "./images/icons/css3.png", label: "CSS" })],
 			[
 				"firebase",
-				new Image({ src: "./images/firebase.png", label: "Firebase" }),
+				new Image({ src: "./images/icons/firebase.png", label: "Firebase" }),
 			],
-			["flutter", new Image({ src: "./images/flutter.png", label: "Flutter" })],
-			["html", new Image({ src: "./images/html.png", label: "HTML" })],
-			["java", new Image({ src: "./images/java.png", label: "Java" })],
-			["js", new Image({ src: "./images/js.png", label: "Javascript" })],
+			[
+				"flutter",
+				new Image({ src: "./images/icons/flutter.png", label: "Flutter" }),
+			],
+			["html", new Image({ src: "./images/icons/html.png", label: "HTML" })],
+			["java", new Image({ src: "./images/icons/java.png", label: "Java" })],
+			["js", new Image({ src: "./images/icons/js.png", label: "Javascript" })],
 			[
 				"tailwind",
-				new Image({ src: "./images/tailwind.png", label: "Tailwind" }),
+				new Image({ src: "./images/icons/tailwind.png", label: "Tailwind" }),
 			],
-			["react", new Image({ src: "./images/react.png", label: "ReactJS" })],
-			["sass", new Image({ src: "./images/sass.png", label: "Sass" })],
+			[
+				"react",
+				new Image({ src: "./images/icons/react.png", label: "ReactJS" }),
+			],
+			["sass", new Image({ src: "./images/icons/sass.png", label: "Sass" })],
 			[
 				"materialui",
-				new Image({ src: "./images/materialui.png", label: "MaterialUI" }),
+				new Image({
+					src: "./images/icons/materialui.png",
+					label: "MaterialUI",
+				}),
 			],
-			["python", new Image({ src: "./images/python.png", label: "Python" })],
+			[
+				"python",
+				new Image({ src: "./images/icons/python.png", label: "Python" }),
+			],
 			[
 				"bootstrap",
-				new Image({ src: "./images/bootstrap.png", label: "Bootstrap" }),
+				new Image({ src: "./images/icons/bootstrap.png", label: "Bootstrap" }),
 			],
-			["node", new Image({ src: "./images/node.png", label: "NodeJS" })],
+			["node", new Image({ src: "./images/icons/node.png", label: "NodeJS" })],
 		]);
 
 		let set: Set<Image> = new Set();
@@ -76,12 +91,12 @@ export class Repository {
 				url: "https://wakay96.github.io/lfti/",
 				projectMedia: new Image({
 					id: this.generateRandomID(),
-					src: "./images/lfti_app_store.png",
+					src: "./images/projects/desktop/lfti_app_1.jpg",
 					label: "lfti",
 				}),
 				projectIcon: new Image({
 					id: this.generateRandomID(),
-					src: "./images/lfti_logo.png",
+					src: "./images/icons/lfti_logo.png",
 					label: "lfti",
 				}),
 				techStackLogos: Array.from(
@@ -96,12 +111,12 @@ export class Repository {
 				url: "https://jrescalona96.github.io/algovisualizations",
 				projectMedia: new Image({
 					id: this.generateRandomID(),
-					src: "./images/algovizualization_screenshot.jpeg",
+					src: "./images/projects/desktop/algovizualization_1.jpg",
 					label: "Algovisualization",
 				}),
 				projectIcon: new Image({
 					id: this.generateRandomID(),
-					src: "./images/algo_logo.ico",
+					src: "./images/icons/algo_logo.ico",
 					label: "Algovisualization",
 				}),
 				techStackLogos: Array.from(
@@ -116,12 +131,12 @@ export class Repository {
 				url: "https://jrescalona96.github.io/truss-solver/",
 				projectMedia: new Image({
 					id: this.generateRandomID(),
-					src: "./images/truss_solver_1.png",
+					src: "./images/projects/desktop/truss_solver_1.jpg",
 					label: "Truss Solver",
 				}),
 				projectIcon: new Image({
 					id: this.generateRandomID(),
-					src: "./images/truss_solver_logo.ico",
+					src: "./images/icons/truss_solver_logo.ico",
 					label: "Truss Solver",
 				}),
 				techStackLogos: Array.from(
@@ -136,12 +151,12 @@ export class Repository {
 				url: "https://jrescalona96.github.io/debtcounter/",
 				projectMedia: new Image({
 					id: this.generateRandomID(),
-					src: "./images/debtcounter_dark_2.png",
+					src: "./images/projects/desktop/debtcounter_dark_1.jpg",
 					label: "Debt Counter",
 				}),
 				projectIcon: new Image({
 					id: this.generateRandomID(),
-					src: "./images/debt_logo.ico",
+					src: "./images/icons/debt_logo.ico",
 					label: "Debt Counter",
 				}),
 				techStackLogos: Array.from(
@@ -161,7 +176,7 @@ export class Repository {
 				}),
 				projectIcon: new Image({
 					id: this.generateRandomID(),
-					src: "./images/ts-logo.png",
+					src: "./images/icons/ts-logo.png",
 					label: "The Shuffling",
 				}),
 				techStackLogos: Array.from(
