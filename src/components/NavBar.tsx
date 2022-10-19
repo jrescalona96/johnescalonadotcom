@@ -49,6 +49,11 @@ const NavItems = () => {
 				href={Endpoints.resume}
 				text="resume"
 			/>
+			{/* <TextLink
+				text="camping"
+				className={classes + isActive(Endpoints.camping)}
+				href={Endpoints.camping}
+			/> */}
 			{/* <div className="flex gap-x-4">
 				<TextLink
 					text="interests"
@@ -88,10 +93,12 @@ const NavActionItems = () => {
 	const socialIconClasses: string =
 		"transition ease-in-out delay-80 hover:scale-125 duration-300 text-2xl pt-1";
 	return (
-		<div id="social-media-links" className="flex gap-x-4 items-center">
+		<div
+			id="social-media-links"
+			className="flex gap-x-2 md:gap-x-4 items-center">
 			{window.location.pathname.includes("resume") && (
 				<div title="View downloadable PDF">
-					<DownlowdResumeButton />
+					<DownloadResumeButton />
 				</div>
 			)}
 			<a href={ExtEndpoints.github} title="GitHub">
@@ -110,7 +117,7 @@ const NavActionItems = () => {
 	);
 };
 
-const DownlowdResumeButton = () => {
+const DownloadResumeButton = () => {
 	if (window.innerWidth > 540) {
 		return (
 			<RoundedButton
