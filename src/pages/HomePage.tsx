@@ -17,7 +17,7 @@ export const HomePage = () => {
 		<section>
 			<NavBar />
 			{isLoading ? (
-				<SplashPage isVisible={isLoading} />
+				<SplashPage />
 			) : (
 				<div className="page-content">
 					<div className="transform flex flex-col sm:flex-row align-baseline gap-x-10">

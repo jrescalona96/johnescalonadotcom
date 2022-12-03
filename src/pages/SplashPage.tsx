@@ -5,30 +5,25 @@ import Lottie from "lottie-react";
 import hiAnimation from "../assets/lottie/hi-loader.json";
 import { useState } from "react";
 
-export const SplashPage = ({ isVisible }: { isVisible: boolean }) => {
+export const SplashPage = () => {
 	let baseClasses =
 		"transition-all ease-in-out h-screen flex bg-white justify-center z-10";
 	const [classes, setClasses] = useState(baseClasses);
 
-	if (isVisible) {
-		return (
-			<div className={classes}>
-				<Lottie
-					className="${baseClasses} invisible md:visible flex my-auto"
-					animationData={hiAnimation}
-					loop={false}
-					autoplay={true}
-					onComplete={() =>
-						setClasses(baseClasses + " opacity-0 duration-1000")
-					}
-					rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
-					style={{
-						overflow: "hidden",
-						width: "30%",
-					}}
-				/>
-			</div>
-		);
-	}
-	return <></>;
+	return (
+		<div className={classes}>
+			<Lottie
+				className="${baseClasses} invisible md:visible flex my-auto"
+				animationData={hiAnimation}
+				loop={false}
+				autoplay={true}
+				onComplete={() => setClasses(baseClasses + " opacity-0 duration-1000")}
+				rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
+				style={{
+					overflow: "hidden",
+					width: "30%",
+				}}
+			/>
+		</div>
+	);
 };
