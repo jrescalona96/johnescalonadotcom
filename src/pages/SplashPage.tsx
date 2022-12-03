@@ -7,14 +7,14 @@ import { useState } from "react";
 
 export const SplashPage = ({ isVisible }: { isVisible: boolean }) => {
 	let baseClasses =
-		"transition-all ease-in-out h-screen w-screen flex bg-white justify-center z-10";
+		"transition-all ease-in-out h-screen flex bg-white justify-center z-10";
 	const [classes, setClasses] = useState(baseClasses);
 
 	if (isVisible) {
 		return (
 			<div className={classes}>
 				<Lottie
-					className="invisible md:visible flex my-auto"
+					className="${baseClasses} invisible md:visible flex my-auto"
 					animationData={hiAnimation}
 					loop={false}
 					autoplay={true}

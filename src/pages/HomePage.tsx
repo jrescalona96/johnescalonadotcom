@@ -7,22 +7,25 @@ import { Footer } from "../components/Footer";
 import { SplashPage } from "./SplashPage";
 
 export const HomePage = () => {
-	const [showSplashScreen, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		setTimeout(() => setIsLoading(false), 3500);
-	}, [showSplashScreen]);
+	}, [isLoading]);
 
 	return (
 		<section>
 			<NavBar />
-			{<SplashPage isVisible={showSplashScreen} />}
-			<div className="page-content">
-				<div className="transform flex flex-col sm:flex-row align-baseline gap-x-10">
-					<Introduction />
-					<ProfilePic />
+			{isLoading ? (
+				<SplashPage isVisible={isLoading} />
+			) : (
+				<div className="page-content">
+					<div className="transform flex flex-col sm:flex-row align-baseline gap-x-10">
+						<Introduction />
+						<ProfilePic />
+					</div>
 				</div>
-			</div>
+			)}
 			<Footer />
 		</section>
 	);
