@@ -17,7 +17,7 @@ export const HomePage = () => {
 		<section>
 			<NavBar />
 			{isLoading && <SplashPage />}
-			<div className="absolute justify-center items-center page-content">
+			<div className="justify-center items-center page-content">
 				<div className="transform flex flex-col sm:flex-row align-baseline gap-x-10">
 					<Introduction />
 					<ProfilePic />
