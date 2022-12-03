@@ -16,16 +16,13 @@ export const HomePage = () => {
 	return (
 		<section>
 			<NavBar />
-			{isLoading ? (
-				<SplashPage />
-			) : (
-				<div className="page-content">
-					<div className="transform flex flex-col sm:flex-row align-baseline gap-x-10">
-						<Introduction />
-						<ProfilePic />
-					</div>
+			{isLoading && <SplashPage />}
+			<div className="absolute justify-center items-center page-content">
+				<div className="transform flex flex-col sm:flex-row align-baseline gap-x-10">
+					<Introduction />
+					<ProfilePic />
 				</div>
-			)}
+			</div>
 			<Footer />
 		</section>
 	);
