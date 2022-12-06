@@ -16,7 +16,6 @@ export const ProjectsPage = () => {
 				<PageTitle text="Projects" />
 				<ProjectSection projects={projects} />
 			</div>
-			pro
 			<Footer />
 		</section>
 	);
