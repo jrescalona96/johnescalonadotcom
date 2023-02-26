@@ -40,21 +40,6 @@ export const ResumePage = () => {
 					/>
 				</div>
 
-				<section id="projects" className="flex flex-col gap-4">
-					<Header text="PROJECTS" className="border-b border-gray-600" />
-					{allProjects.map(({ id, url, projectName, description }) => {
-						return (
-							<a key={id} href={url} className="flex flex-col sm:flex-row">
-								<SectionEntry
-									key={id}
-									title={projectName}
-									subTitle={description}
-								/>
-							</a>
-						);
-					})}
-				</section>
-
 				<section id="professional-experience" className="flex flex-col gap-4">
 					<Header
 						text="PROFESSIONAL EXPERIENCE"
@@ -79,6 +64,21 @@ export const ResumePage = () => {
 							);
 						}
 					)}
+				</section>
+
+				<section id="projects" className="flex flex-col gap-4">
+					<Header text="PROJECTS" className="border-b border-gray-600" />
+					{allProjects.map(({ id, url, projectName, description }) => {
+						return (
+							<a key={id} href={url} className="flex flex-col sm:flex-row">
+								<SectionEntry
+									key={id}
+									title={projectName}
+									subTitle={description}
+								/>
+							</a>
+						);
+					})}
 				</section>
 
 				<section id="education" className="flex flex-col gap-4">
