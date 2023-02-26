@@ -254,7 +254,7 @@ export class Repository {
 				role: "Software Developer Analyst Associate",
 				location: "Brea, CA",
 				description: [
-					"Initiated adding automated unit tests to increase code coverage from 0% to 45%, for Customer-facing Mobile App to improve  its stability, as well as proposed application design to allow for easier development of unit tests as well as overall maintainability of the application.",
+					"Initiated adding automated unit tests that increased code coverage from 0% to 45%, for Customer-facing Mobile App to improve  its stability, as well as proposed application design to allow for easier development of unit tests as well as overall maintainability of the application.",
 					"Successfully implemented feature to provide the ability to provide in-app feedback that increased mobile app store reviews as well as overall app ratings.",
 					"Successfully implemented in-app walkthroughs to increase adoption of new features and dynamic messages to customers allowing business to make changes without code changes.",
 					"Successfully integrated mobile app enhancement to allow customers to make changes to their policies using webview technology.",
