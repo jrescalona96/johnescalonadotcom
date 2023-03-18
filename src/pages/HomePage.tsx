@@ -1,17 +1,14 @@
-import { PageTitle } from "../components/PageTitle";
-import { useState, useEffect } from "react";
 import { TextLink } from "../components/TextLink";
 import { NavBar } from "../components/NavBar";
 import { Endpoints, ExtEndpoints } from "../assets/constants/AppUrls";
 import { Footer } from "../components/Footer";
-import { SplashPage } from "./SplashPage";
 
 export const HomePage = () => {
 	return (
 		<section>
 			<NavBar />
 			<div className="justify-center items-center page-content">
-				<div className="transform flex flex-col sm:flex-row align-baseline gap-x-10">
+				<div className="transform flex flex-col sm:flex-row align-baseline gap-x-8">
 					<Introduction />
 					<ProfilePic />
 				</div>
@@ -35,13 +32,14 @@ const ProfilePic = () => {
 };
 
 const Introduction = () => {
+	const yearsExperience: number = new Date().getFullYear() - 2021;
 	return (
-		<div className="sm:basis-1/2">
-			<h1 className="font-bold text-6xl">Hi. I'm John!</h1>
-			<div className="flex flex-col md:flex-row gap-5 pt-5 ">
+		<div className="sm:basis-3/4">
+			<h1 className="font-bold text-7xl">Hi. I'm John!</h1>
+			<div className="flex flex-col md:flex-row gap-5 pt-5">
 				<div
 					id="welcomeMessage"
-					className="flex flex-col gap-y-5 justify-end font-light">
+					className="flex flex-col gap-y-5 justify-end font-light pt-6 pb-3">
 					<div>
 						{" I currently a "}
 						<TextLink href="/projects" text="Software Developer" />
@@ -69,9 +67,7 @@ const Introduction = () => {
 						/>
 					</div>
 					<div>
-						{
-							"I have been coding for about 4 years, including 1 year of professional Mobile & Web Development and the rest working on my "
-						}
+						{`I have been building software for about 4 years, including about ${yearsExperience} years of professional Mobile & Web Development and the rest working on my `}
 						<TextLink href={ExtEndpoints.cpp} text="Computer Science Degree," />
 						{" and working on some "}
 						<TextLink href={Endpoints.projects} text="projects" />
