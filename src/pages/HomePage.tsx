@@ -7,16 +7,9 @@ import { Footer } from "../components/Footer";
 import { SplashPage } from "./SplashPage";
 
 export const HomePage = () => {
-	const [isLoading, setIsLoading] = useState(true);
-
-	useEffect(() => {
-		setTimeout(() => setIsLoading(false), 3500);
-	}, [isLoading]);
-
 	return (
 		<section>
 			<NavBar />
-			{isLoading && <SplashPage />}
 			<div className="justify-center items-center page-content">
 				<div className="transform flex flex-col sm:flex-row align-baseline gap-x-10">
 					<Introduction />
@@ -30,7 +23,7 @@ export const HomePage = () => {
 
 const ProfilePic = () => {
 	return (
-		<div className="sm:basis-1/2 my-auto sm:pt-24 flex justify-end">
+		<div className="sm:basis-1/2 my-auto flex justify-end">
 			<img
 				id="profile-pic"
 				src="./images/john_escalona_desktop.jpg"
@@ -44,7 +37,7 @@ const ProfilePic = () => {
 const Introduction = () => {
 	return (
 		<div className="sm:basis-1/2">
-			<PageTitle text="Hi there! I'm John." />
+			<h1 className="font-bold text-6xl">Hi. I'm John!</h1>
 			<div className="flex flex-col md:flex-row gap-5 pt-5 ">
 				<div
 					id="welcomeMessage"

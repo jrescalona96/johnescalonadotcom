@@ -29,7 +29,7 @@ export const ResumePage = () => {
 		<section>
 			<NavBar />
 			<div className="page-content">
-				<PageTitle text="JOHN ESCALONA" />
+				<PageTitle text="JOHN ESCALONA" classes="font-bold text-4xl" />
 				<div className="flex flex-col sm:flex-row gap-x-1 -translate-y-4">
 					<span className="font-thin">{StringConstants.phoneNumber}</span>
 					<span className="text-md hidden sm:inline">•</span>

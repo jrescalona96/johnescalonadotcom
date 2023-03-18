@@ -1,3 +1,10 @@
-export const PageTitle = ({ text }: { text: string }) => {
-	return <h1 className="text-3xl font-bold pt-24">{text}</h1>;
+export const PageTitle = ({
+	text,
+	classes,
+}: {
+	text: string;
+	classes?: string;
+}) => {
+	const className: string = `text-3xl font-bold ${classes}`;
+	return <h1 className={classes}>{text}</h1>;
 };

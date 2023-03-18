@@ -1,5 +1,5 @@
 .page-content {
-	@apply flex flex-col gap-5 py-5 px-5 sm:px-10 lg:px-52 max-w-screen-xl mx-auto pb-20;
+	@apply flex flex-col gap-5 py-5 px-5 sm:px-10 lg:px-52 max-w-screen-xl mx-auto pb-20 pt-32;
 }
 
 a {
