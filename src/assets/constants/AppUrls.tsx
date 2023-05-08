@@ -16,7 +16,7 @@ export class ExtEndpoints {
 	static instagram: string = "https://www.instagram.com/subimond/";
 	static linkedin: string = "https://www.linkedin.com/in/john-escalona/";
 	static genuent: string = "https://www.genuent.com/";
-	static mercury: string = "https://www.mercuryinsurance.com/";
+	static mercury: string = "https://cp.mercuryinsurance.com/cas/login";
 	static prse: string = "https://prseinc.com/";
 	static efi: string = "https://www.efiglobal.com/";
 	static cc: string = "https://www.cerritos.edu/";
