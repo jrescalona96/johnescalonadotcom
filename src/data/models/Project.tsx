@@ -5,7 +5,7 @@ type Params = {
 	id: string;
 	url?: string;
 	projectName: string;
-	description?: string;
+	description?: string[];
 	projectMedia?: Image | Video;
 	projectIcon?: Image;
 	techStackLogos?: Image[];
@@ -14,7 +14,7 @@ type Params = {
 export class Project {
 	id: string;
 	projectName: string;
-	description?: string;
+	description?: string[];
 	url?: string;
 	projectMedia?: Image | Video;
 	projectIcon?: Image;

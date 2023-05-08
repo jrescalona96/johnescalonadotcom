@@ -25,56 +25,69 @@ export const ResumePage = () => {
 			}
 		});
 
+	const getStartEndYears = (start?: number, end?: number) => {
+		if (!start) {
+			return "";
+		} else if (!end) {
+			return `, ${start}`;
+		} else if (start === end) {
+			return start.toString();
+		} else {
+			return `, ${start}-${end}`;
+		}
+	};
+
 	return (
 		<section>
 			<NavBar />
 			<div className="page-content">
-				<PageTitle text="JOHN ESCALONA" classes="font-bold text-4xl" />
+				<PageTitle text="JOHN ESCALONA" classes="title" />
 				<div className="flex flex-col sm:flex-row gap-x-1 -translate-y-4">
-					<span className="font-thin">{StringConstants.phoneNumber}</span>
-					<span className="text-md hidden sm:inline">•</span>
 					<TextLink
-						className="font-extralight"
+						className="body link"
+						href={`tel: ${StringConstants.phoneNumber}`}
+						text={StringConstants.phoneNumber}
+					/>
+					<span className="hidden sm:inline">•</span>
+					<TextLink
+						className="body link"
 						href={`mailto: ${StringConstants.emailAddress}`}
 						text={StringConstants.emailAddress}
 					/>
 				</div>
 
 				<section id="professional-experience" className="flex flex-col gap-4">
-					<Header
-						text="PROFESSIONAL EXPERIENCE"
-						className="border-b border-gray-600"
-					/>
-
+					<Header text="PROFESSIONAL EXPERIENCE" className="border-b" />
 					{professionalExperience.map(
-						({ id, url, entity, role, description, startDate, endDate }) => {
+						(
+							{ id, url, entity, role, description, startDate, endDate },
+							index
+						) => {
+							const length: string = getStartEndYears(startDate, endDate);
+							const highlight: boolean = index === 0;
 							return (
-								<a
+								<SectionEntry
 									key={id}
-									href={url}
-									className="flex flex-col sm:flex-row gap-x-6">
-									<SectionEntry
-										key={id}
-										title={entity}
-										subTitle={role}
-										details={description}
-									/>
-									<ExperienceYears from={startDate} to={endDate} />
-								</a>
+									url={url}
+									title={role + getStartEndYears(startDate, endDate)}
+									subTitle={entity}
+									details={description}
+									highlight={highlight}
+								/>
 							);
 						}
 					)}
 				</section>
 
 				<section id="projects" className="flex flex-col gap-4">
-					<Header text="PROJECTS" className="border-b border-gray-600" />
+					<Header text="PROJECTS" className="border-b" />
 					{allProjects.map(({ id, url, projectName, description }) => {
 						return (
 							<a key={id} href={url} className="flex flex-col sm:flex-row">
 								<SectionEntry
 									key={id}
 									title={projectName}
-									subTitle={description}
+									details={description}
 								/>
 							</a>
 						);
@@ -82,7 +95,7 @@ export const ResumePage = () => {
 				</section>
 
 				<section id="education" className="flex flex-col gap-4">
-					<Header text="EDUCATION" className="border-b border-gray-600" />
+					<Header text="EDUCATION" className="border-b" />
 					{academicExperiences.map(
 						({ id, url, role, entity, description, startDate, endDate }) => {
 							return (
@@ -92,11 +105,10 @@ export const ResumePage = () => {
 									className="flex flex-col sm:flex-row gap-x-6">
 									<SectionEntry
 										key={id}
-										title={entity}
+										title={entity + getStartEndYears(startDate, endDate)}
 										subTitle={role}
 										details={description}
 									/>
-									<ExperienceYears from={startDate} to={endDate} />
 								</a>
 							);
 						}
@@ -104,12 +116,12 @@ export const ResumePage = () => {
 				</section>
 
 				<section id="skills" className="flex flex-col gap-4">
-					<div className="border-b border-gray-500">
+					<div className="border-b">
 						<Header text="SKILLS" />
 					</div>
 					<SectionEntry
-						title={primarySkills.join(", ")}
-						subTitle={secondarySkills.join(", ")}
+						title=""
+						details={[primarySkills.join(", "), secondarySkills.join(", ")]}
 					/>
 				</section>
 			</div>
@@ -117,28 +129,27 @@ export const ResumePage = () => {
 	);
 };
 
-const ExperienceYears = ({ from, to }: { from: any; to: any }) => {
-	return (
-		<div className="basis-1/3 text-right hidden sm:inline font-extralight">
-			{`${from} - ${to ?? "Present"}`}
-		</div>
-	);
-};
-
 const SectionEntry = ({
+	key,
 	title,
 	subTitle,
 	details,
+	url,
+	highlight = false,
 }: {
 	key?: any;
+	url?: string;
+	highlight?: boolean;
 	title: string;
 	subTitle?: string;
 	details?: string[];
 }) => {
 	return (
 		<div className="flex flex-col w-full basis-full">
-			<p className="font-bold">{title}</p>
-			<p className="font-extralight">{subTitle}</p>
+			<a key={key} href={url} className="link">
+				<p className={"heading-1"}>{title}</p>
+			</a>
+			<p className="heading-3">{subTitle}</p>
 			{
 				<ul className="ml-4">
 					{details?.map((item, index) => {

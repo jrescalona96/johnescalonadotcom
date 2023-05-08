@@ -86,8 +86,9 @@ export class Repository {
 			new Project({
 				id: this.generateRandomID(),
 				projectName: "lfti",
-				description:
+				description: [
 					"Mobile Application to create, manage, and perform Workout routines. Available for both iOS & Android.",
+				],
 				url: "https://wakay96.github.io/lfti/",
 				projectMedia: new Image({
 					id: this.generateRandomID(),
@@ -106,8 +107,9 @@ export class Repository {
 			new Project({
 				id: this.generateRandomID(),
 				projectName: "Algo Visualization",
-				description:
+				description: [
 					"This react app visualizes some of the basic Computer Science Algorithms. Built using react, emphasizing on utilizing a functional approach to composing components using Hooks.",
+				],
 				url: "https://jrescalona96.github.io/algovisualizations",
 				projectMedia: new Image({
 					id: this.generateRandomID(),
@@ -126,8 +128,9 @@ export class Repository {
 			new Project({
 				id: this.generateRandomID(),
 				projectName: "Truss Solver",
-				description:
+				description: [
 					"Web application that calculates External and Internal Forces, Node Displacements and Stress for a Structural Truss formation based on node loads, then displays a projection of the resulting truss formation.",
+				],
 				url: "https://jrescalona96.github.io/truss-solver/",
 				projectMedia: new Image({
 					id: this.generateRandomID(),
@@ -146,8 +149,9 @@ export class Repository {
 			new Project({
 				id: this.generateRandomID(),
 				projectName: "Debt Counter",
-				description:
+				description: [
 					"This web app helps users keep track of their overall Debt by displaying to serve as a reminder to the user.",
+				],
 				url: "https://jrescalona96.github.io/debtcounter/",
 				projectMedia: new Image({
 					id: this.generateRandomID(),
@@ -166,8 +170,9 @@ export class Repository {
 			new Project({
 				id: this.generateRandomID(),
 				projectName: "The Shuffling",
-				description:
+				description: [
 					"A Magic: The Gathering Web application built using The Gathering API to virtually catalog Magic Cards.",
+				],
 				url: "https://www.youtube.com/watch?v=Tv1DGACwy1U",
 				projectMedia: new Video({
 					id: this.generateRandomID(),
@@ -254,10 +259,10 @@ export class Repository {
 				role: "Software Developer Analyst Associate",
 				location: "Brea, CA",
 				description: [
-					"Initiated adding automated unit tests that increased code coverage from 0% to 45%, for Customer-facing Mobile App to improve  its stability, as well as proposed application design to allow for easier development of unit tests as well as overall maintainability of the application.",
-					"Successfully implemented feature to provide the ability to provide in-app feedback that increased mobile app store reviews as well as overall app ratings.",
-					"Successfully implemented in-app walkthroughs to increase adoption of new features and dynamic messages to customers allowing business to make changes without code changes.",
-					"Successfully integrated mobile app enhancement to allow customers to make changes to their policies using webview technology.",
+					"Suggested and effectively executed an app design modification for a Mobile Application, utilizing Dependency Injection to allow addition of automated unit and widget tests. This resulted in a significant increase in code coverage from 0% to 50%, enhancing overall stability and code quality.",
+					"Implemented an in-app feedback feature, empowering customers to provide comments and suggestions and enabling Business to respond effectively. This resulted in increased mobile app store reviews and improved overall app ratings.",
+					"Successfully implemented low-code in-app walkthroughs and dynamic messages for customers, resulting in increased adoption of new features and enabling the business to make changes without requiring code changes.",
+					"Successfully implemented a policy management feature in the mobile app, allowing customers to make changes to their policies seamlessly. This feature was implemented using WebView technology, ensuring a user-friendly experience for customers.",
 				],
 				url: ExtEndpoints.mercury,
 				startDate: 2021,
@@ -321,12 +326,17 @@ export class Repository {
 		const skills: Skill[] = [
 			new Skill({
 				id: this.generateRandomID(),
-				name: "Flutter/ Dart",
+				name: "Flutter/Dart",
 				isPrimary: true,
 			}),
 			new Skill({
 				id: this.generateRandomID(),
-				name: "JavaScript/ React",
+				name: "JavaScript/React/Angular",
+				isPrimary: true,
+			}),
+			new Skill({
+				id: this.generateRandomID(),
+				name: "Agile",
 				isPrimary: true,
 			}),
 			new Skill({ id: this.generateRandomID(), name: "HTML", isPrimary: true }),
@@ -363,11 +373,6 @@ export class Repository {
 			new Skill({
 				id: this.generateRandomID(),
 				name: "NodeJS",
-				isPrimary: false,
-			}),
-			new Skill({
-				id: this.generateRandomID(),
-				name: "JavaScript/ Angular",
 				isPrimary: false,
 			}),
 			new Skill({

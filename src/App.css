@@ -3,5 +3,29 @@
 }
 
 a {
-	@apply underline-offset-2 cursor-pointer;
+	@apply cursor-pointer;
+}
+
+.title {
+	@apply text-6xl;
+}
+
+.heading-1 {
+	@apply text-xl font-bold;
+}
+
+.heading-2 {
+	@apply text-base font-semibold;
+}
+
+.label {
+	@apply text-base font-semibold;
+}
+
+.body {
+	@apply text-base font-normal;
+}
+
+.link {
+	@apply hover:underline underline-offset-2 text-blue-600;
 }

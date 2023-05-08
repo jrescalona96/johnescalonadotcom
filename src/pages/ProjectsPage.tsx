@@ -13,7 +13,6 @@ export const ProjectsPage = () => {
 		<section>
 			<NavBar />
 			<div className="page-content">
-				<PageTitle text="Projects" />
 				<ProjectSection projects={projects} />
 			</div>
 			<Footer />
@@ -44,12 +43,12 @@ const ProjectHeading = ({ data }: { data: Project }) => {
 					title={data.projectName}
 				/>
 				<TextLink
-					className="font-bold text-xl"
+					className="heading-1"
 					text={data.projectName}
 					href={data.url ?? ""}
 				/>
 			</div>
-			<p className="font-light">{data.description}</p>
+			<p className="body">{data.description}</p>
 		</div>
 	);
 };

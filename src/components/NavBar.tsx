@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faCaretRight,
 	faFileDownload,
+	faPrint,
 } from "../../node_modules/@fortawesome/free-solid-svg-icons/index";
 import {
 	faGithubSquare,
@@ -32,12 +33,12 @@ const NavItems = () => {
 
 	const classes: string = "";
 	const isActive = (path: string): string => {
-		const activeDecorationClass: string = " font-black";
+		const activeDecorationClass: string = " border-b-2 border-blue-600";
 		return window.location.pathname.includes(path) ? activeDecorationClass : "";
 	};
 
 	return (
-		<div className="flex gap-x-4">
+		<div className="flex gap-x-4 ">
 			<TextLink className={classes} href={Endpoints.home} text="jre" />
 			<TextLink
 				className={classes + isActive(Endpoints.projects)}
@@ -98,7 +99,11 @@ const NavActionItems = () => {
 			className="flex gap-x-2 md:gap-x-4 items-center">
 			{window.location.pathname.includes("resume") && (
 				<div title="View downloadable PDF">
-					<DownloadResumeButton />
+					<FontAwesomeIcon
+						className="transition ease-in-out delay-80 hover:scale-125 duration-300 text-xl pt-1"
+						icon={faPrint}
+						onClick={() => window.open(Endpoints.download_resume, "_blank")}
+					/>
 				</div>
 			)}
 			<a href={ExtEndpoints.github} title="GitHub">
@@ -115,30 +120,4 @@ const NavActionItems = () => {
 			</a>
 		</div>
 	);
-};
-
-const DownloadResumeButton = () => {
-	if (window.innerWidth > 540) {
-		return (
-			<RoundedButton
-				className="transition ease-in-out delay-80 hover:scale-110 duration-200 focus:scale-90"
-				text="Download"
-				textClassName="hidden sm:inline"
-				icon={<FontAwesomeIcon icon={faFileDownload} className="sm:pr-1" />}
-				onClick={() => {
-					window.open(Endpoints.download_resume, "_self");
-				}}
-			/>
-		);
-	} else {
-		return (
-			<FontAwesomeIcon
-				className="transition ease-in-out delay-80 hover:scale-125 duration-300 text-xl pt-1"
-				icon={faFileDownload}
-				onClick={() => {
-					window.open(Endpoints.download_resume, "_self");
-				}}
-			/>
-		);
-	}
 };
