@@ -85,30 +85,9 @@ export class Repository {
 		let projects: Project[] = [
 			new Project({
 				id: this.generateRandomID(),
-				projectName: "lfti",
-				description: [
-					"Mobile Application to create, manage, and perform Workout routines. Available for both iOS & Android.",
-				],
-				url: "https://wakay96.github.io/lfti/",
-				projectMedia: new Image({
-					id: this.generateRandomID(),
-					src: "./images/projects/desktop/lfti_app_1.jpg",
-					label: "lfti",
-				}),
-				projectIcon: new Image({
-					id: this.generateRandomID(),
-					src: "./images/icons/lfti_logo.png",
-					label: "lfti",
-				}),
-				techStackLogos: Array.from(
-					this.getTechStackIcons(["flutter", "firebase"])
-				),
-			}),
-			new Project({
-				id: this.generateRandomID(),
 				projectName: "Algo Visualization",
 				description: [
-					"This react app visualizes some of the basic Computer Science Algorithms. Built using react, emphasizing on utilizing a functional approach to composing components using Hooks.",
+					"A client-side web application to visualize fundamental sorting and searching algorithms such as Linear and Binary Search, Bubble, Merge & Quick Sort.",
 				],
 				url: "https://jrescalona96.github.io/algovisualizations",
 				projectMedia: new Image({
@@ -123,6 +102,27 @@ export class Repository {
 				}),
 				techStackLogos: Array.from(
 					this.getTechStackIcons(["react", "sass", "materialui"])
+				),
+			}),
+			new Project({
+				id: this.generateRandomID(),
+				projectName: "lfti",
+				description: [
+					"A cross-platform mobile application on the  that helps users manage and track their workout sessions, with timer, guided sets, and reps as well as session summary. Currently only available for Android.",
+				],
+				url: "https://wakay96.github.io/lfti/",
+				projectMedia: new Image({
+					id: this.generateRandomID(),
+					src: "./images/projects/desktop/lfti_app_1.jpg",
+					label: "lfti",
+				}),
+				projectIcon: new Image({
+					id: this.generateRandomID(),
+					src: "./images/icons/lfti_logo.png",
+					label: "lfti",
+				}),
+				techStackLogos: Array.from(
+					this.getTechStackIcons(["flutter", "firebase"])
 				),
 			}),
 			new Project({
@@ -171,7 +171,7 @@ export class Repository {
 				id: this.generateRandomID(),
 				projectName: "The Shuffling",
 				description: [
-					"A Magic: The Gathering Web application built using The Gathering API to virtually catalog Magic Cards.",
+					'A "Magic: The Gathering" Web application built using "The Gathering" API to virtually catalog Magic Cards. Implemented front-end  UI as well as services for CRUD operations.',
 				],
 				url: "https://www.youtube.com/watch?v=Tv1DGACwy1U",
 				projectMedia: new Video({
@@ -259,10 +259,11 @@ export class Repository {
 				role: "Software Developer Analyst Associate",
 				location: "Brea, CA",
 				description: [
-					"Suggested and effectively executed an app design modification for a Mobile Application, utilizing Dependency Injection to allow addition of automated unit and widget tests. This resulted in a significant increase in code coverage from 0% to 50%, enhancing overall stability and code quality.",
-					"Implemented an in-app feedback feature, empowering customers to provide comments and suggestions and enabling Business to respond effectively. This resulted in increased mobile app store reviews and improved overall app ratings.",
+					"Proposed and effectively executed a design modification for a Mobile Application, utilizing Dependency Injection to allow addition of automated unit and widget tests. This resulted in a significant increase in code coverage from 0% to 60%, enhancing overall stability and code quality.",
+					"Implemented an in-app feedback request feature, empowering customers to provide comments and suggestions and enabling Business to respond effectively. This resulted in increased mobile app store reviews and improved overall app ratings.",
 					"Successfully implemented low-code in-app walkthroughs and dynamic messages for customers, resulting in increased adoption of new features and enabling the business to make changes without requiring code changes.",
 					"Successfully implemented a policy management feature in the mobile app, allowing customers to make changes to their policies seamlessly. This feature was implemented using WebView technology, ensuring a user-friendly experience for customers.",
+					"Involved in implementing features and defect remediations, as well as day to day production support as needed for an Angular Application.",
 				],
 				url: ExtEndpoints.mercury,
 				startDate: 2021,
@@ -289,7 +290,7 @@ export class Repository {
 					"Produce Methane Mitigation designs for various locations in Los Angeles.",
 				],
 				url: ExtEndpoints.efi,
-				startDate: 2014,
+				startDate: 2015,
 				endDate: 2019,
 			}),
 		];
@@ -331,7 +332,7 @@ export class Repository {
 			}),
 			new Skill({
 				id: this.generateRandomID(),
-				name: "JavaScript/React/Angular",
+				name: "React/Angular/JavaScript/TypeScript",
 				isPrimary: true,
 			}),
 			new Skill({
