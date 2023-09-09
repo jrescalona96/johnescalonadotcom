@@ -108,7 +108,7 @@ export class Repository {
 				id: this.generateRandomID(),
 				projectName: "lfti",
 				description: [
-					"A cross-platform mobile application on the  that helps users manage and track their workout sessions, with timer, guided sets, and reps as well as session summary. Currently only available for Android.",
+					"A cross-platform mobile application that helps users manage and track their workout sessions, with timer, guided sets, and reps as well as session summary. Currently only available for Android.",
 				],
 				url: "https://wakay96.github.io/lfti/",
 				projectMedia: new Image({
