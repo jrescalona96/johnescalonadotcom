@@ -11,11 +11,15 @@ a {
 }
 
 .heading-1 {
-	@apply text-xl font-bold;
+	@apply text-2xl font-bold;
 }
 
 .heading-2 {
-	@apply text-base font-semibold;
+	@apply text-xl;
+}
+
+.heading-3 {
+	@apply text-lg;
 }
 
 .label {

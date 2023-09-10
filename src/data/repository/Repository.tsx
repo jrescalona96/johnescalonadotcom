@@ -256,7 +256,7 @@ export class Repository {
 			new Experience({
 				id: this.generateRandomID(),
 				entity: "Mercury Insurace",
-				role: "Software Developer Analyst Associate",
+				role: "Software Developer Analyst",
 				location: "Brea, CA",
 				description: [
 					"Proposed and effectively executed a design modification for a Mobile Application, utilizing Dependency Injection to allow addition of automated unit and widget tests. This resulted in a significant increase in code coverage from 0% to 60%, enhancing overall stability and code quality.",
@@ -266,7 +266,19 @@ export class Repository {
 					"Involved in implementing features and defect remediations, as well as day to day production support as needed for an Angular Application.",
 				],
 				url: ExtEndpoints.mercury,
-				startDate: 2021,
+				startDate: 2023,
+				previousRoles: [
+					new Experience({
+						id: this.generateRandomID(),
+						entity: "Mercury Insurace",
+						role: "Software Developer Analyst Associate",
+						location: "Brea, CA",
+						description: [],
+						url: ExtEndpoints.mercury,
+						startDate: 2021,
+						endDate: 2023,
+					}),
+				],
 			}),
 			new Experience({
 				id: this.generateRandomID(),

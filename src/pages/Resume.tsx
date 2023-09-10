@@ -60,16 +60,36 @@ export const ResumePage = () => {
 					<Header text="PROFESSIONAL EXPERIENCE" className="border-b" />
 					{professionalExperience.map(
 						(
-							{ id, url, entity, role, description, startDate, endDate },
+							{
+								id,
+								url,
+								entity,
+								role,
+								previousRoles,
+								description,
+								startDate,
+								endDate,
+							},
 							index
 						) => {
-							const length: string = getStartEndYears(startDate, endDate);
+							// const length: string = getStartEndYears(startDate, endDate);
 							const highlight: boolean = index === 0;
+							console.log(previousRoles);
 							return (
 								<SectionEntry
 									key={id}
 									url={url}
-									title={role + getStartEndYears(startDate, endDate)}
+									header={role + getStartEndYears(startDate, endDate)}
+									subHeader={
+										previousRoles === undefined ||
+										previousRoles[0] === undefined
+											? ""
+											: previousRoles[0].role +
+											  getStartEndYears(
+													previousRoles[0].startDate,
+													previousRoles[0].endDate
+											  )
+									}
 									subTitle={entity}
 									details={description}
 									highlight={highlight}
@@ -86,7 +106,7 @@ export const ResumePage = () => {
 							<a key={id} href={url} className="flex flex-col sm:flex-row">
 								<SectionEntry
 									key={id}
-									title={projectName}
+									header={projectName}
 									details={description}
 								/>
 							</a>
@@ -105,8 +125,8 @@ export const ResumePage = () => {
 									className="flex flex-col sm:flex-row gap-x-6">
 									<SectionEntry
 										key={id}
-										title={entity + getStartEndYears(startDate, endDate)}
-										subTitle={role}
+										header={entity + getStartEndYears(startDate, endDate)}
+										subHeader={role}
 										details={description}
 									/>
 								</a>
@@ -120,7 +140,6 @@ export const ResumePage = () => {
 						<Header text="SKILLS" />
 					</div>
 					<SectionEntry
-						title=""
 						details={[primarySkills.join(", "), secondarySkills.join(", ")]}
 					/>
 				</section>
@@ -131,7 +150,8 @@ export const ResumePage = () => {
 
 const SectionEntry = ({
 	key,
-	title,
+	header,
+	subHeader,
 	subTitle,
 	details,
 	url,
@@ -140,16 +160,18 @@ const SectionEntry = ({
 	key?: any;
 	url?: string;
 	highlight?: boolean;
-	title: string;
+	header?: string;
+	subHeader?: string;
 	subTitle?: string;
 	details?: string[];
 }) => {
 	return (
 		<div className="flex flex-col w-full basis-full">
 			<a key={key} href={url} className="link">
-				<p className={"heading-1"}>{title}</p>
+				<p className={"heading-1"}>{header}</p>
 			</a>
-			<p className="heading-3">{subTitle}</p>
+			{subHeader && <p className="heading-2">{subHeader}</p>}
+			{subTitle && <p className="heading-3">{subTitle}</p>}
 			{
 				<ul className="ml-4">
 					{details?.map((item, index) => {

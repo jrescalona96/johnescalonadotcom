@@ -7,6 +7,7 @@ type Params = {
 	url: string;
 	startDate: number;
 	endDate?: number;
+	previousRoles?: Experience[];
 };
 
 export class Experience {
@@ -18,16 +19,18 @@ export class Experience {
 	public url?: string;
 	public startDate!: number;
 	public endDate?: number;
+	public previousRoles?: Experience[];
 
 	constructor({
 		id,
 		entity,
-		role,
+		role = "",
 		location,
 		description,
 		url,
 		startDate,
 		endDate,
+		previousRoles = [],
 	}: Params) {
 		this.id = id;
 		this.entity = entity;
@@ -37,5 +40,6 @@ export class Experience {
 		this.url = url;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.previousRoles = previousRoles;
 	}
 }
