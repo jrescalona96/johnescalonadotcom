@@ -87,7 +87,7 @@ export class Repository {
 				id: this.generateRandomID(),
 				projectName: "Algo Visualization",
 				description: [
-					"A client-side web application to visualize fundamental sorting and searching algorithms such as Linear and Binary Search, Bubble, Merge & Quick Sort.",
+					"React app that demonstrates core algorithms like Binary Search, Merge Sort, and Quick Sort via real-time animations. Enhances algorithm learning through interactive visuals.",
 				],
 				url: "https://jrescalona96.github.io/algovisualizations",
 				projectMedia: new Image({
@@ -108,7 +108,7 @@ export class Repository {
 				id: this.generateRandomID(),
 				projectName: "lfti",
 				description: [
-					"A cross-platform mobile application that helps users manage and track their workout sessions, with timer, guided sets, and reps as well as session summary. Currently only available for Android.",
+					"Cross-platform Flutter application for managing workout routines that features guided timers, session tracking, and workout summaries. Deployed on Android.",
 				],
 				url: "https://wakay96.github.io/lfti/",
 				projectMedia: new Image({
@@ -129,7 +129,7 @@ export class Repository {
 				id: this.generateRandomID(),
 				projectName: "Truss Solver",
 				description: [
-					"Web application that calculates External and Internal Forces, Node Displacements and Stress for a Structural Truss formation based on node loads, then displays a projection of the resulting truss formation.",
+					"Web-based engineering tool built with React that calculates node displacements, internal/external forces, and stress across structural trusses.",
 				],
 				url: "https://jrescalona96.github.io/truss-solver/",
 				projectMedia: new Image({
@@ -259,11 +259,13 @@ export class Repository {
 				role: "Software Developer Analyst",
 				location: "Brea, CA",
 				description: [
-					"Proposed and effectively executed a design modification for a Mobile Application, utilizing Dependency Injection to allow addition of automated unit and widget tests. This resulted in a significant increase in code coverage from 0% to 60%, enhancing overall stability and code quality.",
-					"Implemented an in-app feedback request feature, empowering customers to provide comments and suggestions and enabling Business to respond effectively. This resulted in increased mobile app store reviews and improved overall app ratings.",
-					"Successfully implemented low-code in-app walkthroughs and dynamic messages for customers, resulting in increased adoption of new features and enabling the business to make changes without requiring code changes.",
-					"Successfully implemented a policy management feature in the mobile app, allowing customers to make changes to their policies seamlessly. This feature was implemented using WebView technology, ensuring a user-friendly experience for customers.",
-					"Involved in implementing features and defect remediations, as well as day to day production support as needed for an Angular Application.",
+					"Accelerated QA Testing Workflow by engineering an internal mobile app build automation tool, reducing QA iteration time by 50%, enabling faster release cycles.",
+					"Enhanced Code Quality through implementation of Dependency Injection, increasing unit test coverage from 0% to 70% and improving codebase maintainability.",
+					"Boosted User Retention & App Ratings by deploying an In-app feedback request system, driving a significant uptick in app store engagement and customer satisfaction.",
+					"Led Feature Enablement Strategy via integration of low-code walkthroughs and remote dynamic messaging, simplifying feature rollouts and improving feature adoption rates.",
+					"Modernized App Maintenance and App Update Framework using Firebase Remote Config, ensuring real-time and consistent cross-platform maintenance and app update alerts with zero code redeployments.",
+					"Built an API mocking framework tool with NodeJS/Express, enabling frontend teams to test edge cases independently of backend readiness.",
+					"Optimized Frontend Performance by designing a dynamic theming and asset management system, reducing load time and ensuring brand consistency across environments."
 				],
 				url: ExtEndpoints.mercury,
 				startDate: 2023,
