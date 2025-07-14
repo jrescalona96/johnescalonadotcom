@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, use, useTransition } from "react";
 import { TextLink } from "./TextLink";
 import { Endpoints, ExtEndpoints } from "../assets/constants/AppUrls";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -29,7 +29,15 @@ export const NavBar = () => {
 
 const NavItems = () => {
 	const [isCaretIconSelected, setIsCaretIconSelected] = useState(false);
-	const handleSetCaretIcon = () => setIsCaretIconSelected(!isCaretIconSelected);
+	
+	// React 19: Using useTransition for better UX
+	const [isPending, startTransition] = useTransition();
+	
+	const handleSetCaretIcon = () => {
+		startTransition(() => {
+			setIsCaretIconSelected(!isCaretIconSelected);
+		});
+	};
 
 	const classes: string = "";
 	const isActive = (path: string): string => {

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { TextLink } from "../components/TextLink";
 import { NavBar } from "../components/NavBar";
 import { Endpoints, ExtEndpoints } from "../assets/constants/AppUrls";
@@ -32,7 +33,11 @@ const ProfilePic = () => {
 };
 
 const Introduction = () => {
-	const yearsExperience: number = new Date().getFullYear() - 2021;
+	// React 19: Using useMemo for performance optimization
+	const yearsExperience = useMemo(() => {
+		return new Date().getFullYear() - 2021;
+	}, []);
+
 	return (
 		<div className="sm:basis-3/4">
 			<h1 className="font-bold text-7xl">Hi. I'm John!</h1>

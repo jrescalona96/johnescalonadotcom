@@ -4,9 +4,12 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+// React 19: Using createRoot API (already in use)
 const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement
 );
+
+// React 19: Enhanced error boundary and concurrent features
 root.render(
 	<React.StrictMode>
 		<App />
