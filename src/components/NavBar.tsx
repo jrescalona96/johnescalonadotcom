@@ -49,11 +49,6 @@ const NavItems = () => {
 		<div className="flex gap-x-4 ">
 			<TextLink className={classes} href={Endpoints.home} text="jre" />
 			<TextLink
-				className={classes + isActive(Endpoints.projects)}
-				href={Endpoints.projects}
-				text="projects"
-			/>
-			<TextLink
 				className={classes + isActive(Endpoints.resume)}
 				href={Endpoints.resume}
 				text="resume"
