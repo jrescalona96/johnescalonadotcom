@@ -6,5 +6,5 @@ export const PageTitle = ({
 	classes?: string;
 }) => {
 	const className: string = `title ${classes}`;
-	return <h1 className={classes}>{text}</h1>;
+	return <h1 className={className}>{text}</h1>;
 };

@@ -19,7 +19,7 @@ export const NavBar = () => {
 		<nav className="bg-white fixed w-screen z-10">
 			<div
 				id="nav-items"
-				className="flex py-10 px-5 sm:px-10 lg:px-52 mx-auto justify-between max-w-screen-xl">
+				className="flex py-6 px-4 sm:px-8 lg:px-16 xl:px-24 mx-auto justify-between max-w-screen-xl">
 				<NavItems />
 				<NavActionItems />
 			</div>
@@ -99,7 +99,7 @@ const NavActionItems = () => {
 	return (
 		<div
 			id="social-media-links"
-			className="flex gap-x-2 md:gap-x-4 items-center">
+			className="flex gap-x-3 md:gap-x-4 items-center">
 			{window.location.pathname.includes("resume") && (
 				<div title="View downloadable PDF">
 					<FontAwesomeIcon

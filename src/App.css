@@ -1,35 +1,35 @@
 .page-content {
-	@apply flex flex-col gap-5 py-5 px-5 sm:px-10 lg:px-52 max-w-screen-xl mx-auto pb-20 pt-32;
+  @apply flex flex-col gap-8 py-8 px-4 sm:px-8 lg:px-16 xl:px-24 max-w-screen-xl mx-auto pb-24 pt-28;
 }
 
 a {
-	@apply cursor-pointer;
+  @apply cursor-pointer;
 }
 
 .title {
-	@apply text-6xl;
+  @apply text-6xl;
 }
 
 .heading-1 {
-	@apply text-2xl font-bold;
+  @apply text-2xl font-bold;
 }
 
 .heading-2 {
-	@apply text-xl;
+  @apply text-xl;
 }
 
 .heading-3 {
-	@apply text-lg;
+  @apply text-lg;
 }
 
 .label {
-	@apply text-base font-semibold;
+  @apply text-base font-semibold;
 }
 
 .body {
-	@apply text-base font-normal;
+  @apply text-base font-normal;
 }
 
 .link {
-	@apply hover:underline underline-offset-2 text-blue-600;
+  @apply hover:underline underline-offset-2 text-blue-600;
 }
