@@ -374,6 +374,16 @@ export class Repository {
       }),
       new Skill({
         id: this.generateRandomID(),
+        name: "Jenkins",
+        isPrimary: true,
+      }),
+      new Skill({
+        id: this.generateRandomID(),
+        name: "Docker",
+        isPrimary: true,
+      }),
+      new Skill({
+        id: this.generateRandomID(),
         name: "Java/Spring Boot",
         isPrimary: true,
       }),
