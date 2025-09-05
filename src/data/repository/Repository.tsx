@@ -259,7 +259,7 @@ export class Repository {
         role: "Software Developer II",
         location: "Brea, CA",
         description: [
-          "Accelerated QA Testing Workflow by engineering an internal mobile app build automation tool, reducing QA iteration time by 50%, enabling faster release cycles.",
+          "Accelerated QA Testing Workflow by enabling in-app environment switching, thus removing significant bottlenecks during the testing phase and reducing QA testing iteration time by 50%.",
           "Enhanced Code Quality through implementation of Dependency Injection, increasing unit test coverage from 0% to 70% and improving codebase maintainability.",
           "Boosted User Retention & App Ratings by deploying an In-app feedback request system, driving a significant uptick in app store engagement and customer satisfaction.",
           "Led Feature Enablement Strategy via integration of low-code walkthroughs and remote dynamic messaging, simplifying feature rollouts and improving feature adoption rates.",
