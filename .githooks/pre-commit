@@ -6,6 +6,6 @@ echo "--- pre-commit: running typecheck ---"
 pnpm typecheck || exit 1
 
 echo "--- pre-commit: running tests ---"
-pnpm test -- --run || exit 1
+pnpm exec vitest run || exit 1
 
 echo "--- pre-commit: all checks passed ---"
