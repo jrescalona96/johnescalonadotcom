@@ -1,7 +1,5 @@
-import { useMemo } from "react";
 import { TextLink } from "../components/TextLink";
 import { NavBar } from "../components/NavBar";
-import { Endpoints, ExtEndpoints } from "../assets/constants/AppUrls";
 import { Footer } from "../components/Footer";
 import { Project } from "../data/models/Project";
 import { Repository } from "../data/repository/Repository";
@@ -134,11 +132,6 @@ const ProjectItem = ({ data }: { data: Project }) => {
 };
 
 const Introduction = () => {
-  // React 19: Using useMemo for performance optimization
-  const yearsExperience = useMemo(() => {
-    return new Date().getFullYear() - 2021;
-  }, []);
-
   return (
     <div className="sm:basis-3/4">
       <h1 className="font-bold text-7xl">Hi. I'm John!</h1>

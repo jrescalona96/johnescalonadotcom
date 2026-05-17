@@ -9,7 +9,7 @@ export const RoundedButton = ({
 	onClick,
 }: {
 	text?: string;
-	icon?: any;
+	icon?: React.ReactNode;
 	iconClassName?: string;
 	className?: string;
 	textClassName?: string;

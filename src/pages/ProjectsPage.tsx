@@ -1,4 +1,3 @@
-import { PageTitle } from "../components/PageTitle";
 import { NavBar } from "../components/NavBar";
 import { Project } from "../data/models/Project";
 import { Repository } from "../data/repository/Repository";

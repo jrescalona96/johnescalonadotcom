@@ -26,7 +26,7 @@ export function useLoadingState() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState<Error | null>(null);
 
-  const executeAsync = async (asyncFn: () => Promise<any>) => {
+  const executeAsync = async (asyncFn: () => Promise<unknown>) => {
     setIsLoading(true);
     setError(null);
     try {

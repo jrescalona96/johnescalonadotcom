@@ -68,10 +68,10 @@ export class Repository {
       ["node", new Image({ src: "./images/icons/node.png", label: "NodeJS" })],
     ]);
 
-    let set: Set<Image> = new Set();
+    const set: Set<Image> = new Set();
 
     keys.forEach((k) => {
-      let found = techStackIcons.get(k);
+      const found = techStackIcons.get(k);
       if (found) {
         found.id = this.generateRandomID();
         set.add(found);
@@ -82,7 +82,7 @@ export class Repository {
   };
 
   getAllProjects = (): Project[] => {
-    let projects: Project[] = [
+    const projects: Project[] = [
       new Project({
         id: this.generateRandomID(),
         projectName: "Algo Visualization",

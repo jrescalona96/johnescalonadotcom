@@ -72,12 +72,12 @@ const SectionEntry = ({
   subTitle,
   details,
   url,
-  highlight = false,
+  _highlight = false,
   showBullets = true,
 }: {
-  key?: any;
+  key?: string;
   url?: string;
-  highlight?: boolean;
+  _highlight?: boolean;
   header?: string;
   subHeader?: string;
   subTitle?: string;
@@ -158,7 +158,7 @@ const ProfessionalExperienceSection = ({
         },
         index
       ) => {
-        const highlight: boolean = index === 0;
+        const _highlight: boolean = index === 0;
         return (
           <SectionEntry
             key={id}
@@ -175,7 +175,7 @@ const ProfessionalExperienceSection = ({
             }
             subTitle={entity}
             details={description}
-            highlight={highlight}
+            _highlight={_highlight}
           />
         );
       }

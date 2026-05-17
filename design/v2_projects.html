@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects — John Escalona</title>
+  <meta name="description" content="Projects by John Escalona — full-stack web and mobile development work." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --bg:      oklch(98% 0.004 240);
+      --surface: oklch(100% 0 0);
+      --fg:      oklch(18% 0.012 250);
+      --muted:   oklch(50% 0.015 250);
+      --border:  oklch(91% 0.006 240);
+      --accent:  oklch(52% 0.16 225);
+      --accent-soft: oklch(65% 0.12 225);
+      --radius: 10px;
+
+      --font-display: 'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --font-body:    'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --font-mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font: 400 16px/1.6 var(--font-body);
+      color: var(--fg);
+      background: var(--bg);
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    nav .logo { font: 600 16px/1 var(--font-display); letter-spacing: -0.01em; }
+    nav ul { display: flex; gap: 4px; list-style: none; }
+    nav ul a {
+      padding: 8px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    nav ul a:hover { background: var(--border); }
+
+    header {
+      padding: 120px 0 48px;
+    }
+    header h1 {
+      font: 700 clamp(32px, 4vw, 48px)/1.1 var(--font-display);
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 560px;
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+    .filter-btn {
+      padding: 6px 16px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font: 400 13px/1.4 var(--font-body);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-btn:hover { border-color: var(--accent-soft); color: var(--fg); }
+    .filter-btn.active { background: var(--fg); color: var(--surface); border-color: var(--fg); }
+
+    .project-list { display: grid; gap: 24px; }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: border-color 0.15s;
+    }
+    .project-card:hover { border-color: var(--accent-soft); }
+    .project-card h2 {
+      font: 600 20px/1.3 var(--font-display);
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .project-card .meta {
+      font: 400 12px/1.4 var(--font-mono);
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .project-card p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 680px;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+    .project-tags span {
+      padding: 3px 10px;
+      background: var(--bg);
+      border-radius: 4px;
+      font: 400 12px/1.4 var(--font-mono);
+      color: var(--muted);
+    }
+    .project-card .links {
+      display: flex;
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .project-card .links a {
+      font: 500 14px/1 var(--font-body);
+      color: var(--accent);
+    }
+    .project-card .links a:hover { text-decoration: underline; }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .back-link:hover { color: var(--fg); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      margin-top: 80px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    footer a { color: var(--fg); }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 16px; }
+      header { padding: 100px 0 32px; }
+      .project-card { padding: 24px; }
+      nav ul a { padding: 6px 8px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="index.html" class="logo">John Escalona</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <header>
+    <a href="index.html" class="back-link">← Back home</a>
+    <h1>Projects</h1>
+    <p>Things I've built — from interactive algorithm visualizers to cross-platform mobile apps and engineering tools.</p>
+  </header>
+
+  <div class="filter-bar" id="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="web">Web</button>
+    <button class="filter-btn" data-filter="mobile">Mobile</button>
+    <button class="filter-btn" data-filter="tool">Tool</button>
+  </div>
+
+  <div class="project-list" id="project-list">
+
+    <div class="project-card" data-tags="web">
+      <h2>Algo Visualization</h2>
+      <div class="meta"><i class="fa-brands fa-react" style="margin-right:4px;color:var(--accent);"></i> React · Sass · Material UI</div>
+      <p>Interactive algorithm visualizer demonstrating Binary Search, Merge Sort, and Quick Sort via real-time animations. Features adjustable array sizes, speed controls, and step-by-step tracing to make algorithm learning intuitive.</p>
+      <div class="project-tags">
+        <span>React</span><span>Sass</span><span>Material UI</span><span>Algorithms</span>
+      </div>
+      <div class="links">
+        <a href="https://jrescalona96.github.io/algovisualizations" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:12px;margin-right:4px;"></i> Live demo</a>
+        <a href="https://github.com/jrescalona96/algovisualizations" target="_blank" rel="noopener"><i class="fa-brands fa-github" style="font-size:14px;margin-right:4px;"></i> GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card" data-tags="mobile">
+      <h2>lfti</h2>
+      <div class="meta"><i class="fa-solid fa-mobile-screen" style="margin-right:4px;color:var(--accent);"></i> Flutter · Firebase · Dart</div>
+      <p>Cross-platform Flutter workout application for managing routines with guided timers, session tracking, workout summaries, and Firebase-backed persistence. Deployed on Android with real-time data sync.</p>
+      <div class="project-tags">
+        <span>Flutter</span><span>Firebase</span><span>Dart</span><span>Android</span>
+      </div>
+      <div class="links">
+        <a href="https://wakay96.github.io/lfti/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:12px;margin-right:4px;"></i> Live demo</a>
+        <a href="https://github.com/wakay96/lfti" target="_blank" rel="noopener"><i class="fa-brands fa-github" style="font-size:14px;margin-right:4px;"></i> GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card" data-tags="tool">
+      <h2>Truss Solver</h2>
+      <div class="meta"><i class="fa-solid fa-calculator" style="margin-right:4px;color:var(--accent);"></i> React · Python · Bootstrap</div>
+      <p>Engineering tool that calculates node displacements, internal and external forces, and stress distribution across structural trusses. Combines a Python numerical backend with an interactive React visualization frontend.</p>
+      <div class="project-tags">
+        <span>React</span><span>Python</span><span>Bootstrap</span><span>Sass</span>
+      </div>
+      <div class="links">
+        <a href="https://jrescalona96.github.io/truss-solver/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:12px;margin-right:4px;"></i> Live demo</a>
+        <a href="https://github.com/jrescalona96/truss-solver" target="_blank" rel="noopener"><i class="fa-brands fa-github" style="font-size:14px;margin-right:4px;"></i> GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card" data-tags="web">
+      <h2>Debt Counter</h2>
+      <div class="meta"><i class="fa-solid fa-chart-simple" style="margin-right:4px;color:var(--accent);"></i> React · CSS · Bootstrap</div>
+      <p>Dashboard app for tracking debt with running totals, payment progress visualization, and configurable debt categories. Designed as a persistent financial motivator with clear visual indicators.</p>
+      <div class="project-tags">
+        <span>React</span><span>CSS</span><span>Bootstrap</span>
+      </div>
+      <div class="links">
+        <a href="https://jrescalona96.github.io/debtcounter/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:12px;margin-right:4px;"></i> Live demo</a>
+        <a href="https://github.com/jrescalona96/debtcounter" target="_blank" rel="noopener"><i class="fa-brands fa-github" style="font-size:14px;margin-right:4px;"></i> GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-card" data-tags="web">
+      <h2>The Shuffling</h2>
+      <div class="meta"><i class="fa-solid fa-cards" style="margin-right:4px;color:var(--accent);"></i> JavaScript · Node.js · MongoDB</div>
+      <p>Magic: The Gathering deck builder app using the Scryfall API. Implements full CRUD operations for card collections, deck assembly, card search with filtering, and persistent collection management.</p>
+      <div class="project-tags">
+        <span>JavaScript</span><span>Node.js</span><span>HTML</span><span>CSS</span><span>MongoDB</span>
+      </div>
+      <div class="links">
+        <a href="https://www.youtube.com/watch?v=Tv1DGACwy1U" target="_blank" rel="noopener"><i class="fa-brands fa-youtube" style="font-size:14px;margin-right:4px;"></i> Demo video</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 John Escalona · <a href="index.html">Home</a> · <a href="resume.html">Resume</a> · <a href="index.html#contact">Contact</a></p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var filterBtns = document.querySelectorAll('.filter-btn');
+    var cards = document.querySelectorAll('.project-card');
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var filter = btn.getAttribute('data-filter');
+        cards.forEach(function(card) {
+          var tags = card.getAttribute('data-tags') || '';
+          card.style.display = (filter === 'all' || tags.split(',').indexOf(filter) !== -1) ? '' : 'none';
+        });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
