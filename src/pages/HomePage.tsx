@@ -1,173 +1,406 @@
-import { TextLink } from "../components/TextLink";
-import { NavBar } from "../components/NavBar";
-import { Footer } from "../components/Footer";
-import { Project } from "../data/models/Project";
+import { Container } from "../components/layout/Container";
+import { Footer } from "../components/layout/Footer";
+import { Button } from "../components/ui/Button";
+import { Toast } from "../components/ui/Toast";
+import { Endpoints, ExtEndpoints } from "../assets/constants/AppUrls";
+import { StringConstants } from "../assets/constants/StringConstant";
 import { Repository } from "../data/repository/Repository";
-import { Image } from "../data/models/Image";
-import { Video } from "../data/models/Video";
+import { Experience } from "../data/models/Experience";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFileArrowDown,
+  faCode,
+  faMobileScreen,
+  faWind,
+  faGears,
+  faWandMagicSparkles,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faJs,
+  faJava,
+  faHtml5,
+  faCss3Alt,
+  faReact,
+  faAngular,
+  faNode,
+  faGitAlt,
+  faDocker,
+  faGithub,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
+import { useState, useRef } from "react";
 
-export const HomePage = () => {
-  const projects: Project[] = Repository.getInstance().getAllProjects();
+const repo = Repository.getInstance();
+
+export function HomePage() {
+  const [toastShow, setToastShow] = useState(false);
 
   return (
-    <section>
-      <NavBar />
-      <div className="page-content flex flex-col gap-y-12">
-        <div className="transform flex flex-col sm:flex-row align-baseline gap-x-12">
-          <Introduction />
-          <ProfilePic />
-        </div>
-        <div className="mt-4">
-          <h2 className="text-4xl font-bold mb-8">Projects</h2>
-          <ProjectSection projects={projects} />
-        </div>
-      </div>
+    <>
+      <HeroSection />
+      <ExperienceSection />
+      <ProjectsSection />
+      <SkillsSection />
+      <ContactSection onMessageSent={() => setToastShow(true)} />
       <Footer />
-    </section>
-  );
-};
-
-const ProfilePic = () => {
-  return (
-    <div className="sm:basis-1/2 my-auto flex justify-end">
-      <img
-        id="profile-pic"
-        src="./images/john_escalona_desktop.jpg"
-        alt=""
-        className="rounded-lg my-auto"
+      <Toast
+        message="Thanks — I'll get back to you soon."
+        show={toastShow}
+        onHide={() => setToastShow(false)}
       />
-    </div>
+    </>
   );
-};
+}
 
-const ProjectSection = ({ projects }: { projects: Project[] }) => {
+function HeroSection() {
   return (
-    <div className="flex flex-col gap-y-8">
-      {projects.map((project: Project) => {
-        return <ProjectItem key={project.id} data={project} />;
-      })}
-    </div>
-  );
-};
-
-const ProjectHeading = ({ data }: { data: Project }) => {
-  if (!data) {
-    return <></>;
-  }
-  return (
-    <div id={data.id}>
-      <div className="flex gap-3 pb-3">
-        <img
-          className="w-6 h-6 rounded-md"
-          src={`${data.projectIcon?.src}`}
-          title={data.projectName}
-        />
-        <TextLink
-          className="heading-1"
-          text={data.projectName}
-          href={data.url ?? ""}
-        />
-      </div>
-      <p className="body">{data.description}</p>
-    </div>
-  );
-};
-
-const ProjectMedia = ({ data }: { data?: Image | Video }) => {
-  if (!data) {
-    return <></>;
-  }
-  return (
-    <div className="sm:basis-4/5">
-      {data instanceof Image && (
-        <img className="rounded-md" src={`${data?.src}`} />
-      )}
-      {data instanceof Video && (
-        <div className="container h-96">
-          <iframe
-            className="w-full h-full rounded-lg"
-            src={`${data?.src}`}
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          ></iframe>
-        </div>
-      )}
-    </div>
-  );
-};
-
-const TechnologyStack = ({ data }: { data?: Image[] }) => {
-  if (!data || data.length === 0) {
-    return <></>;
-  }
-  return (
-    <ul className="flex flex-col gap-2 sm:w-1/5 align-top">
-      {data?.map((icon) => {
-        return (
-          <li key={icon.id} className="flex">
-            <img
-              src={`${icon.src}`}
-              alt=""
-              className="w-6 h-6"
-              title={icon.label}
-            />
-            <p className="font-thin pl-2">{icon.label}</p>
-          </li>
-        );
-      })}
-    </ul>
-  );
-};
-
-const ProjectItem = ({ data }: { data: Project }) => {
-  return (
-    <div id={data.projectName} className="flex flex-col sm:flex-col gap-6">
-      <ProjectHeading data={data} />
-      <div className="hidden sm:flex gap-x-6">
-        <ProjectMedia data={data.projectMedia} />
-        <TechnologyStack data={data.techStackLogos} />
-      </div>
-    </div>
-  );
-};
-
-const Introduction = () => {
-  return (
-    <div className="sm:basis-3/4">
-      <h1 className="font-bold text-7xl">Hi. I'm John!</h1>
-      <div className="flex flex-col md:flex-row gap-6 pt-6">
-        <div
-          id="welcomeMessage"
-          className="flex flex-col gap-y-6 justify-end font-light pt-4 pb-4"
-        >
-          <div>
-            <p>
-              I'm a passionate Software Engineer with a strong foundation in
-              both mobile and web development. Over the years, I've honed my
-              skills in building and optimizing applications, designing systems,
-              and creating solutions that enhance both user experience and
-              development workflows.
-            </p>
-            <br />
-            <p>
-              Currently, I work as a Software Engineer at Mercury Insurance,
-              where I've made a tangible impact by streamlining QA testing,
-              boosting app performance, and enabling faster feature rollouts. My
-              work has included engineering tools that reduced iteration times,
-              improving code quality through automated testing, and leading the
-              strategy for modernizing our app update process—all with the goal
-              of making the development lifecycle more efficient and
-              developer-friendly.
-            </p>
-            <br />
-            <p>
-              Feel free to explore my site to learn more about my projects,
-              experience, and skills. If you'd like to connect, don't hesitate
-              to reach out via email or phone.
-            </p>
+    <section className="flex min-h-screen items-center px-6 pb-20 pt-[120px]">
+      <Container className="grid grid-cols-1 items-center gap-14 md:grid-cols-[1fr_280px]">
+        <div>
+          <h1 className="font-display text-[clamp(36px,5vw,64px)] font-bold leading-[1.08] tracking-tighter">
+            John Escalona
+          </h1>
+          <p className="font-body text-[clamp(18px,2vw,22px)] font-medium leading-[1.4] text-muted">
+            Software Developer at <span className="font-semibold text-foreground">Mercury Insurance</span>
+          </p>
+          <p className="mt-4 max-w-[540px] text-[17px] leading-relaxed text-muted">
+            Full-stack engineer with a track record of shipping features that cut QA cycles in half,
+            boost app ratings, and modernize legacy systems. Cal Poly Pomona CS grad based in Southern California.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Button as="a" href={Endpoints.resume} variant="primary">
+              <FontAwesomeIcon icon={faFileArrowDown} /> Download resume
+            </Button>
+            <Button as="a" href="#projects">
+              View projects
+            </Button>
+            <Button as="a" href="#contact">
+              Get in touch
+            </Button>
+          </div>
+          <div className="mt-8 flex gap-8">
+            <div className="text-left">
+              <div className="font-display text-2xl font-bold leading-none tracking-tight">5+</div>
+              <div className="mt-1 font-mono text-[12px] uppercase tracking-wider text-muted">Years building</div>
+            </div>
+            <div className="text-left">
+              <div className="font-display text-2xl font-bold leading-none tracking-tight">B.S.</div>
+              <div className="mt-1 font-mono text-[12px] uppercase tracking-wider text-muted">Computer Science, CPP</div>
+            </div>
+            <div className="text-left">
+              <div className="font-display text-2xl font-bold leading-none tracking-tight">Southern CA</div>
+              <div className="mt-1 font-mono text-[12px] uppercase tracking-wider text-muted">Available locally</div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+        <div className="overflow-hidden rounded-content bg-border">
+          <img
+            src="./images/john_escalona_desktop.jpg"
+            alt="John Escalona"
+            className="block h-auto w-full"
+          />
+        </div>
+      </Container>
+    </section>
   );
+}
+
+function ExperienceSection() {
+  const experiences = repo.getExperiences();
+
+  const formatDate = (exp: Experience) => {
+    if (!exp.startDate && !exp.endDate) return "";
+    if (exp.startDate && !exp.endDate) return "Present";
+    if (exp.startDate && exp.endDate && exp.startDate === exp.endDate) return String(exp.startDate);
+    // For date ranges like 2018 – 2020
+    if (exp.startDate && exp.endDate && exp.startDate !== exp.endDate) {
+      // Check if they're multi-year ranges (education)
+      if (exp.type === "education" || (exp.endDate - exp.startDate) > 1) {
+        return `${exp.startDate} – ${exp.endDate}`;
+      }
+      return String(exp.startDate);
+    }
+    return "";
+  };
+
+  return (
+    <section id="experience">
+      <Container>
+        <div className="font-mono text-[13px] font-medium uppercase tracking-widest text-accent">
+          Experience
+        </div>
+        <h2 className="mt-3 max-w-[600px] font-display text-[clamp(28px,3.5vw,40px)] font-bold leading-tight tracking-tight">
+          What I've shipped
+        </h2>
+        <div className="mt-12 grid gap-8">
+          {experiences.map((exp) => (
+            <div
+              key={exp.id}
+              className="rounded-content border border-border bg-surface p-8"
+            >
+              <div className="flex flex-wrap items-baseline justify-between gap-4">
+                <h3 className="font-display text-[18px] font-semibold leading-snug">
+                  {exp.entity}
+                </h3>
+                <span className="font-mono text-[13px] leading-none text-muted whitespace-nowrap">
+                  {formatDate(exp)}
+                </span>
+              </div>
+              {exp.role && (
+                <p className="mt-1 font-body text-[14px] font-medium leading-[1.4] text-muted">
+                  {exp.role}
+                  {exp.location ? ` · ${exp.location}` : ""}
+                </p>
+              )}
+              <div className="mt-3 text-[14px] leading-relaxed text-muted">
+                <ul className="list-none p-0">
+                  {exp.description.map((item, i) => (
+                    <li key={i} className="relative mb-[6px] pl-4 before:absolute before:left-0 before:top-[10px] before:h-[5px] before:w-[5px] before:rounded-full before:bg-accent-soft">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-8 text-center">
+          <Button as="a" href={Endpoints.resume} variant="primary">
+            <FontAwesomeIcon icon={faFileArrowDown} /> Full resume
+          </Button>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function ProjectsSection() {
+  const projects = repo.getAllProjects();
+
+  return (
+    <section id="projects" className="border-y border-border bg-surface">
+      <Container className="py-[100px]">
+        <div className="font-mono text-[13px] font-medium uppercase tracking-widest text-accent">
+          Projects
+        </div>
+        <h2 className="mt-3 max-w-[600px] font-display text-[clamp(28px,3.5vw,40px)] font-bold leading-tight tracking-tight">
+          Selected work
+        </h2>
+        <div className="mt-12 grid gap-5">
+          {projects.map((project) => (
+            <a
+              key={project.id}
+              href={project.url}
+              target="_blank"
+              rel="noopener"
+              className="grid grid-cols-[1fr_auto] items-start gap-5 rounded-content border border-border bg-surface p-7 transition-colors duration-150 hover:border-accent-soft"
+            >
+              <div>
+                <h3 className="font-display text-[18px] font-semibold leading-snug tracking-tight">
+                  {project.projectName}
+                </h3>
+                {project.techStack && (
+                  <div className="mt-1 font-mono text-[12px] leading-none text-muted">
+                    {project.techStack.join(" · ")}
+                  </div>
+                )}
+                {project.description?.[0] && (
+                  <p className="mt-2 text-[14px] leading-relaxed text-muted">
+                    {project.description[0]}
+                  </p>
+                )}
+              </div>
+              <div className="mt-1 text-xl text-muted transition-colors duration-150 group-hover:text-accent">
+                &rarr;
+              </div>
+            </a>
+          ))}
+        </div>
+        <div className="mt-7 text-center">
+          <Button as="a" href={Endpoints.projects}>
+            View all projects &rarr;
+          </Button>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+const skillCategoryConfig: Record<string, { label: string; icon: ReturnType<typeof FontAwesomeIcon> }> = {
+  languages: { label: "Languages", icon: <FontAwesomeIcon icon={faCode} /> },
+  frameworks: { label: "Frameworks & Libraries", icon: <FontAwesomeIcon icon={faWandMagicSparkles} /> },
+  tools: { label: "Tools & Platforms", icon: <FontAwesomeIcon icon={faGears} /> },
 };
+
+const brandIcons: Record<string, ReturnType<typeof FontAwesomeIcon>> = {
+  JavaScript: <FontAwesomeIcon icon={faJs} />,
+  TypeScript: <FontAwesomeIcon icon={faCode} />,
+  Java: <FontAwesomeIcon icon={faJava} />,
+  HTML: <FontAwesomeIcon icon={faHtml5} />,
+  CSS: <FontAwesomeIcon icon={faCss3Alt} />,
+  React: <FontAwesomeIcon icon={faReact} />,
+  Angular: <FontAwesomeIcon icon={faAngular} />,
+  Flutter: <FontAwesomeIcon icon={faMobileScreen} />,
+  "Node.js": <FontAwesomeIcon icon={faNode} />,
+  "Spring Boot": <FontAwesomeIcon icon={faJava} />,
+  Tailwind: <FontAwesomeIcon icon={faWind} />,
+  Git: <FontAwesomeIcon icon={faGitAlt} />,
+  Docker: <FontAwesomeIcon icon={faDocker} />,
+};
+
+function SkillsSection() {
+  const skillsByCategory = repo.getSkillsByCategory();
+
+  return (
+    <section id="skills">
+      <Container className="py-[100px]">
+        <div className="font-mono text-[13px] font-medium uppercase tracking-widest text-accent">
+          Skills
+        </div>
+        <h2 className="mt-3 max-w-[600px] font-display text-[clamp(28px,3.5vw,40px)] font-bold leading-tight tracking-tight">
+          Technologies I work with
+        </h2>
+        <div className="mt-12">
+          {Object.entries(skillCategoryConfig).map(([key, config]) => {
+            const skills = skillsByCategory[key as keyof typeof skillsByCategory];
+            if (!skills?.length) return null;
+            return (
+              <div key={key} className="mb-9">
+                <h3 className="font-display text-[15px] font-semibold leading-none text-foreground mb-[14px]">
+                  {config.label}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {skills.map((skill) => (
+                    <span
+                      key={skill.id}
+                      className="inline-flex items-center gap-1.5 rounded-md border border-border bg-surface px-[14px] py-[6px] font-body text-[13px] font-medium leading-snug transition-colors duration-150 hover:border-accent-soft"
+                    >
+                      {brandIcons[skill.name] && (
+                        <span className="text-accent">{brandIcons[skill.name]}</span>
+                      )}
+                      {skill.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function ContactSection({ onMessageSent }: { onMessageSent: () => void }) {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const form = formRef.current;
+    if (!form) return;
+
+    const name = (form.elements.namedItem("name") as HTMLInputElement).value;
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
+
+    const mailto = `mailto:${StringConstants.emailAddress}?subject=Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
+
+    window.location.href = mailto;
+    form.reset();
+    onMessageSent();
+  };
+
+  return (
+    <section id="contact" className="border-t border-border bg-surface">
+      <Container className="py-[100px]">
+        <div className="font-mono text-[13px] font-medium uppercase tracking-widest text-accent">
+          Contact
+        </div>
+        <h2 className="mt-3 max-w-[600px] font-display text-[clamp(28px,3.5vw,40px)] font-bold leading-tight tracking-tight">
+          Let's talk
+        </h2>
+        <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-2">
+          <div>
+            <p className="max-w-[440px] text-[17px] leading-relaxed text-muted">
+              I'm open to new opportunities in Southern California and remote.
+              Reach out on LinkedIn, check my GitHub, or drop a message below.
+            </p>
+            <div className="mt-6 flex flex-col gap-[14px]">
+              <a
+                href={ExtEndpoints.github}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-3 rounded-content border border-border bg-surface px-4 py-3 text-[15px] font-medium text-foreground transition-colors duration-150 hover:border-accent-soft"
+              >
+                <FontAwesomeIcon icon={faGithub} className="w-5 text-center text-lg text-accent" />
+                jrescalona96
+                <span className="ml-auto font-mono text-[12px] leading-none text-muted">GitHub</span>
+              </a>
+              <a
+                href={ExtEndpoints.linkedin}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-3 rounded-content border border-border bg-surface px-4 py-3 text-[15px] font-medium text-foreground transition-colors duration-150 hover:border-accent-soft"
+              >
+                <FontAwesomeIcon icon={faLinkedin} className="w-5 text-center text-lg text-accent" />
+                john-escalona
+                <span className="ml-auto font-mono text-[12px] leading-none text-muted">LinkedIn</span>
+              </a>
+              <a
+                href={Endpoints.resume}
+                className="inline-flex items-center gap-3 rounded-content border border-border bg-surface px-4 py-3 text-[15px] font-medium text-foreground transition-colors duration-150 hover:border-accent-soft"
+              >
+                <FontAwesomeIcon icon={faFileArrowDown} className="w-5 text-center text-lg text-accent" />
+                Download resume (PDF)
+                <span className="ml-auto font-mono text-[12px] leading-none text-muted">Print</span>
+              </a>
+            </div>
+          </div>
+          <form ref={formRef} onSubmit={handleSubmit} className="max-w-full">
+            <div className="mb-[18px]">
+              <label htmlFor="name" className="mb-[6px] block font-body text-[13px] font-medium text-muted">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your name"
+                required
+                className="w-full rounded-content border border-border bg-surface px-[14px] py-3 font-body text-[15px] leading-[1.4] text-foreground outline-none transition-colors duration-150 placeholder:text-muted focus:border-accent"
+              />
+            </div>
+            <div className="mb-[18px]">
+              <label htmlFor="email" className="mb-[6px] block font-body text-[13px] font-medium text-muted">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                required
+                className="w-full rounded-content border border-border bg-surface px-[14px] py-3 font-body text-[15px] leading-[1.4] text-foreground outline-none transition-colors duration-150 placeholder:text-muted focus:border-accent"
+              />
+            </div>
+            <div className="mb-[18px]">
+              <label htmlFor="message" className="mb-[6px] block font-body text-[13px] font-medium text-muted">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="What role or project are you reaching out about?"
+                required
+                className="min-h-[120px] w-full resize-y rounded-content border border-border bg-surface px-[14px] py-3 font-body text-[15px] leading-[1.4] text-foreground outline-none transition-colors duration-150 placeholder:text-muted focus:border-accent"
+              />
+            </div>
+            <Button type="submit" variant="primary">
+              Send message
+            </Button>
+          </form>
+        </div>
+      </Container>
+    </section>
+  );
+}
