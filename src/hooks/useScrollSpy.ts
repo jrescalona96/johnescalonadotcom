@@ -10,20 +10,22 @@ export function useScrollSpy(sectionIds: string[], offset = 120) {
 
     if (elms.length === 0) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible.length > 0) {
-          setActiveId(visible[0].target.id);
-        }
-      },
-      { rootMargin: `-${offset}px 0px 0px 0px`, threshold: 0 }
-    );
+    const onScroll = () => {
+      const pos = window.scrollY + offset;
+      let current = sectionIds[0];
 
-    elms.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+      for (const el of elms) {
+        if (el.offsetTop <= pos) {
+          current = el.id;
+        }
+      }
+
+      setActiveId(current);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, [sectionIds, offset]);
 
   return activeId;

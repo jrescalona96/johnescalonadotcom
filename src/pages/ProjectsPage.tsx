@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Container } from "../components/layout/Container";
-import { Footer } from "../components/layout/Footer";
 import { NavLink } from "../components/ui/NavLink";
 import { FilterChip } from "../components/ui/FilterChip";
 import { Endpoints } from "../assets/constants/AppUrls";
@@ -64,7 +63,6 @@ export function ProjectsPage() {
           </div>
         </Container>
       </div>
-      <Footer />
     </>
   );
 }

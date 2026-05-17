@@ -1,5 +1,4 @@
 import { Container } from "../components/layout/Container";
-import { Footer } from "../components/layout/Footer";
 import { NavLink } from "../components/ui/NavLink";
 import { Button } from "../components/ui/Button";
 import { Endpoints, ExtEndpoints } from "../assets/constants/AppUrls";
@@ -156,7 +155,6 @@ export function ResumePage() {
           </div>
         </Container>
       </div>
-      <Footer />
     </>
   );
 }

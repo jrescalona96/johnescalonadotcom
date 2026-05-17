@@ -1,5 +1,4 @@
 import { Container } from "../components/layout/Container";
-import { Footer } from "../components/layout/Footer";
 import { Button } from "../components/ui/Button";
 import { Toast } from "../components/ui/Toast";
 import { Endpoints, ExtEndpoints } from "../assets/constants/AppUrls";
@@ -42,7 +41,7 @@ export function HomePage() {
       <ProjectsSection />
       <SkillsSection />
       <ContactSection onMessageSent={() => setToastShow(true)} />
-      <Footer />
+      <EducationSection />
       <Toast
         message="Thanks — I'll get back to you soon."
         show={toastShow}
@@ -54,7 +53,7 @@ export function HomePage() {
 
 function HeroSection() {
   return (
-    <section className="flex min-h-screen items-center px-6 pb-20 pt-[120px]">
+    <section id="home" className="flex min-h-screen items-center px-6 pb-20 pt-[120px] scroll-mt-[120px]">
       <Container className="grid grid-cols-1 items-center gap-14 md:grid-cols-[1fr_280px]">
         <div>
           <h1 className="font-display text-[clamp(36px,5vw,64px)] font-bold leading-[1.08] tracking-tighter">
@@ -105,27 +104,25 @@ function HeroSection() {
   );
 }
 
-function ExperienceSection() {
-  const experiences = repo.getExperiences();
-
-  const formatDate = (exp: Experience) => {
-    if (!exp.startDate && !exp.endDate) return "";
-    if (exp.startDate && !exp.endDate) return "Present";
-    if (exp.startDate && exp.endDate && exp.startDate === exp.endDate) return String(exp.startDate);
-    // For date ranges like 2018 – 2020
-    if (exp.startDate && exp.endDate && exp.startDate !== exp.endDate) {
-      // Check if they're multi-year ranges (education)
-      if (exp.type === "education" || (exp.endDate - exp.startDate) > 1) {
-        return `${exp.startDate} – ${exp.endDate}`;
-      }
-      return String(exp.startDate);
+const formatDate = (exp: Experience) => {
+  if (!exp.startDate && !exp.endDate) return "";
+  if (exp.startDate && !exp.endDate) return "Present";
+  if (exp.startDate && exp.endDate && exp.startDate === exp.endDate) return String(exp.startDate);
+  if (exp.startDate && exp.endDate && exp.startDate !== exp.endDate) {
+    if (exp.type === "education" || (exp.endDate - exp.startDate) > 1) {
+      return `${exp.startDate} – ${exp.endDate}`;
     }
-    return "";
-  };
+    return String(exp.startDate);
+  }
+  return "";
+};
+
+function ExperienceSection() {
+  const experiences = repo.getExperiences().filter((e) => e.type !== "education");
 
   return (
-    <section id="experience">
-      <Container>
+    <section id="experience" className="scroll-mt-[120px]">
+      <Container className="pb-12">
         <div className="font-mono text-[13px] font-medium uppercase tracking-widest text-accent">
           Experience
         </div>
@@ -178,8 +175,8 @@ function ProjectsSection() {
   const projects = repo.getAllProjects();
 
   return (
-    <section id="projects" className="border-y border-border bg-surface">
-      <Container className="py-[100px]">
+    <section id="projects" className="border-y border-border bg-surface scroll-mt-16">
+      <Container className="pb-[100px]">
         <div className="font-mono text-[13px] font-medium uppercase tracking-widest text-accent">
           Projects
         </div>
@@ -252,8 +249,8 @@ function SkillsSection() {
   const skillsByCategory = repo.getSkillsByCategory();
 
   return (
-    <section id="skills">
-      <Container className="py-[100px]">
+    <section id="skills" className="scroll-mt-16">
+      <Container className="pb-[100px]">
         <div className="font-mono text-[13px] font-medium uppercase tracking-widest text-accent">
           Skills
         </div>
@@ -291,6 +288,56 @@ function SkillsSection() {
   );
 }
 
+function EducationSection() {
+  const education = repo.getExperiences().filter((e) => e.type === "education");
+
+  return (
+    <section id="education" className="scroll-mt-12 pb-48">
+      <Container className="pb-96">
+        <div className="font-mono text-[16px] font-medium uppercase tracking-widest text-accent">
+          Education
+        </div>
+        <h2 className="mt-3 max-w-150 font-display text-[clamp(28px,3.5vw,40px)] font-bold leading-tight tracking-tight">
+          Where I've studied
+        </h2>
+        <div className="mt-12 grid gap-5">
+          {education.map((exp) => (
+            <div
+              key={exp.id}
+              className="rounded-content border border-border bg-surface p-8"
+            >
+              <div className="flex flex-wrap items-baseline justify-between gap-4">
+                <h3 className="font-display text-[18px] font-semibold leading-snug">
+                  {exp.entity}
+                </h3>
+                <span className="font-mono text-[13px] leading-none text-muted whitespace-nowrap">
+                  {formatDate(exp)}
+                </span>
+              </div>
+              {exp.role && (
+                <p className="mt-1 font-body text-[14px] font-medium leading-[1.4] text-muted">
+                  {exp.role}
+                  {exp.location ? ` · ${exp.location}` : ""}
+                </p>
+              )}
+              {exp.url && (
+                <a
+                  href={exp.url}
+                  target="_blank"
+                  rel="noopener"
+                  className="mt-3 inline-flex font-body text-[14px] font-medium leading-none text-accent hover:underline"
+                >
+                  Learn more &rarr;
+                </a>
+              )}
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
 function ContactSection({ onMessageSent }: { onMessageSent: () => void }) {
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -311,8 +358,8 @@ function ContactSection({ onMessageSent }: { onMessageSent: () => void }) {
   };
 
   return (
-    <section id="contact" className="border-t border-border bg-surface pb-32">
-      <Container className="py-[100px]">
+    <section id="contact" className="border-t border-border bg-surface pb-32 scroll-mt-16">
+      <Container className="pb-[100px]">
         <div className="font-mono text-[13px] font-medium uppercase tracking-widest text-accent">
           Contact
         </div>

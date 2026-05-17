@@ -4,7 +4,7 @@ import { ProjectsPage } from "./pages/ProjectsPage";
 import { ResumePage } from "./pages/ResumePage";
 import { Endpoints } from "./assets/constants/AppUrls";
 import { ErrorBoundary } from "./components/ErrorBoundary";
-import { NavBar } from "./components/layout/NavBar";
+import { Layout } from "./components/layout/Layout";
 
 import "./App.css";
 
@@ -13,11 +13,12 @@ function App() {
     <div className="App">
       <ErrorBoundary>
         <BrowserRouter>
-          <NavBar />
           <Routes>
-            <Route path={Endpoints.home} element={<HomePage />} />
-            <Route path={Endpoints.projects} element={<ProjectsPage />} />
-            <Route path={Endpoints.resume} element={<ResumePage />} />
+            <Route element={<Layout />}>
+              <Route path={Endpoints.home} element={<HomePage />} />
+              <Route path={Endpoints.projects} element={<ProjectsPage />} />
+              <Route path={Endpoints.resume} element={<ResumePage />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </ErrorBoundary>

@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import { Container } from "./Container";
 import { NavLink } from "../ui/NavLink";
 import { Endpoints } from "../../assets/constants/AppUrls";
@@ -5,14 +6,17 @@ import { cn } from "../../lib/utils";
 import { useScrollSpy } from "../../hooks/useScrollSpy";
 
 const sectionLinks = [
+  { id: "home", label: "Home" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
   { id: "contact", label: "Contact" },
+  { id: "education", label: "Education" },
 ];
 
 export function NavBar() {
-  const isHome = window.location.pathname === Endpoints.home;
+  const { pathname } = useLocation();
+  const isHome = pathname === Endpoints.home;
   const activeSection = useScrollSpy(
     isHome ? sectionLinks.map((s) => s.id) : [],
     120
@@ -20,7 +24,7 @@ export function NavBar() {
 
   const isActive = (path: string) => {
     if (path === Endpoints.home) return isHome;
-    return window.location.pathname.startsWith(path);
+    return pathname.startsWith(path);
   };
 
   return (
