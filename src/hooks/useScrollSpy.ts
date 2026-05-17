@@ -19,7 +19,7 @@ export function useScrollSpy(sectionIds: string[], offset = 120) {
           setActiveId(visible[0].target.id);
         }
       },
-      { rootMargin: `-${offset}px 0px -40% 0px`, threshold: 0 }
+      { rootMargin: `-${offset}px 0px 0px 0px`, threshold: 0 }
     );
 
     elms.forEach((el) => observer.observe(el));

@@ -311,7 +311,7 @@ function ContactSection({ onMessageSent }: { onMessageSent: () => void }) {
   };
 
   return (
-    <section id="contact" className="border-t border-border bg-surface">
+    <section id="contact" className="border-t border-border bg-surface pb-32">
       <Container className="py-[100px]">
         <div className="font-mono text-[13px] font-medium uppercase tracking-widest text-accent">
           Contact
