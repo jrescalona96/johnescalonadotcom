@@ -341,6 +341,7 @@ function EducationSection() {
 function ContactSection({ onMessageSent }: { onMessageSent: () => void }) {
   const formRef = useRef<HTMLFormElement>(null);
 
+  // TODO: replace mailto with server-side handler
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const form = formRef.current;
