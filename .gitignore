@@ -3,4 +3,5 @@ node_modules
 */.DS_Store
 pnpm-lock.yaml
 ./build/
+dist/
 .DS_Store
