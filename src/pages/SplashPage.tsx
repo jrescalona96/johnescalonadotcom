@@ -8,7 +8,7 @@ import { NavBar } from "../components/NavBar";
 import { Footer } from "../components/Footer";
 
 export const SplashPage = () => {
-	let baseClasses =
+	const baseClasses =
 		"absolute transition-all ease-in-out h-full w-full flex bg-white justify-center z-10 invisible md:visible";
 	const [classes, setClasses] = useState(baseClasses);
 

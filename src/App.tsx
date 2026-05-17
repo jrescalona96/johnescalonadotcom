@@ -2,9 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { Endpoints } from "./assets/constants/AppUrls";
 import { InterestsPage } from "./pages/interests";
-import { ProjectsPage } from "./pages/ProjectsPage";
-import { CoffeePage } from "./pages/interests/CoffeePage";
-import { FitnessPage } from "./pages/interests/FitnessPage";
 import { CampingPage } from "./pages/interests/CampingPage";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 

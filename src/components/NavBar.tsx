@@ -1,10 +1,7 @@
-import { useState, use, useTransition } from "react";
 import { TextLink } from "./TextLink";
 import { Endpoints, ExtEndpoints } from "../assets/constants/AppUrls";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-	faCaretRight,
-	faFileDownload,
 	faPrint,
 } from "../../node_modules/@fortawesome/free-solid-svg-icons/index";
 import {
@@ -12,7 +9,6 @@ import {
 	faLinkedin,
 	faInstagramSquare,
 } from "../../node_modules/@fortawesome/free-brands-svg-icons/index";
-import { RoundedButton } from "./RoundedButton";
 
 export const NavBar = () => {
 	return (
@@ -28,17 +24,6 @@ export const NavBar = () => {
 };
 
 const NavItems = () => {
-	const [isCaretIconSelected, setIsCaretIconSelected] = useState(false);
-	
-	// React 19: Using useTransition for better UX
-	const [isPending, startTransition] = useTransition();
-	
-	const handleSetCaretIcon = () => {
-		startTransition(() => {
-			setIsCaretIconSelected(!isCaretIconSelected);
-		});
-	};
-
 	const classes: string = "";
 	const isActive = (path: string): string => {
 		const activeDecorationClass: string = " border-b-2 border-blue-600";
