@@ -50,6 +50,6 @@ Content is hardcoded in `Repository.tsx` — no backend, no API calls. To update
 
 - No CI/CD pipelines, no pre-commit hooks, no formatter config
 - ESLint inline in `package.json` (no `.eslintrc` file)
-- `pnpm-lock.yaml` is in `.gitignore`; lockfile not committed
+- `pnpm-lock.yaml` is committed (required for Netlify to detect pnpm)
 - React 19 features used: `use()` hook, `useTransition()`, `createRoot`
 - `netlify.toml` exists but is empty (config is in `_redirects`)
