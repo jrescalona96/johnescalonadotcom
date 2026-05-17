@@ -1,3 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-background: oklch(98% 0.004 240);
+  --color-surface: oklch(100% 0 0);
+  --color-foreground: oklch(18% 0.012 250);
+  --color-muted: oklch(50% 0.015 250);
+  --color-border: oklch(91% 0.006 240);
+  --color-accent: oklch(52% 0.16 225);
+  --color-accent-soft: oklch(65% 0.12 225);
+
+  --font-display: 'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  --radius-content: 10px;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-foreground);
+  background: var(--color-background);
+}

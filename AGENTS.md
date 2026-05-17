@@ -46,6 +46,10 @@ Work on `dev` branch (not `master`). PRs merge into `dev`.
 
 Content is hardcoded in `Repository.tsx` — no backend, no API calls. To update portfolio content, edit the repository methods (`getAllProjects`, `getProfessionalExperiences`, `getSkills`, etc.) or the constants files.
 
+## Git commits
+
+Commits are **manual only** — never commit unless the user explicitly asks. Run `git add -A && git commit` only when instructed.
+
 ## Other notes
 
 - No CI/CD pipelines, no pre-commit hooks, no formatter config

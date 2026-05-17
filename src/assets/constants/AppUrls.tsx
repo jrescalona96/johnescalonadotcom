@@ -13,11 +13,11 @@ export class Endpoints {
 export class ExtEndpoints {
 	static cpp: string = "https://www.cpp.edu/aboutcpp/index.shtml";
 	static github: string = "https://github.com/jrescalona96";
-	static instagram: string = "https://www.instagram.com/subimond/";
-	static linkedin: string = "https://www.linkedin.com/in/john-escalona/";
+	static instagram: string = "https://www.instagram.com/subimond";
+	static linkedin: string = "https://www.linkedin.com/in/john-escalona";
 	static genuent: string = "https://www.genuent.com/";
 	static mercury: string = "https://cp.mercuryinsurance.com/cas/login";
-	static prse: string = "https://prseinc.com/";
-	static efi: string = "https://www.efiglobal.com/";
-	static cc: string = "https://www.cerritos.edu/";
+	static prse: string = "https://prseinc.com";
+	static efi: string = "https://www.efiglobal.com";
+	static cc: string = "https://www.cerritos.edu";
 }

@@ -1,17 +1,19 @@
+export type SkillCategory = "languages" | "frameworks" | "tools";
+
 type Parameters = {
   id: string;
   name: string;
-  isPrimary: boolean;
+  category: SkillCategory;
 };
 
 export class Skill {
   id!: string;
   name!: string;
-  isPrimary!: boolean;
+  category!: SkillCategory;
 
-  constructor({ id, name, isPrimary }: Parameters) {
+  constructor({ id, name, category }: Parameters) {
     this.id = id;
     this.name = name;
-    this.isPrimary = isPrimary;
+    this.category = category;
   }
 }
