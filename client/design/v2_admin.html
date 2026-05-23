@@ -1,0 +1,1551 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin — John Escalona</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --bg:      oklch(97% 0.016 70);
+      --surface: oklch(99% 0.01 70);
+      --fg:      oklch(20% 0.025 65);
+      --muted:   oklch(48% 0.03 65);
+      --border:  oklch(86% 0.018 70);
+      --accent:  oklch(50% 0.18 35);
+      --accent-soft: oklch(65% 0.13 35);
+      --radius: 10px;
+      --sidebar: 240px;
+      --font-display: 'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --font-body:    'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --font-mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
+    }
+    :root.night {
+      --bg:      oklch(10% 0.018 260);
+      --surface: oklch(16% 0.022 260);
+      --fg:      oklch(92% 0.012 255);
+      --muted:   oklch(58% 0.02 255);
+      --border:  oklch(28% 0.03 260);
+      --accent:  oklch(56% 0.18 230);
+      --accent-soft: oklch(46% 0.14 230);
+    }
+    .theme-toggle {
+      background: none; border: 1px solid var(--border); border-radius: 6px;
+      color: var(--muted); cursor: pointer; font-size: 16px;
+      width: 34px; height: 34px; display: grid; place-items: center;
+      transition: all 0.15s; flex-shrink: 0;
+    }
+    .theme-toggle:hover { background: linear-gradient(135deg, var(--accent-soft), var(--accent)); color: white; border-color: transparent; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font: 400 15px/1.6 var(--font-body);
+      color: var(--fg);
+      background: var(--bg);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    input, textarea, select, button { font: inherit; }
+
+    .sidebar {
+      width: var(--sidebar);
+      flex-shrink: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .sidebar-brand {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-brand h1 {
+      font: 700 18px/1.2 var(--font-display);
+      letter-spacing: -0.02em;
+    }
+    .sidebar-brand p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .sidebar-nav { flex: 1; padding: 12px 0; }
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: all 0.12s;
+      border-left: 3px solid transparent;
+    }
+    .sidebar-nav a:hover { color: var(--fg); background: var(--bg); }
+    .sidebar-nav a.active {
+      color: var(--accent);
+      background: color-mix(in oklch, var(--accent) 8%, var(--surface));
+      border-left-color: var(--accent);
+    }
+    .sidebar-nav a i { width: 18px; text-align: center; font-size: 16px; }
+    .sidebar-footer {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .sidebar-footer a {
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sidebar-footer a:hover { color: var(--accent); }
+
+    .main {
+      flex: 1;
+      min-width: 0;
+      padding: 32px 40px 80px;
+      max-width: 960px;
+    }
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .page-header h2 {
+      font: 700 26px/1.2 var(--font-display);
+      letter-spacing: -0.02em;
+    }
+    .page-header .sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .page-header .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .card-header h3 {
+      font: 600 17px/1.3 var(--font-display);
+    }
+    .card-header .hint {
+      font: 400 12px/1 var(--font-mono);
+      color: var(--muted);
+    }
+
+    .form-group { margin-bottom: 18px; }
+    .form-group label {
+      display: block;
+      font: 500 13px/1 var(--font-body);
+      margin-bottom: 6px;
+      color: var(--fg);
+    }
+    .form-group .hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font: 400 14px/1.4 var(--font-body);
+      background: var(--bg);
+      color: var(--fg);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--accent); }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-row-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 6px;
+      font: 500 14px/1 var(--font-body);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--fg);
+      cursor: pointer;
+      transition: all 0.12s;
+      white-space: nowrap;
+    }
+    .btn:hover { border-color: var(--muted); }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-danger {
+      background: oklch(55% 0.16 30);
+      color: #fff;
+      border-color: transparent;
+    }
+    .btn-danger:hover { opacity: 0.88; }
+    .btn-sm { padding: 5px 12px; font-size: 12px; }
+    .btn-xs { padding: 3px 8px; font-size: 11px; border-radius: 4px; }
+
+    .item-list { display: flex; flex-direction: column; gap: 12px; }
+    .item-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      background: var(--bg);
+      transition: border-color 0.12s;
+    }
+    .item-card:hover { border-color: var(--accent-soft); }
+    .item-card-header {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .item-card-title {
+      font: 600 15px/1.3 var(--font-display);
+    }
+    .item-card-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .item-card-body {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+    .item-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 8px;
+    }
+    .item-card-tags span {
+      padding: 2px 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font: 400 11px/1.4 var(--font-mono);
+      color: var(--muted);
+    }
+    .item-card-actions {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .item-card-actions .btn { white-space: nowrap; }
+
+    .drop-zone {
+      border: 2px dashed var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      transition: border-color 0.15s, background 0.15s;
+      cursor: pointer;
+    }
+    .drop-zone.dragover {
+      border-color: var(--accent);
+      background: color-mix(in oklch, var(--accent) 6%, var(--bg));
+    }
+    .drag-handle {
+      cursor: grab;
+      color: var(--muted);
+      font-size: 16px;
+      padding: 4px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      transition: color 0.12s;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .drag-handle:hover { color: var(--fg); }
+    .drag-handle:active { cursor: grabbing; }
+    .item-card.dragging {
+      opacity: 0.4;
+      border-style: dashed;
+    }
+    .item-card.drag-over {
+      border-top: 2px solid var(--accent);
+      margin-top: -1px;
+    }
+    .add-bottom {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+    }
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+    }
+    .empty-state i { font-size: 32px; margin-bottom: 12px; opacity: 0.5; }
+    .empty-state p { font-size: 14px; }
+
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 1000;
+      pointer-events: none;
+    }
+    .toast {
+      pointer-events: auto;
+      background: var(--fg);
+      color: var(--surface);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.25s;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 500;
+      display: none;
+      place-items: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: grid; }
+    .modal {
+      background: var(--surface);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .modal h3 {
+      font: 600 20px/1.3 var(--font-display);
+      margin-bottom: 20px;
+    }
+    .modal-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .skill-cat {
+      margin-bottom: 20px;
+    }
+    .skill-cat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .skill-cat-header h4 {
+      font: 600 14px/1 var(--font-display);
+    }
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .skill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font: 500 13px/1.3 var(--font-body);
+      transition: border-color 0.12s;
+    }
+    .skill-tag .remove {
+      cursor: pointer;
+      opacity: 0.4;
+      font-size: 12px;
+    }
+    .skill-tag .remove:hover { opacity: 1; color: var(--accent); }
+    .skill-tag:hover { border-color: var(--accent-soft); }
+    .skill-add-form {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .skill-add-form input {
+      flex: 1;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 13px;
+      background: var(--bg);
+      outline: none;
+    }
+    .skill-add-form input:focus { border-color: var(--accent); }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .dash-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+    }
+    .dash-card .num {
+      font: 700 32px/1 var(--font-display);
+      letter-spacing: -0.03em;
+      color: var(--accent);
+    }
+    .dash-card .label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .subsection { margin-bottom: 40px; }
+    .subsection-title {
+      font: 600 16px/1 var(--font-display);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    pre.code-block {
+      background: var(--fg);
+      color: var(--bg);
+      padding: 16px;
+      border-radius: 8px;
+      font: 400 12px/1.5 var(--font-mono);
+      overflow-x: auto;
+      max-height: 400px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    @media (max-width: 768px) {
+      :root { --sidebar: 0; }
+      .sidebar {
+        position: fixed;
+        left: -260px;
+        z-index: 300;
+        transition: left 0.2s;
+        box-shadow: 4px 0 30px rgba(0,0,0,0.1);
+      }
+      .sidebar.open { left: 0; }
+      .sidebar-toggle {
+        display: block !important;
+      }
+      .main { padding: 24px 16px 80px; }
+      .form-row, .form-row-3 { grid-template-columns: 1fr; }
+    }
+    .sidebar-toggle { display: none; }
+  </style>
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <h1>John Escalona</h1>
+    <p>Portfolio admin</p>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="#" class="active" data-page="dashboard"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+    <a href="#" data-page="about"><i class="fa-solid fa-user"></i> About</a>
+    <a href="#" data-page="experience"><i class="fa-solid fa-briefcase"></i> Experience</a>
+    <a href="#" data-page="education"><i class="fa-solid fa-graduation-cap"></i> Education</a>
+    <a href="#" data-page="projects"><i class="fa-solid fa-code"></i> Projects</a>
+    <a href="#" data-page="skills"><i class="fa-solid fa-wrench"></i> Skills</a>
+    <a href="#" data-page="contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+    <a href="#" data-page="data"><i class="fa-solid fa-database"></i> Data</a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="index.html" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> View site</a>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--border);">
+      <span style="font-size:12px;color:var(--muted);">Theme</span>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button>
+    </div>
+  </div>
+</aside>
+
+<button class="sidebar-toggle btn" style="position:fixed;top:12px;left:12px;z-index:200;padding:8px 12px;border-radius:6px;" id="sidebarToggle">
+  <i class="fa-solid fa-bars"></i>
+</button>
+
+<div class="main" id="app">
+
+  <div id="page-dashboard" class="page">
+    <div class="page-header">
+      <div>
+        <h2>Dashboard</h2>
+        <p class="sub">Overview of your portfolio content</p>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="window.open('index.html','_blank')"><i class="fa-solid fa-eye"></i> Quick preview</button>
+      </div>
+    </div>
+
+    <div class="dashboard-grid" id="dash-grid"></div>
+
+    <div class="card">
+      <h3 style="font:600 16px/1 var(--font-display);margin-bottom:12px;">Mock admin</h3>
+      <p style="font-size:14px;color:var(--muted);">Data is hardcoded in-memory for prototyping. Changes reset on page refresh.</p>
+    </div>
+  </div>
+
+  <div id="page-about" class="page" style="display:none;">
+    <div class="page-header">
+      <div>
+        <h2>About</h2>
+        <p class="sub">Hero section, bio, and personal details</p>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="saveAbout()"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First name</label>
+          <input type="text" id="about-first" />
+        </div>
+        <div class="form-group">
+          <label>Last name</label>
+          <input type="text" id="about-last" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Title / Role</label>
+        <input type="text" id="about-title" placeholder="e.g. Software Developer at Mercury Insurance" />
+        <div class="hint">Appears below your name in the hero</div>
+      </div>
+      <div class="form-group">
+        <label>Location</label>
+        <input type="text" id="about-location" placeholder="e.g. Southern California" />
+      </div>
+      <div class="form-group">
+        <label>Summary / Bio</label>
+        <textarea id="about-summary" rows="4" placeholder="Short professional summary for the hero section"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Profile photo path</label>
+        <input type="text" id="about-photo" placeholder="e.g. john-photo.jpg" />
+        <div class="hint">Relative to the site root</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="page-experience" class="page" style="display:none;">
+    <div class="page-header">
+      <div>
+        <h2>Experience</h2>
+        <p class="sub">Work history — add, edit, or reorder your roles</p>
+      </div>
+    </div>
+    <div class="item-list" id="exp-list"></div>
+    <div class="add-bottom">
+      <button class="btn btn-primary" onclick="addExperience()"><i class="fa-solid fa-plus"></i> Add role</button>
+    </div>
+  </div>
+
+  <div id="page-education" class="page" style="display:none;">
+    <div class="page-header">
+      <div>
+        <h2>Education</h2>
+        <p class="sub">Degrees, schools, and academic background</p>
+      </div>
+    </div>
+    <div class="item-list" id="edu-list"></div>
+    <div class="add-bottom">
+      <button class="btn btn-primary" onclick="addEducation()"><i class="fa-solid fa-plus"></i> Add education</button>
+    </div>
+  </div>
+
+  <div id="page-projects" class="page" style="display:none;">
+    <div class="page-header">
+      <div>
+        <h2>Projects</h2>
+        <p class="sub">Portfolio projects with tech stacks and links</p>
+      </div>
+    </div>
+    <div class="item-list" id="proj-list"></div>
+    <div class="add-bottom">
+      <button class="btn btn-primary" onclick="addProject()"><i class="fa-solid fa-plus"></i> Add project</button>
+    </div>
+  </div>
+
+  <div id="page-skills" class="page" style="display:none;">
+    <div class="page-header">
+      <div>
+        <h2>Skills</h2>
+        <p class="sub">Technologies grouped by category — add categories or individual skills</p>
+      </div>
+    </div>
+    <div class="card" id="skills-container"></div>
+    <div class="add-bottom">
+      <button class="btn btn-primary" onclick="addSkillCategory()"><i class="fa-solid fa-plus"></i> Add category</button>
+    </div>
+  </div>
+
+  <div id="page-contact" class="page" style="display:none;">
+    <div class="page-header">
+      <div>
+        <h2>Contact</h2>
+        <p class="sub">Social links and contact information</p>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="saveContact()"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="form-group">
+        <label>GitHub username</label>
+        <input type="text" id="contact-github" />
+      </div>
+      <div class="form-group">
+        <label>LinkedIn username/handle</label>
+        <input type="text" id="contact-linkedin" />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="contact-email" />
+      </div>
+      <div class="form-group">
+        <label>Contact note</label>
+        <textarea id="contact-note" rows="2" placeholder="e.g. Open to opportunities in Southern California and remote."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Resume file path</label>
+        <input type="text" id="contact-resume" />
+      </div>
+    </div>
+  </div>
+
+  <div id="page-data" class="page" style="display:none;">
+    <div class="page-header">
+      <div>
+        <h2>Data</h2>
+        <p class="sub">Current in-memory data snapshot (resets on refresh)</p>
+      </div>
+    </div>
+    <div class="card">
+      <pre class="code-block" id="json-preview"></pre>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <h3 id="modal-title">Edit</h3>
+    <div id="modal-body"></div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" id="modal-save" onclick="modalSave()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toast-container"></div>
+
+<script>
+(function(){
+  var data = {
+    about: {
+      first: 'John',
+      last: 'Escalona',
+      title: 'Software Developer at Mercury Insurance',
+      location: 'Southern California',
+      summary: 'Full-stack engineer with a track record of shipping features that cut QA cycles in half, boost app ratings, and modernize legacy systems. Cal Poly Pomona CS grad based in Southern California.',
+      photo: '../john-photo.jpg'
+    },
+    experience: [
+      {
+        id: 'exp1',
+        company: 'Mercury Insurance',
+        role: 'Software Developer II',
+        location: 'Brea, CA',
+        date: 'Present',
+        bullets: [
+          'Accelerated QA testing workflow by enabling in-app environment switching, removing bottlenecks and reducing QA iteration time by 50%.',
+          'Implemented Dependency Injection to increase unit test coverage from 0% to 70%, improving codebase maintainability and catching regressions earlier.',
+          'Deployed an in-app feedback request system that drove a significant uptick in app store ratings and customer satisfaction.',
+          'Led feature enablement strategy using low-code walkthroughs and Firebase Remote Config messaging, simplifying rollouts and improving adoption rates.',
+          'Built an API mocking framework with Node.js/Express, enabling frontend teams to test edge cases independently of backend readiness.',
+          'Optimized frontend performance by designing a dynamic theming and asset management system, reducing load times and ensuring brand consistency.'
+        ]
+      },
+      {
+        id: 'exp2',
+        company: 'Cal Poly Pomona',
+        role: 'B.S. Computer Science',
+        location: '',
+        date: '2018 \u2013 2020',
+        bullets: [
+          'Coursework in algorithms, data structures, software engineering, and full-stack development.',
+          'Built multiple course projects and open-source tools.'
+        ]
+      },
+      {
+        id: 'exp3',
+        company: 'Cerritos College',
+        role: 'Computer Science Transfer Program',
+        location: '',
+        date: '2014 \u2013 2018',
+        bullets: [
+          'Completed lower-division CS coursework and transferred to Cal Poly Pomona to complete B.S. in Computer Science.'
+        ]
+      }
+    ],
+    education: [
+      {
+        id: 'edu1',
+        school: 'Cal Poly Pomona',
+        degree: 'B.S. Computer Science',
+        date: '2018 \u2013 2020',
+        notes: 'Coursework in algorithms, data structures, software engineering, operating systems, and database design.'
+      },
+      {
+        id: 'edu2',
+        school: 'Cerritos College',
+        degree: 'Computer Science Transfer Program',
+        date: '2014 \u2013 2018',
+        notes: 'Completed lower-division CS coursework and transferred to Cal Poly Pomona to complete B.S. in Computer Science.'
+      }
+    ],
+    projects: [
+      {
+        id: 'proj1',
+        title: 'Algo Visualization',
+        tech: 'React \u00b7 Sass \u00b7 Material UI',
+        category: 'web',
+        description: 'Interactive algorithm visualizer demonstrating Binary Search, Merge Sort, and Quick Sort with real-time animations, adjustable array sizes, and speed controls.',
+        tags: ['React','Sass','Material UI','Algorithms'],
+        links: [
+          { label: 'Live demo', url: 'https://jrescalona96.github.io/algovisualizations' },
+          { label: 'GitHub', url: 'https://github.com/jrescalona96/algovisualizations' }
+        ]
+      },
+      {
+        id: 'proj2',
+        title: 'lfti',
+        tech: 'Flutter \u00b7 Firebase \u00b7 Dart',
+        category: 'mobile',
+        description: 'Cross-platform workout tracker with guided timers, session tracking, progress logging, and Firebase-backed persistence. Deployed on Android.',
+        tags: ['Flutter','Firebase','Dart','Android'],
+        links: [
+          { label: 'Live demo', url: 'https://wakay96.github.io/lfti/' },
+          { label: 'GitHub', url: 'https://github.com/wakay96/lfti' }
+        ]
+      },
+      {
+        id: 'proj3',
+        title: 'Truss Solver',
+        tech: 'React \u00b7 Python \u00b7 Bootstrap',
+        category: 'tool',
+        description: 'Engineering tool that calculates node displacements, forces, and stress across structural trusses \u2014 Python backend with interactive React frontend.',
+        tags: ['React','Python','Bootstrap','Sass'],
+        links: [
+          { label: 'Live demo', url: 'https://jrescalona96.github.io/truss-solver/' },
+          { label: 'GitHub', url: 'https://github.com/jrescalona96/truss-solver' }
+        ]
+      },
+      {
+        id: 'proj4',
+        title: 'Debt Counter',
+        tech: 'React \u00b7 CSS \u00b7 Bootstrap',
+        category: 'web',
+        description: 'Dashboard app for tracking debt with running totals, payment progress, and configurable categories with visual indicators.',
+        tags: ['React','CSS','Bootstrap'],
+        links: [
+          { label: 'Live demo', url: 'https://jrescalona96.github.io/debtcounter/' },
+          { label: 'GitHub', url: 'https://github.com/jrescalona96/debtcounter' }
+        ]
+      },
+      {
+        id: 'proj5',
+        title: 'The Shuffling',
+        tech: 'JavaScript \u00b7 Node.js \u00b7 MongoDB',
+        category: 'web',
+        description: 'Magic: The Gathering deck builder using Scryfall API with full card catalog, deck CRUD, and search functionality.',
+        tags: ['JavaScript','Node.js','HTML','CSS','MongoDB'],
+        links: [
+          { label: 'Demo video', url: 'https://www.youtube.com/watch?v=Tv1DGACwy1U' }
+        ]
+      }
+    ],
+    skills: [
+      {
+        id: 'skill-cat1',
+        name: 'Languages',
+        items: ['JavaScript','TypeScript','Java','HTML','CSS','SQL','Dart']
+      },
+      {
+        id: 'skill-cat2',
+        name: 'Frameworks & Libraries',
+        items: ['React','Angular','Flutter','Node.js','Spring Boot','Tailwind']
+      },
+      {
+        id: 'skill-cat3',
+        name: 'Tools & Platforms',
+        items: ['Git','Docker','Jenkins','Agile','OpenCode','Open Design','Claude Code']
+      }
+    ],
+    contact: {
+      github: 'jrescalona96',
+      linkedin: 'john-escalona',
+      email: '',
+      note: "I'm open to new opportunities in Southern California and remote. Reach out on LinkedIn, check my GitHub, or drop a message below.",
+      resume: 'resume.html'
+    }
+  };
+
+  function toast(msg) {
+    var c = document.getElementById('toast-container');
+    var el = document.createElement('div');
+    el.className = 'toast show';
+    el.textContent = msg;
+    c.appendChild(el);
+    setTimeout(function(){ el.classList.remove('show'); setTimeout(function(){ el.remove(); }, 300); }, 2500);
+  }
+
+  var uid = (function(){ var n = 0; return function(){ return 'id' + Date.now() + '-' + (++n); }; })();
+
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+
+  function esc(s) {
+    if (typeof s !== 'string') return '';
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function escAttr(s) {
+    if (typeof s !== 'string') return '';
+    return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+
+  // ---- routing
+
+  var currentPage = 'dashboard';
+
+  function navigate(page) {
+    document.querySelectorAll('.page').forEach(function(p){ p.style.display = 'none'; });
+    var el = document.getElementById('page-' + page);
+    if (el) el.style.display = 'block';
+    document.querySelectorAll('.sidebar-nav a').forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('data-page') === page);
+    });
+    currentPage = page;
+    renderCurrent();
+  }
+
+  document.querySelectorAll('.sidebar-nav a[data-page]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      navigate(this.getAttribute('data-page'));
+      document.getElementById('sidebar').classList.remove('open');
+    });
+  });
+
+  document.getElementById('sidebarToggle').addEventListener('click', function(){
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+
+  // ---- dashboard
+
+  function renderDashboard() {
+    var g = document.getElementById('dash-grid');
+    var exp = data.experience.length;
+    var edu = data.education.length;
+    var proj = data.projects.length;
+    var skc = data.skills.length;
+    var skills = 0;
+    data.skills.forEach(function(c){ skills += c.items.length; });
+    g.innerHTML =
+      '<div class="dash-card"><div class="num">'+exp+'</div><div class="label">Experience entries</div></div>' +
+      '<div class="dash-card"><div class="num">'+edu+'</div><div class="label">Education entries</div></div>' +
+      '<div class="dash-card"><div class="num">'+proj+'</div><div class="label">Projects</div></div>' +
+      '<div class="dash-card"><div class="num">'+skc+'</div><div class="label">Skill categories</div></div>' +
+      '<div class="dash-card"><div class="num">'+skills+'</div><div class="label">Individual skills</div></div>';
+  }
+
+  // ---- about
+
+  function renderAbout() {
+    var a = data.about;
+    document.getElementById('about-first').value = a.first || '';
+    document.getElementById('about-last').value = a.last || '';
+    document.getElementById('about-title').value = a.title || '';
+    document.getElementById('about-location').value = a.location || '';
+    document.getElementById('about-summary').value = a.summary || '';
+    document.getElementById('about-photo').value = a.photo || '';
+  }
+
+  window.saveAbout = function() {
+    data.about = {
+      first: document.getElementById('about-first').value,
+      last: document.getElementById('about-last').value,
+      title: document.getElementById('about-title').value,
+      location: document.getElementById('about-location').value,
+      summary: document.getElementById('about-summary').value,
+      photo: document.getElementById('about-photo').value
+    };
+    toast('About section saved (in-memory)');
+  };
+
+  // ---- experience
+
+  function renderExperience() {
+    var el = document.getElementById('exp-list');
+    if (!data.experience.length) {
+      el.innerHTML = '<div class="empty-state"><i class="fa-solid fa-briefcase"></i><p>No experience entries yet.</p></div>';
+      return;
+    }
+    el.innerHTML = data.experience.map(function(e, i){
+      var bullets = (e.bullets || []).map(function(b){ return '\u2022 ' + b; }).join('\n');
+      return '<div class="item-card" draggable="true" data-index="' + i + '" data-type="experience" data-id="' + e.id + '">' +
+        '<div class="item-card-header">' +
+          '<div style="display:flex;align-items:center;gap:10px;min-width:0;">' +
+            '<span class="drag-handle" draggable="false"><i class="fa-solid fa-grip-vertical"></i></span>' +
+            '<div>' +
+              '<div class="item-card-title">' + esc(e.company) + '</div>' +
+              '<div class="item-card-sub">' + esc(e.role) + (e.location ? ' \u00b7 ' + esc(e.location) : '') + ' \u2014 ' + esc(e.date) + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="item-card-actions">' +
+            '<button class="btn btn-sm" onclick="editExperience(\'' + e.id + '\')"><i class="fa-solid fa-pen"></i></button>' +
+            '<button class="btn btn-sm btn-danger" onclick="deleteExperience(\'' + e.id + '\')"><i class="fa-solid fa-trash"></i></button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="item-card-body">' + bullets.replace(/\n/g, '<br>') + '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  window.addExperience = function() {
+    openModal('Add experience', renderExpForm({
+      id: uid(),
+      company: '',
+      role: '',
+      location: '',
+      date: '',
+      bullets: ['']
+    }));
+  };
+
+  window.editExperience = function(id) {
+    var e = data.experience.find(function(x){ return x.id === id; });
+    if (e) openModal('Edit experience', renderExpForm(clone(e)));
+  };
+
+  window.deleteExperience = function(id) {
+    if (!confirm('Delete this experience entry?')) return;
+    data.experience = data.experience.filter(function(x){ return x.id !== id; });
+    renderExperience();
+    renderDashboard();
+    toast('Experience deleted');
+  };
+
+  function renderExpForm(e) {
+    var bulletsHTML = (e.bullets || ['']).map(function(b, i){
+      return '<div style="display:flex;gap:8px;margin-bottom:8px;">' +
+        '<input type="text" class="exp-bullet" value="' + esc(b) + '" placeholder="Describe an accomplishment..." style="flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--bg);" />' +
+        '<button class="btn btn-sm btn-danger" onclick="removeBullet(this)" style="flex-shrink:0;"><i class="fa-solid fa-xmark"></i></button>' +
+      '</div>';
+    }).join('');
+    return '<input type="hidden" class="exp-id" value="' + esc(e.id) + '" />' +
+      '<div class="form-group"><label>Company</label><input type="text" class="exp-company" value="' + esc(e.company) + '" /></div>' +
+      '<div class="form-row">' +
+        '<div class="form-group"><label>Role / Title</label><input type="text" class="exp-role" value="' + esc(e.role) + '" /></div>' +
+        '<div class="form-group"><label>Location</label><input type="text" class="exp-location" value="' + esc(e.location || '') + '" /></div>' +
+      '</div>' +
+      '<div class="form-group"><label>Date</label><input type="text" class="exp-date" value="' + esc(e.date) + '" placeholder="e.g. Present" /></div>' +
+      '<div class="form-group"><label>Accomplishments</label><div id="bullets-container">' + bulletsHTML + '</div>' +
+      '<button class="btn btn-sm" onclick="addBullet()" style="margin-top:4px;"><i class="fa-solid fa-plus"></i> Add bullet</button></div>';
+  }
+
+  window.addBullet = function() {
+    var c = document.getElementById('bullets-container');
+    var d = document.createElement('div');
+    d.style.cssText = 'display:flex;gap:8px;margin-bottom:8px;';
+    d.innerHTML = '<input type="text" class="exp-bullet" value="" placeholder="Describe an accomplishment..." style="flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--bg);" />' +
+      '<button class="btn btn-sm btn-danger" onclick="removeBullet(this)" style="flex-shrink:0;"><i class="fa-solid fa-xmark"></i></button>';
+    c.appendChild(d);
+  };
+
+  window.removeBullet = function(btn) {
+    btn.parentElement.remove();
+  };
+
+  // ---- education
+
+  function renderEducation() {
+    var el = document.getElementById('edu-list');
+    if (!data.education.length) {
+      el.innerHTML = '<div class="empty-state"><i class="fa-solid fa-graduation-cap"></i><p>No education entries yet.</p></div>';
+      return;
+    }
+    el.innerHTML = data.education.map(function(e, i){
+      return '<div class="item-card" draggable="true" data-index="' + i + '" data-type="education" data-id="' + e.id + '">' +
+        '<div class="item-card-header">' +
+          '<div style="display:flex;align-items:center;gap:10px;min-width:0;">' +
+            '<span class="drag-handle" draggable="false"><i class="fa-solid fa-grip-vertical"></i></span>' +
+            '<div>' +
+              '<div class="item-card-title">' + esc(e.school) + '</div>' +
+              '<div class="item-card-sub">' + esc(e.degree) + ' \u2014 ' + esc(e.date) + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="item-card-actions">' +
+            '<button class="btn btn-sm" onclick="editEducation(\'' + e.id + '\')"><i class="fa-solid fa-pen"></i></button>' +
+            '<button class="btn btn-sm btn-danger" onclick="deleteEducation(\'' + e.id + '\')"><i class="fa-solid fa-trash"></i></button>' +
+          '</div>' +
+        '</div>' +
+        (e.notes ? '<div class="item-card-body">' + esc(e.notes) + '</div>' : '') +
+      '</div>';
+    }).join('');
+  }
+
+  window.addEducation = function() {
+    openModal('Add education', renderEduForm({
+      id: uid(),
+      school: '',
+      degree: '',
+      date: '',
+      notes: ''
+    }));
+  };
+
+  window.editEducation = function(id) {
+    var e = data.education.find(function(x){ return x.id === id; });
+    if (e) openModal('Edit education', renderEduForm(clone(e)));
+  };
+
+  window.deleteEducation = function(id) {
+    if (!confirm('Delete this education entry?')) return;
+    data.education = data.education.filter(function(x){ return x.id !== id; });
+    renderEducation();
+    renderDashboard();
+    toast('Education deleted');
+  };
+
+  function renderEduForm(e) {
+    return '<input type="hidden" class="edu-id" value="' + esc(e.id) + '" />' +
+      '<div class="form-group"><label>School</label><input type="text" class="edu-school" value="' + esc(e.school) + '" /></div>' +
+      '<div class="form-row">' +
+        '<div class="form-group"><label>Degree / Program</label><input type="text" class="edu-degree" value="' + esc(e.degree) + '" /></div>' +
+        '<div class="form-group"><label>Date</label><input type="text" class="edu-date" value="' + esc(e.date) + '" placeholder="e.g. 2018 \u2013 2020" /></div>' +
+      '</div>' +
+      '<div class="form-group"><label>Notes</label><textarea class="edu-notes" rows="3">' + esc(e.notes || '') + '</textarea></div>';
+  }
+
+  // ---- projects
+
+  function renderProjects() {
+    var el = document.getElementById('proj-list');
+    if (!data.projects.length) {
+      el.innerHTML = '<div class="empty-state"><i class="fa-solid fa-code"></i><p>No projects yet.</p></div>';
+      return;
+    }
+    el.innerHTML = data.projects.map(function(p, i){
+      var tags = (p.tags || []).map(function(t){ return '<span>' + esc(t) + '</span>'; }).join('');
+      var links = (p.links || []).map(function(l){ return esc(l.label) + ' (' + esc(l.url) + ')'; }).join('; ');
+      return '<div class="item-card" draggable="true" data-index="' + i + '" data-type="projects" data-id="' + p.id + '">' +
+        '<div class="item-card-header">' +
+          '<div style="display:flex;align-items:center;gap:10px;min-width:0;">' +
+            '<span class="drag-handle" draggable="false"><i class="fa-solid fa-grip-vertical"></i></span>' +
+            '<div>' +
+              '<div class="item-card-title">' + esc(p.title) + '</div>' +
+              '<div class="item-card-sub">' + esc(p.tech) + ' \u2014 ' + p.category + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="item-card-actions">' +
+            '<button class="btn btn-sm" onclick="editProject(\'' + p.id + '\')"><i class="fa-solid fa-pen"></i></button>' +
+            '<button class="btn btn-sm btn-danger" onclick="deleteProject(\'' + p.id + '\')"><i class="fa-solid fa-trash"></i></button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="item-card-body">' + esc(p.description) + '</div>' +
+        (tags ? '<div class="item-card-tags">' + tags + '</div>' : '') +
+        (links ? '<div class="item-card-body" style="margin-top:4px;font-size:12px;">Links: ' + esc(links) + '</div>' : '') +
+      '</div>';
+    }).join('');
+  }
+
+  window.addProject = function() {
+    openModal('Add project', renderProjForm({
+      id: uid(),
+      title: '',
+      tech: '',
+      category: 'web',
+      description: '',
+      tags: [],
+      links: [{ label: '', url: '' }]
+    }));
+  };
+
+  window.editProject = function(id) {
+    var p = data.projects.find(function(x){ return x.id === id; });
+    if (p) openModal('Edit project', renderProjForm(clone(p)));
+  };
+
+  window.deleteProject = function(id) {
+    if (!confirm('Delete this project?')) return;
+    data.projects = data.projects.filter(function(x){ return x.id !== id; });
+    renderProjects();
+    renderDashboard();
+    toast('Project deleted');
+  };
+
+  function renderProjForm(p) {
+    var tagsStr = (p.tags || []).join(', ');
+    var linksHTML = (p.links || [{label:'',url:''}]).map(function(l, i){
+      return '<div class="form-row" style="margin-bottom:8px;">' +
+        '<div class="form-group" style="margin-bottom:0;"><input type="text" class="proj-link-label" value="' + esc(l.label) + '" placeholder="Label" style="padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--bg);width:100%;" /></div>' +
+        '<div class="form-group" style="margin-bottom:0;display:flex;gap:6px;"><input type="text" class="proj-link-url" value="' + esc(l.url) + '" placeholder="URL" style="flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--bg);" />' +
+        (i > 0 ? '<button class="btn btn-sm btn-danger" onclick="this.parentElement.parentElement.remove()"><i class="fa-solid fa-xmark"></i></button>' : '') + '</div>' +
+      '</div>';
+    }).join('');
+    return '<input type="hidden" class="proj-id" value="' + esc(p.id) + '" />' +
+      '<div class="form-group"><label>Project title</label><input type="text" class="proj-title" value="' + esc(p.title) + '" /></div>' +
+      '<div class="form-row">' +
+        '<div class="form-group"><label>Tech summary</label><input type="text" class="proj-tech" value="' + esc(p.tech) + '" placeholder="e.g. React \u00b7 CSS \u00b7 Bootstrap" /></div>' +
+        '<div class="form-group"><label>Category</label><select class="proj-category">' +
+          '<option value="web"' + (p.category==='web'?' selected':'') + '>Web</option>' +
+          '<option value="mobile"' + (p.category==='mobile'?' selected':'') + '>Mobile</option>' +
+          '<option value="tool"' + (p.category==='tool'?' selected':'') + '>Tool</option>' +
+        '</select></div>' +
+      '</div>' +
+      '<div class="form-group"><label>Description</label><textarea class="proj-desc" rows="3">' + esc(p.description) + '</textarea></div>' +
+      '<div class="form-group"><label>Tags (comma-separated)</label><input type="text" class="proj-tags" value="' + esc(tagsStr) + '" placeholder="e.g. React, CSS, Bootstrap" /></div>' +
+      '<div class="form-group"><label>Links</label><div id="proj-links">' + linksHTML + '</div>' +
+      '<button class="btn btn-sm" onclick="addProjLink()" style="margin-top:4px;"><i class="fa-solid fa-plus"></i> Add link</button></div>';
+  }
+
+  window.addProjLink = function() {
+    var c = document.getElementById('proj-links');
+    var d = document.createElement('div');
+    d.className = 'form-row';
+    d.style.marginBottom = '8px';
+    d.innerHTML = '<div class="form-group" style="margin-bottom:0;"><input type="text" class="proj-link-label" value="" placeholder="Label" style="padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--bg);width:100%;" /></div>' +
+      '<div class="form-group" style="margin-bottom:0;display:flex;gap:6px;"><input type="text" class="proj-link-url" value="" placeholder="URL" style="flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;background:var(--bg);" />' +
+      '<button class="btn btn-sm btn-danger" onclick="this.parentElement.parentElement.remove()"><i class="fa-solid fa-xmark"></i></button></div>';
+    c.appendChild(d);
+  };
+
+  // ---- skills
+
+  function renderSkills() {
+    var c = document.getElementById('skills-container');
+    if (!data.skills.length) {
+      c.innerHTML = '<div class="empty-state"><i class="fa-solid fa-wrench"></i><p>No skill categories yet.</p></div>';
+      return;
+    }
+    c.innerHTML = data.skills.map(function(cat, i){
+      var items = (cat.items || []).map(function(s){
+        return '<span class="skill-tag">' + esc(s) + ' <span class="remove" onclick="removeSkill(\'' + cat.id + '\',\'' + escAttr(s) + '\')"><i class="fa-solid fa-xmark"></i></span></span>';
+      }).join('');
+      return '<div class="skill-cat" draggable="true" data-index="' + i + '" data-type="skills" data-id="' + cat.id + '">' +
+        '<div class="skill-cat-header">' +
+          '<div style="display:flex;align-items:center;gap:8px;">' +
+            '<span class="drag-handle" draggable="false"><i class="fa-solid fa-grip-vertical"></i></span>' +
+            '<h4>' + esc(cat.name) + '</h4>' +
+          '</div>' +
+          '<div style="display:flex;gap:6px;">' +
+            '<button class="btn btn-sm" onclick="editSkillCategory(\'' + cat.id + '\')"><i class="fa-solid fa-pen"></i></button>' +
+            '<button class="btn btn-sm btn-danger" onclick="deleteSkillCategory(\'' + cat.id + '\')"><i class="fa-solid fa-trash"></i></button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="skill-list">' + items + '</div>' +
+        '<div class="skill-add-form">' +
+          '<input type="text" id="newskill-' + cat.id + '" placeholder="Add skill..." onkeydown="if(event.key===\'Enter\'){event.preventDefault();addSkill(\'' + cat.id + '\')}" />' +
+          '<button class="btn btn-sm" onclick="addSkill(\'' + cat.id + '\')"><i class="fa-solid fa-plus"></i></button>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  window.addSkill = function(catId) {
+    var inp = document.getElementById('newskill-' + catId);
+    var val = inp.value.trim();
+    if (!val) return;
+    var cat = data.skills.find(function(c){ return c.id === catId; });
+    if (cat) {
+      if (cat.items.indexOf(val) === -1) cat.items.push(val);
+      inp.value = '';
+      renderSkills();
+      renderDashboard();
+      toast('Skill added');
+    }
+  };
+
+  window.removeSkill = function(catId, skill) {
+    var cat = data.skills.find(function(c){ return c.id === catId; });
+    if (cat) {
+      cat.items = cat.items.filter(function(s){ return s !== skill; });
+      renderSkills();
+      renderDashboard();
+    }
+  };
+
+  window.addSkillCategory = function() {
+    openModal('Add skill category', '' +
+      '<div class="form-group"><label>Category name</label><input type="text" id="skillcat-name" placeholder="e.g. Languages" /></div>' +
+      '<div class="form-group"><label>Skills (comma-separated)</label><input type="text" id="skillcat-items" placeholder="e.g. JavaScript, TypeScript, Java" /></div>',
+      function() {
+        var name = document.getElementById('skillcat-name').value.trim();
+        if (!name) return toast('Category name required');
+        var items = document.getElementById('skillcat-items').value.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+        data.skills.push({ id: uid(), name: name, items: items });
+        renderSkills();
+        renderDashboard();
+        toast('Category added');
+      }
+    );
+  };
+
+  window.editSkillCategory = function(id) {
+    var cat = data.skills.find(function(c){ return c.id === id; });
+    if (!cat) return;
+    openModal('Edit category', '' +
+      '<input type="hidden" id="skillcat-id" value="' + cat.id + '" />' +
+      '<div class="form-group"><label>Category name</label><input type="text" id="skillcat-name" value="' + esc(cat.name) + '" /></div>' +
+      '<div class="form-group"><label>Skills (comma-separated)</label><input type="text" id="skillcat-items" value="' + esc((cat.items || []).join(', ')) + '" /></div>',
+      function() {
+        var c = data.skills.find(function(x){ return x.id === document.getElementById('skillcat-id').value; });
+        if (!c) return;
+        c.name = document.getElementById('skillcat-name').value.trim() || c.name;
+        c.items = document.getElementById('skillcat-items').value.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+        renderSkills();
+        renderDashboard();
+        toast('Category updated');
+      }
+    );
+  };
+
+  window.deleteSkillCategory = function(id) {
+    if (!confirm('Delete this skill category?')) return;
+    data.skills = data.skills.filter(function(c){ return c.id !== id; });
+    renderSkills();
+    renderDashboard();
+    toast('Category deleted');
+  };
+
+  // ---- contact
+
+  function renderContact() {
+    var c = data.contact;
+    document.getElementById('contact-github').value = c.github || '';
+    document.getElementById('contact-linkedin').value = c.linkedin || '';
+    document.getElementById('contact-email').value = c.email || '';
+    document.getElementById('contact-note').value = c.note || '';
+    document.getElementById('contact-resume').value = c.resume || '';
+  }
+
+  window.saveContact = function() {
+    data.contact = {
+      github: document.getElementById('contact-github').value,
+      linkedin: document.getElementById('contact-linkedin').value,
+      email: document.getElementById('contact-email').value,
+      note: document.getElementById('contact-note').value,
+      resume: document.getElementById('contact-resume').value
+    };
+    toast('Contact saved (in-memory)');
+  };
+
+  // ---- data page
+
+  function renderData() {
+    document.getElementById('json-preview').textContent = JSON.stringify(data, null, 2);
+  }
+
+  window.previewSite = function() {
+    window.open('index.html', '_blank');
+  };
+
+  // ---- modal
+
+  var modalCallback = null;
+
+  window.openModal = function(title, body, customSave) {
+    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-body').innerHTML = body;
+    document.getElementById('modal-overlay').classList.add('open');
+    var saveBtn = document.getElementById('modal-save');
+    if (customSave) {
+      modalCallback = customSave;
+    } else {
+      modalCallback = null;
+    }
+    saveBtn.textContent = 'Save';
+    saveBtn.style.display = '';
+  };
+
+  window.closeModal = function() {
+    document.getElementById('modal-overlay').classList.remove('open');
+    modalCallback = null;
+  };
+
+  window.modalSave = function() {
+    // Experience
+    var expId = document.querySelector('.exp-id');
+    if (expId) {
+      var id = expId.value;
+      var company = document.querySelector('.exp-company').value;
+      var role = document.querySelector('.exp-role').value;
+      var location = document.querySelector('.exp-location').value;
+      var date = document.querySelector('.exp-date').value;
+      var bulletEls = document.querySelectorAll('.exp-bullet');
+      var bullets = [];
+      bulletEls.forEach(function(el){
+        var v = el.value.trim();
+        if (v) bullets.push(v);
+      });
+
+      var existing = data.experience.find(function(x){ return x.id === id; });
+      if (existing) {
+        existing.company = company;
+        existing.role = role;
+        existing.location = location;
+        existing.date = date;
+        existing.bullets = bullets;
+      } else {
+        data.experience.push({ id: id, company: company, role: role, location: location, date: date, bullets: bullets });
+      }
+      renderExperience();
+      renderDashboard();
+      toast('Experience saved');
+      closeModal();
+      return;
+    }
+
+    // Education
+    var eduId = document.querySelector('.edu-id');
+    if (eduId) {
+      var id = eduId.value;
+      var school = document.querySelector('.edu-school').value;
+      var degree = document.querySelector('.edu-degree').value;
+      var date = document.querySelector('.edu-date').value;
+      var notes = document.querySelector('.edu-notes').value;
+      var existing = data.education.find(function(x){ return x.id === id; });
+      if (existing) {
+        existing.school = school;
+        existing.degree = degree;
+        existing.date = date;
+        existing.notes = notes;
+      } else {
+        data.education.push({ id: id, school: school, degree: degree, date: date, notes: notes });
+      }
+      renderEducation();
+      renderDashboard();
+      toast('Education saved');
+      closeModal();
+      return;
+    }
+
+    // Project
+    var projId = document.querySelector('.proj-id');
+    if (projId) {
+      var id = projId.value;
+      var title = document.querySelector('.proj-title').value;
+      var tech = document.querySelector('.proj-tech').value;
+      var category = document.querySelector('.proj-category').value;
+      var description = document.querySelector('.proj-desc').value;
+      var tagsStr = document.querySelector('.proj-tags').value;
+      var tags = tagsStr.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+
+      var linkLabelEls = document.querySelectorAll('.proj-link-label');
+      var linkUrlEls = document.querySelectorAll('.proj-link-url');
+      var links = [];
+      for (var i = 0; i < linkLabelEls.length; i++) {
+        var label = linkLabelEls[i].value.trim();
+        var url = linkUrlEls[i].value.trim();
+        if (label || url) links.push({ label: label, url: url });
+      }
+
+      var existing = data.projects.find(function(x){ return x.id === id; });
+      if (existing) {
+        existing.title = title;
+        existing.tech = tech;
+        existing.category = category;
+        existing.description = description;
+        existing.tags = tags;
+        existing.links = links;
+      } else {
+        data.projects.push({ id: id, title: title, tech: tech, category: category, description: description, tags: tags, links: links });
+      }
+      renderProjects();
+      renderDashboard();
+      toast('Project saved');
+      closeModal();
+      return;
+    }
+
+    if (modalCallback) {
+      modalCallback();
+      closeModal();
+    }
+  };
+
+  document.getElementById('modal-overlay').addEventListener('click', function(e){
+    if (e.target === this) closeModal();
+  });
+
+  // ---- utils
+
+  function renderCurrent() {
+    switch (currentPage) {
+      case 'dashboard': renderDashboard(); break;
+      case 'about': renderAbout(); break;
+      case 'experience': renderExperience(); break;
+      case 'education': renderEducation(); break;
+      case 'projects': renderProjects(); break;
+      case 'skills': renderSkills(); break;
+      case 'contact': renderContact(); break;
+      case 'data': renderData(); break;
+    }
+  }
+
+  // ---- drag-and-drop reordering (delegation-based)
+
+  var dragSrc = null;
+
+  function reorderArray(arr, fromIdx, toIdx) {
+    if (fromIdx === toIdx) return;
+    var item = arr.splice(fromIdx, 1)[0];
+    arr.splice(toIdx, 0, item);
+  }
+
+  document.addEventListener('dragstart', function(e){
+    var card = e.target.closest('[draggable="true"]');
+    if (!card || card.getAttribute('data-type') === null) return;
+    dragSrc = card;
+    card.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', card.getAttribute('data-id'));
+  });
+
+  document.addEventListener('dragend', function(e){
+    var card = e.target.closest('[draggable="true"]');
+    if (card) card.classList.remove('dragging');
+    document.querySelectorAll('.drag-over').forEach(function(el){ el.classList.remove('drag-over'); });
+    dragSrc = null;
+  });
+
+  document.addEventListener('dragover', function(e){
+    var card = e.target.closest('[draggable="true"]');
+    if (!card || !dragSrc || card === dragSrc) return;
+    if (card.getAttribute('data-type') !== dragSrc.getAttribute('data-type')) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    document.querySelectorAll('.drag-over').forEach(function(el){ el.classList.remove('drag-over'); });
+    card.classList.add('drag-over');
+  });
+
+  document.addEventListener('dragleave', function(e){
+    var card = e.target.closest('[draggable="true"]');
+    if (card) card.classList.remove('drag-over');
+  });
+
+  document.addEventListener('drop', function(e){
+    var card = e.target.closest('[draggable="true"]');
+    if (!card || !dragSrc || card === dragSrc) return;
+    if (card.getAttribute('data-type') !== dragSrc.getAttribute('data-type')) return;
+    e.preventDefault();
+
+    var type = card.getAttribute('data-type');
+    var fromIdx = parseInt(dragSrc.getAttribute('data-index'), 10);
+    var toIdx = parseInt(card.getAttribute('data-index'), 10);
+
+    if (!isNaN(fromIdx) && !isNaN(toIdx)) {
+      switch (type) {
+        case 'experience': reorderArray(data.experience, fromIdx, toIdx); break;
+        case 'education': reorderArray(data.education, fromIdx, toIdx); break;
+        case 'projects': reorderArray(data.projects, fromIdx, toIdx); break;
+        case 'skills': reorderArray(data.skills, fromIdx, toIdx); break;
+      }
+      renderCurrent();
+      toast('Reordered');
+    }
+
+    document.querySelectorAll('.drag-over').forEach(function(el){ el.classList.remove('drag-over'); });
+    dragSrc = null;
+  });
+
+  navigate('dashboard');
+
+})();
+
+(function(){
+  var root = document.documentElement;
+  var btn = document.getElementById('theme-toggle');
+  function apply(t) {
+    root.classList.toggle('night', t === 'night');
+    if (btn) btn.textContent = t === 'night' ? '🌙' : '☀️';
+  }
+  apply('day');
+  if (btn) {
+    btn.addEventListener('click', function(){
+      apply(root.classList.contains('night') ? 'day' : 'night');
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign In — John Escalona</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:      oklch(97% 0.016 70);
+      --surface: oklch(99% 0.01 70);
+      --fg:      oklch(20% 0.025 65);
+      --muted:   oklch(48% 0.03 65);
+      --border:  oklch(86% 0.018 70);
+      --accent:  oklch(50% 0.18 35);
+      --accent-soft: oklch(65% 0.13 35);
+      --radius: 10px;
+      --font-display: 'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --font-body:    'DM Sans', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    }
+    :root.night {
+      --bg:      oklch(10% 0.018 260);
+      --surface: oklch(16% 0.022 260);
+      --fg:      oklch(92% 0.012 255);
+      --muted:   oklch(58% 0.02 255);
+      --border:  oklch(28% 0.03 260);
+      --accent:  oklch(56% 0.18 230);
+      --accent-soft: oklch(46% 0.14 230);
+    }
+    .theme-toggle {
+      position: fixed; top: 16px; right: 16px; z-index: 200;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
+      color: var(--muted); cursor: pointer; font-size: 16px;
+      width: 34px; height: 34px; display: grid; place-items: center;
+      transition: all 0.15s;
+    }
+    .theme-toggle:hover { background: linear-gradient(135deg, var(--accent-soft), var(--accent)); color: white; border-color: transparent; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { height: 100%; -webkit-font-smoothing: antialiased; }
+    body {
+      height: 100%;
+      font: 400 15px/1.6 var(--font-body);
+      color: var(--fg);
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .login-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 48px 40px 40px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+    }
+    h1 {
+      font: 700 24px/1.2 var(--font-display);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .welcome {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .form-group {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font: 500 13px/1 var(--font-body);
+      margin-bottom: 6px;
+      color: var(--muted);
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font: 400 15px/1.4 var(--font-body);
+      background: var(--bg);
+      color: var(--fg);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .form-group input:focus { border-color: var(--accent); }
+    .form-group input.error { border-color: #c0392b; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font: 500 15px/1 var(--font-body);
+      border: none;
+      background: var(--fg);
+      color: var(--surface);
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.88; }
+    .error {
+      font-size: 13px;
+      color: #c0392b;
+      margin-top: 12px;
+      min-height: 20px;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">☀️</button>
+  <div class="login-card">
+    <h1>Welcome back, John</h1>
+    <p class="welcome">Manage your portfolio</p>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" id="email" placeholder="you@example.com" />
+    </div>
+    <button type="button" class="btn" id="signin-btn">Sign In</button>
+    <div class="error" id="error-msg"></div>
+    <a href="index.html" class="back-link">&larr; Back to portfolio</a>
+  </div>
+
+  <script>
+    (function(){
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle');
+      var STORE = 'je-theme';
+      var saved = null;
+      try { saved = localStorage.getItem(STORE); } catch(_){}
+      var theme = saved === 'night' ? 'night' : 'day';
+      function apply(t) {
+        root.classList.toggle('night', t === 'night');
+        if (btn) btn.textContent = t === 'night' ? '🌙' : '☀️';
+      }
+      apply(theme);
+      if (btn) {
+        btn.addEventListener('click', function(){
+          var next = root.classList.contains('night') ? 'day' : 'night';
+          apply(next);
+          try { localStorage.setItem(STORE, next); } catch(_){}
+        });
+      }
+
+      var emailInput = document.getElementById('email');
+      var signinBtn = document.getElementById('signin-btn');
+      var errorMsg = document.getElementById('error-msg');
+      if (signinBtn) {
+        signinBtn.addEventListener('click', function(){
+          var val = emailInput ? emailInput.value.trim() : '';
+          if (!val) {
+            errorMsg.textContent = 'Please enter your email address.';
+            if (emailInput) emailInput.classList.add('error');
+            return;
+          }
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+            errorMsg.textContent = 'Please enter a valid email address.';
+            if (emailInput) emailInput.classList.add('error');
+            return;
+          }
+          errorMsg.textContent = '';
+          if (emailInput) emailInput.classList.remove('error');
+          window.location.href = 'admin.html';
+        });
+      }
+      if (emailInput) {
+        emailInput.addEventListener('input', function(){
+          emailInput.classList.remove('error');
+          errorMsg.textContent = '';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
