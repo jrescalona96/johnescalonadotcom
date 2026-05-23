@@ -4,7 +4,7 @@ import { ExtEndpoints } from "../../assets/constants/AppUrls";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border py-8 text-center text-[13px] text-muted">
+    <footer className="border-t border-border py-8 text-center text-sm text-muted">
       <Container>
         <p>
           &copy; 2026 John Escalona &middot;{" "}

@@ -27,21 +27,21 @@ export function ResumePage() {
 
   return (
     <>
-      <div className="pt-[120px] pb-4">
-        <Container className="max-w-[900px]">
-          <NavLink to={Endpoints.home} className="mb-4 inline-flex items-center gap-1 text-[14px] text-muted hover:text-foreground">
+      <div className="pt-30 pb-4">
+        <Container className="max-w-4xl">
+          <NavLink to={Endpoints.home} className="mb-4 inline-flex items-center gap-1 text-sm text-muted hover:text-foreground">
             &larr; Back home
           </NavLink>
 
           <div className="flex flex-wrap items-start justify-between gap-6">
             <div>
-              <h1 className="font-display text-[clamp(30px,3.5vw,42px)] font-bold leading-[1.1] tracking-tight">
+              <h1 className="font-display text-[clamp(30px,3.5vw,42px)] font-bold leading-none tracking-tight">
                 John Escalona
               </h1>
-              <p className="font-body text-[17px] font-medium leading-[1.4] text-muted">
+              <p className="font-body text-base font-medium leading-snug text-muted">
                 Software Developer
               </p>
-              <div className="mt-[10px] flex flex-wrap gap-5 text-[14px] text-muted">
+              <div className="mt-2.5 flex flex-wrap gap-5 text-sm text-muted">
                 <span>
                   <FontAwesomeIcon icon={faLocationDot} className="mr-1 w-4 text-center text-accent" />
                   Southern California
@@ -68,7 +68,7 @@ export function ResumePage() {
             </Button>
           </div>
 
-          <div className="mt-6 rounded-content border border-border bg-surface p-7 text-[15px] leading-relaxed text-muted">
+          <div className="mt-6 rounded-content border border-border bg-surface p-7 text-sm leading-relaxed text-muted">
             <strong className="text-foreground">Full-stack software developer</strong> with a Computer Science degree
             from Cal Poly Pomona and professional experience shipping production features at Mercury Insurance. I build
             across mobile (Flutter), web (React, Angular), and backend (Node.js, Java/Spring Boot), with a focus on
@@ -76,29 +76,29 @@ export function ResumePage() {
             engagement through in-app feedback systems. Open to opportunities in Southern California and remote.
           </div>
 
-          <h2 className="mt-10 mb-6 border-b border-border pb-2 font-display text-[18px] font-semibold leading-none tracking-tight">
+          <h2 className="mt-10 mb-6 border-b border-border pb-2 font-display text-lg font-semibold leading-none tracking-tight">
             Experience
           </h2>
 
           {experiences.map((exp) => (
             <div key={exp.id} className="mb-8 grid grid-cols-1 gap-6 sm:grid-cols-[150px_1fr]">
-              <div className="font-mono text-[13px] leading-[1.4] text-muted pt-[2px]">
+              <div className="font-mono text-sm leading-snug text-muted pt-0.5">
                 {formatDate(exp)}
               </div>
               <div>
-                <div className="font-display text-[16px] font-semibold leading-snug">
+                <div className="font-display text-base font-semibold leading-snug">
                   {exp.entity}
                 </div>
                 {exp.role && (
-                  <p className="font-body text-[14px] font-medium leading-[1.4] text-muted mb-[10px]">
+                  <p className="font-body text-sm font-medium leading-snug text-muted mb-2.5">
                     {exp.role}
                     {exp.location ? ` · ${exp.location}` : ""}
                   </p>
                 )}
-                <div className="text-[14px] leading-relaxed text-muted">
+                <div className="text-sm leading-relaxed text-muted">
                   <ul className="list-none p-0">
                     {exp.description.map((item, i) => (
-                      <li key={i} className="relative mb-[6px] pl-4 before:absolute before:left-0 before:top-[10px] before:h-[5px] before:w-[5px] before:rounded-full before:bg-accent-soft">
+                      <li key={i} className="relative mb-1.5 pl-4 before:absolute before:left-0 before:top-2.5 before:h-1 before:w-1 before:rounded-full before:bg-accent-soft">
                         {item}
                       </li>
                     ))}
@@ -108,44 +108,44 @@ export function ResumePage() {
             </div>
           ))}
 
-          <h2 className="mt-10 mb-6 border-b border-border pb-2 font-display text-[18px] font-semibold leading-none tracking-tight">
+          <h2 className="mt-10 mb-6 border-b border-border pb-2 font-display text-lg font-semibold leading-none tracking-tight">
             Skills
           </h2>
 
           <div className="mb-12">
-            <div className="mb-3 grid grid-cols-1 gap-4 sm:grid-cols-[130px_1fr] text-[14px]">
+            <div className="mb-3 grid grid-cols-1 gap-4 sm:grid-cols-[130px_1fr] text-sm">
               <span className="font-semibold text-foreground">Languages</span>
               <span className="text-muted">
                 {skillsByCategory.languages.map((s) => (
                   <span
                     key={s.id}
-                    className="mr-1 mb-1 inline-block rounded-sm border border-border bg-surface px-[10px] py-[2px] text-[13px]"
+                    className="mr-1 mb-1 inline-block rounded-sm border border-border bg-surface px-2.5 py-0.5 text-sm"
                   >
                     {s.name}
                   </span>
                 ))}
               </span>
             </div>
-            <div className="mb-3 grid grid-cols-1 gap-4 sm:grid-cols-[130px_1fr] text-[14px]">
+            <div className="mb-3 grid grid-cols-1 gap-4 sm:grid-cols-[130px_1fr] text-sm">
               <span className="font-semibold text-foreground">Frameworks</span>
               <span className="text-muted">
                 {skillsByCategory.frameworks.map((s) => (
                   <span
                     key={s.id}
-                    className="mr-1 mb-1 inline-block rounded-sm border border-border bg-surface px-[10px] py-[2px] text-[13px]"
+                    className="mr-1 mb-1 inline-block rounded-sm border border-border bg-surface px-2.5 py-0.5 text-sm"
                   >
                     {s.name}
                   </span>
                 ))}
               </span>
             </div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-[130px_1fr] text-[14px]">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-[130px_1fr] text-sm">
               <span className="font-semibold text-foreground">Tools</span>
               <span className="text-muted">
                 {skillsByCategory.tools.map((s) => (
                   <span
                     key={s.id}
-                    className="mr-1 mb-1 inline-block rounded-sm border border-border bg-surface px-[10px] py-[2px] text-[13px]"
+                    className="mr-1 mb-1 inline-block rounded-sm border border-border bg-surface px-2.5 py-0.5 text-sm"
                   >
                     {s.name}
                   </span>

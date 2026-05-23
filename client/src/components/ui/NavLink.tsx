@@ -3,7 +3,7 @@ import { cn } from "../../lib/utils";
 import { Link, type LinkProps } from "react-router-dom";
 
 const navLinkVariants = cva(
-  "rounded-md px-[14px] py-2 text-sm font-medium transition-colors duration-150",
+  "rounded-md px-3.5 py-2 text-sm font-medium transition-colors duration-150",
   {
     variants: {
       active: {

@@ -28,11 +28,11 @@ export function NavBar() {
   };
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-100 border-b border-border bg-white/82 backdrop-blur-[12px]">
-      <Container className="flex h-[60px] items-center justify-between">
+    <nav className="fixed inset-x-0 top-0 z-100 border-b border-border bg-white/82 backdrop-blur-md">
+      <Container className="flex h-15 items-center justify-between">
         <NavLink
           to={Endpoints.home}
-          className="font-display text-[16px] font-semibold leading-none tracking-tight"
+          className="font-display text-base font-semibold leading-none tracking-tight"
         >
           John Escalona
         </NavLink>
@@ -42,7 +42,7 @@ export function NavBar() {
               <a
                 href={`#${s.id}`}
                 className={cn(
-                  "rounded-md px-[14px] py-2 text-sm font-medium transition-colors duration-150",
+                  "rounded-md px-3.5 py-2 text-sm font-medium transition-colors duration-150",
                   activeSection === s.id
                     ? "text-accent"
                     : "text-foreground hover:bg-border"

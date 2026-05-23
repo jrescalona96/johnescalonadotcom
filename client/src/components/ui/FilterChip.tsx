@@ -2,7 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 
 const filterChipVariants = cva(
-  "rounded-full border px-4 py-[6px] font-body text-[13px] leading-[1.4] transition-all duration-150 cursor-pointer",
+  "rounded-full border px-4 py-1.5 font-body text-sm leading-snug transition-all duration-150 cursor-pointer",
   {
     variants: {
       active: {

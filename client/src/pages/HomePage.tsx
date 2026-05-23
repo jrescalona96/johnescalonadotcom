@@ -53,16 +53,16 @@ export function HomePage() {
 
 function HeroSection() {
   return (
-    <section id="home" className="flex min-h-screen items-center px-6 pb-20 pt-[120px] scroll-mt-[120px]">
+    <section id="home" className="flex min-h-screen items-center px-6 pb-20 pt-30 scroll-mt-30">
       <Container className="grid grid-cols-1 items-center gap-14 md:grid-cols-[1fr_280px]">
         <div>
-          <h1 className="font-display text-[clamp(36px,5vw,64px)] font-bold leading-[1.08] tracking-tighter">
+          <h1 className="font-display text-[clamp(36px,5vw,64px)] font-bold leading-none tracking-tighter">
             John Escalona
           </h1>
-          <p className="font-body text-[clamp(18px,2vw,22px)] font-medium leading-[1.4] text-muted">
+          <p className="font-body text-[clamp(18px,2vw,22px)] font-medium leading-snug text-muted">
             Software Developer at <span className="font-semibold text-foreground">Mercury Insurance</span>
           </p>
-          <p className="mt-4 max-w-[540px] text-[17px] leading-relaxed text-muted">
+          <p className="mt-4 max-w-lg text-base leading-relaxed text-muted">
             Full-stack engineer with a track record of shipping features that cut QA cycles in half,
             boost app ratings, and modernize legacy systems. Cal Poly Pomona CS grad based in Southern California.
           </p>
@@ -80,15 +80,15 @@ function HeroSection() {
           <div className="mt-8 flex gap-8">
             <div className="text-left">
               <div className="font-display text-2xl font-bold leading-none tracking-tight">5+</div>
-              <div className="mt-1 font-mono text-[12px] uppercase tracking-wider text-muted">Years building</div>
+              <div className="mt-1 font-mono text-xs uppercase tracking-wider text-muted">Years building</div>
             </div>
             <div className="text-left">
               <div className="font-display text-2xl font-bold leading-none tracking-tight">B.S.</div>
-              <div className="mt-1 font-mono text-[12px] uppercase tracking-wider text-muted">Computer Science, CPP</div>
+              <div className="mt-1 font-mono text-xs uppercase tracking-wider text-muted">Computer Science, CPP</div>
             </div>
             <div className="text-left">
               <div className="font-display text-2xl font-bold leading-none tracking-tight">Southern CA</div>
-              <div className="mt-1 font-mono text-[12px] uppercase tracking-wider text-muted">Available locally</div>
+              <div className="mt-1 font-mono text-xs uppercase tracking-wider text-muted">Available locally</div>
             </div>
           </div>
         </div>
@@ -121,12 +121,12 @@ function ExperienceSection() {
   const experiences = repo.getExperiences().filter((e) => e.type !== "education");
 
   return (
-    <section id="experience" className="scroll-mt-[120px]">
+    <section id="experience" className="scroll-mt-30">
       <Container className="pb-12">
-        <div className="font-mono text-[13px] font-medium uppercase tracking-widest text-accent">
+        <div className="font-mono text-sm font-medium uppercase tracking-widest text-accent">
           Experience
         </div>
-        <h2 className="mt-3 max-w-[600px] font-display text-[clamp(28px,3.5vw,40px)] font-bold leading-tight tracking-tight">
+        <h2 className="mt-3 max-w-xl font-display text-[clamp(28px,3.5vw,40px)] font-bold leading-tight tracking-tight">
           What I've shipped
         </h2>
         <div className="mt-12 grid gap-8">
@@ -136,23 +136,23 @@ function ExperienceSection() {
               className="rounded-content border border-border bg-surface p-8"
             >
               <div className="flex flex-wrap items-baseline justify-between gap-4">
-                <h3 className="font-display text-[18px] font-semibold leading-snug">
+                <h3 className="font-display text-lg font-semibold leading-snug">
                   {exp.entity}
                 </h3>
-                <span className="font-mono text-[13px] leading-none text-muted whitespace-nowrap">
+                <span className="font-mono text-sm leading-none text-muted whitespace-nowrap">
                   {formatDate(exp)}
                 </span>
               </div>
               {exp.role && (
-                <p className="mt-1 font-body text-[14px] font-medium leading-[1.4] text-muted">
+                <p className="mt-1 font-body text-sm font-medium leading-snug text-muted">
                   {exp.role}
                   {exp.location ? ` · ${exp.location}` : ""}
                 </p>
               )}
-              <div className="mt-3 text-[14px] leading-relaxed text-muted">
+              <div className="mt-3 text-sm leading-relaxed text-muted">
                 <ul className="list-none p-0">
                   {exp.description.map((item, i) => (
-                    <li key={i} className="relative mb-[6px] pl-4 before:absolute before:left-0 before:top-[10px] before:h-[5px] before:w-[5px] before:rounded-full before:bg-accent-soft">
+                    <li key={i} className="relative mb-1.5 pl-4 before:absolute before:left-0 before:top-2.5 before:h-1 before:w-1 before:rounded-full before:bg-accent-soft">
                       {item}
                     </li>
                   ))}
@@ -176,11 +176,11 @@ function ProjectsSection() {
 
   return (
     <section id="projects" className="border-y border-border bg-surface scroll-mt-16">
-      <Container className="pb-[100px]">
-        <div className="font-mono text-[13px] font-medium uppercase tracking-widest text-accent">
+      <Container className="pb-25">
+        <div className="font-mono text-sm font-medium uppercase tracking-widest text-accent">
           Projects
         </div>
-        <h2 className="mt-3 max-w-[600px] font-display text-[clamp(28px,3.5vw,40px)] font-bold leading-tight tracking-tight">
+        <h2 className="mt-3 max-w-xl font-display text-[clamp(28px,3.5vw,40px)] font-bold leading-tight tracking-tight">
           Selected work
         </h2>
         <div className="mt-12 grid gap-5">
@@ -193,16 +193,16 @@ function ProjectsSection() {
               className="grid grid-cols-[1fr_auto] items-start gap-5 rounded-content border border-border bg-surface p-7 transition-colors duration-150 hover:border-accent-soft"
             >
               <div>
-                <h3 className="font-display text-[18px] font-semibold leading-snug tracking-tight">
+                <h3 className="font-display text-lg font-semibold leading-snug tracking-tight">
                   {project.projectName}
                 </h3>
                 {project.techStack && (
-                  <div className="mt-1 font-mono text-[12px] leading-none text-muted">
+                  <div className="mt-1 font-mono text-xs leading-none text-muted">
                     {project.techStack.join(" · ")}
                   </div>
                 )}
                 {project.description?.[0] && (
-                  <p className="mt-2 text-[14px] leading-relaxed text-muted">
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
                     {project.description[0]}
                   </p>
                 )}
@@ -250,11 +250,11 @@ function SkillsSection() {
 
   return (
     <section id="skills" className="scroll-mt-16">
-      <Container className="pb-[100px]">
-        <div className="font-mono text-[13px] font-medium uppercase tracking-widest text-accent">
+      <Container className="pb-25">
+        <div className="font-mono text-sm font-medium uppercase tracking-widest text-accent">
           Skills
         </div>
-        <h2 className="mt-3 max-w-[600px] font-display text-[clamp(28px,3.5vw,40px)] font-bold leading-tight tracking-tight">
+        <h2 className="mt-3 max-w-xl font-display text-[clamp(28px,3.5vw,40px)] font-bold leading-tight tracking-tight">
           Technologies I work with
         </h2>
         <div className="mt-12">
@@ -263,14 +263,14 @@ function SkillsSection() {
             if (!skills?.length) return null;
             return (
               <div key={key} className="mb-9">
-                <h3 className="font-display text-[15px] font-semibold leading-none text-foreground mb-[14px]">
+                <h3 className="font-display text-sm font-semibold leading-none text-foreground mb-3.5">
                   {config.label}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {skills.map((skill) => (
                     <span
                       key={skill.id}
-                      className="inline-flex items-center gap-1.5 rounded-md border border-border bg-surface px-[14px] py-[6px] font-body text-[13px] font-medium leading-snug transition-colors duration-150 hover:border-accent-soft"
+                      className="inline-flex items-center gap-1.5 rounded-md border border-border bg-surface px-3.5 py-1.5 font-body text-sm font-medium leading-snug transition-colors duration-150 hover:border-accent-soft"
                     >
                       {brandIcons[skill.name] && (
                         <span className="text-accent">{brandIcons[skill.name]}</span>
@@ -294,7 +294,7 @@ function EducationSection() {
   return (
     <section id="education" className="scroll-mt-12 pb-48">
       <Container className="pb-96">
-        <div className="font-mono text-[16px] font-medium uppercase tracking-widest text-accent">
+        <div className="font-mono text-base font-medium uppercase tracking-widest text-accent">
           Education
         </div>
         <h2 className="mt-3 max-w-150 font-display text-[clamp(28px,3.5vw,40px)] font-bold leading-tight tracking-tight">
@@ -307,15 +307,15 @@ function EducationSection() {
               className="rounded-content border border-border bg-surface p-8"
             >
               <div className="flex flex-wrap items-baseline justify-between gap-4">
-                <h3 className="font-display text-[18px] font-semibold leading-snug">
+                <h3 className="font-display text-lg font-semibold leading-snug">
                   {exp.entity}
                 </h3>
-                <span className="font-mono text-[13px] leading-none text-muted whitespace-nowrap">
+                <span className="font-mono text-sm leading-none text-muted whitespace-nowrap">
                   {formatDate(exp)}
                 </span>
               </div>
               {exp.role && (
-                <p className="mt-1 font-body text-[14px] font-medium leading-[1.4] text-muted">
+                <p className="mt-1 font-body text-sm font-medium leading-snug text-muted">
                   {exp.role}
                   {exp.location ? ` · ${exp.location}` : ""}
                 </p>
@@ -325,7 +325,7 @@ function EducationSection() {
                   href={exp.url}
                   target="_blank"
                   rel="noopener"
-                  className="mt-3 inline-flex font-body text-[14px] font-medium leading-none text-accent hover:underline"
+                  className="mt-3 inline-flex font-body text-sm font-medium leading-none text-accent hover:underline"
                 >
                   Learn more &rarr;
                 </a>
@@ -360,53 +360,53 @@ function ContactSection({ onMessageSent }: { onMessageSent: () => void }) {
 
   return (
     <section id="contact" className="border-t border-border bg-surface pb-32 scroll-mt-16">
-      <Container className="pb-[100px]">
-        <div className="font-mono text-[13px] font-medium uppercase tracking-widest text-accent">
+      <Container className="pb-25">
+        <div className="font-mono text-sm font-medium uppercase tracking-widest text-accent">
           Contact
         </div>
-        <h2 className="mt-3 max-w-[600px] font-display text-[clamp(28px,3.5vw,40px)] font-bold leading-tight tracking-tight">
+        <h2 className="mt-3 max-w-xl font-display text-[clamp(28px,3.5vw,40px)] font-bold leading-tight tracking-tight">
           Let's talk
         </h2>
         <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-2">
           <div>
-            <p className="max-w-[440px] text-[17px] leading-relaxed text-muted">
+            <p className="max-w-md text-base leading-relaxed text-muted">
               I'm open to new opportunities in Southern California and remote.
               Reach out on LinkedIn, check my GitHub, or drop a message below.
             </p>
-            <div className="mt-6 flex flex-col gap-[14px]">
+            <div className="mt-6 flex flex-col gap-3.5">
               <a
                 href={ExtEndpoints.github}
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center gap-3 rounded-content border border-border bg-surface px-4 py-3 text-[15px] font-medium text-foreground transition-colors duration-150 hover:border-accent-soft"
+                className="inline-flex items-center gap-3 rounded-content border border-border bg-surface px-4 py-3 text-sm font-medium text-foreground transition-colors duration-150 hover:border-accent-soft"
               >
                 <FontAwesomeIcon icon={faGithub} className="w-5 text-center text-lg text-accent" />
                 jrescalona96
-                <span className="ml-auto font-mono text-[12px] leading-none text-muted">GitHub</span>
+                <span className="ml-auto font-mono text-xs leading-none text-muted">GitHub</span>
               </a>
               <a
                 href={ExtEndpoints.linkedin}
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center gap-3 rounded-content border border-border bg-surface px-4 py-3 text-[15px] font-medium text-foreground transition-colors duration-150 hover:border-accent-soft"
+                className="inline-flex items-center gap-3 rounded-content border border-border bg-surface px-4 py-3 text-sm font-medium text-foreground transition-colors duration-150 hover:border-accent-soft"
               >
                 <FontAwesomeIcon icon={faLinkedin} className="w-5 text-center text-lg text-accent" />
                 john-escalona
-                <span className="ml-auto font-mono text-[12px] leading-none text-muted">LinkedIn</span>
+                <span className="ml-auto font-mono text-xs leading-none text-muted">LinkedIn</span>
               </a>
               <a
                 href={Endpoints.resume}
-                className="inline-flex items-center gap-3 rounded-content border border-border bg-surface px-4 py-3 text-[15px] font-medium text-foreground transition-colors duration-150 hover:border-accent-soft"
+                className="inline-flex items-center gap-3 rounded-content border border-border bg-surface px-4 py-3 text-sm font-medium text-foreground transition-colors duration-150 hover:border-accent-soft"
               >
                 <FontAwesomeIcon icon={faFileArrowDown} className="w-5 text-center text-lg text-accent" />
                 Download resume (PDF)
-                <span className="ml-auto font-mono text-[12px] leading-none text-muted">Print</span>
+                <span className="ml-auto font-mono text-xs leading-none text-muted">Print</span>
               </a>
             </div>
           </div>
           <form ref={formRef} onSubmit={handleSubmit} className="max-w-full">
-            <div className="mb-[18px]">
-              <label htmlFor="name" className="mb-[6px] block font-body text-[13px] font-medium text-muted">
+            <div className="mb-4.5">
+              <label htmlFor="name" className="mb-1.5 block font-body text-sm font-medium text-muted">
                 Name
               </label>
               <input
@@ -415,11 +415,11 @@ function ContactSection({ onMessageSent }: { onMessageSent: () => void }) {
                 name="name"
                 placeholder="Your name"
                 required
-                className="w-full rounded-content border border-border bg-surface px-[14px] py-3 font-body text-[15px] leading-[1.4] text-foreground outline-none transition-colors duration-150 placeholder:text-muted focus:border-accent"
+                className="w-full rounded-content border border-border bg-surface px-3.5 py-3 font-body text-sm leading-snug text-foreground outline-none transition-colors duration-150 placeholder:text-muted focus:border-accent"
               />
             </div>
-            <div className="mb-[18px]">
-              <label htmlFor="email" className="mb-[6px] block font-body text-[13px] font-medium text-muted">
+            <div className="mb-4.5">
+              <label htmlFor="email" className="mb-1.5 block font-body text-sm font-medium text-muted">
                 Email
               </label>
               <input
@@ -428,11 +428,11 @@ function ContactSection({ onMessageSent }: { onMessageSent: () => void }) {
                 name="email"
                 placeholder="you@example.com"
                 required
-                className="w-full rounded-content border border-border bg-surface px-[14px] py-3 font-body text-[15px] leading-[1.4] text-foreground outline-none transition-colors duration-150 placeholder:text-muted focus:border-accent"
+                className="w-full rounded-content border border-border bg-surface px-3.5 py-3 font-body text-sm leading-snug text-foreground outline-none transition-colors duration-150 placeholder:text-muted focus:border-accent"
               />
             </div>
-            <div className="mb-[18px]">
-              <label htmlFor="message" className="mb-[6px] block font-body text-[13px] font-medium text-muted">
+            <div className="mb-4.5">
+              <label htmlFor="message" className="mb-1.5 block font-body text-sm font-medium text-muted">
                 Message
               </label>
               <textarea
@@ -440,7 +440,7 @@ function ContactSection({ onMessageSent }: { onMessageSent: () => void }) {
                 name="message"
                 placeholder="What role or project are you reaching out about?"
                 required
-                className="min-h-[120px] w-full resize-y rounded-content border border-border bg-surface px-[14px] py-3 font-body text-[15px] leading-[1.4] text-foreground outline-none transition-colors duration-150 placeholder:text-muted focus:border-accent"
+                className="min-h-30 w-full resize-y rounded-content border border-border bg-surface px-3.5 py-3 font-body text-sm leading-snug text-foreground outline-none transition-colors duration-150 placeholder:text-muted focus:border-accent"
               />
             </div>
             <Button type="submit" variant="primary">
