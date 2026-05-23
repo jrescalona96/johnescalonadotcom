@@ -34,4 +34,4 @@ Fix any test failures found above before proceeding.
 
 Summarize the changes and suggest an appropriate commit message following the project's .
 
-5. **run commit commands** by grouping all related changes in a loop until all changes are commited or as instructed otherwise. Each commit should have a meaningful commit message.
+5. **run commit commands** by grouping all related changes in a loop until all changes are commited or as instructed otherwise. Each commit should have a meaningful commit message. when everything looks good, run `git commit` to create the commit with the suggested message. DO NOT ask for confirmation before running the commit command IF everything looks good.
