@@ -1,10 +1,10 @@
 import { Container } from "../components/layout/Container";
 import { Button } from "../components/ui/Button";
 import { Toast } from "../components/ui/Toast";
-import { Endpoints, ExtEndpoints } from "../assets/constants/AppUrls";
-import { StringConstants } from "../assets/constants/StringConstant";
-import { Repository } from "../data/repository/Repository";
-import { Experience } from "../data/models/Experience";
+import { Endpoints, ExtEndpoints } from "../assets/constants/app-urls";
+import { StringConstants } from "../assets/constants/string-constant";
+import { Repository } from "../data/repository/repository";
+import { Experience } from "../data/models/experience";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFileArrowDown,

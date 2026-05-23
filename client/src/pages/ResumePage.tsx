@@ -1,9 +1,9 @@
 import { Container } from "../components/layout/Container";
 import { NavLink } from "../components/ui/NavLink";
 import { Button } from "../components/ui/Button";
-import { Endpoints, ExtEndpoints } from "../assets/constants/AppUrls";
-import { Repository } from "../data/repository/Repository";
-import { Experience } from "../data/models/Experience";
+import { Endpoints, ExtEndpoints } from "../assets/constants/app-urls";
+import { Repository } from "../data/repository/repository";
+import { Experience } from "../data/models/experience";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,

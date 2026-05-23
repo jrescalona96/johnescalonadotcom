@@ -1,6 +1,6 @@
 import { Container } from "./Container";
-import { Endpoints } from "../../assets/constants/AppUrls";
-import { ExtEndpoints } from "../../assets/constants/AppUrls";
+import { Endpoints } from "../../assets/constants/app-urls";
+import { ExtEndpoints } from "../../assets/constants/app-urls";
 
 export function Footer() {
   return (

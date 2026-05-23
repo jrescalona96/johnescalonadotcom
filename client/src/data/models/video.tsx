@@ -1,6 +1,6 @@
-import { Media } from "./interface/Media";
+import { Media } from "./interface/media";
 
-export class Image implements Media {
+export class Video implements Media {
 	public label?: string;
 	public id?: string;
 	public src?: string;

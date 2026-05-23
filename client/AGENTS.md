@@ -62,6 +62,15 @@ Content is hardcoded in `Repository.tsx` — no backend, no API calls. Edit `cli
 
 Commits are **manual only** — never commit unless the user explicitly asks. Run `git add -A && git commit` only when instructed.
 
+## Styling
+
+- Use canonical Tailwind classes instead of arbitrary `[px]` values whenever possible
+- Spacing: divide px by 4 for the Tailwind unit (e.g. `pt-[120px]` → `pt-30`, `mb-[6px]` → `mb-1.5`)
+- Font sizes: use `text-*` scale (`text-xs`=12px, `text-sm`=14px, `text-base`=16px, `text-lg`=18px, `text-xl`=20px)
+- Line heights: prefer `leading-snug` (1.375) over `leading-[1.4]`, `leading-none` (1) over custom values
+- Max-widths: round to the nearest canonical value (`max-w-md`=448px, `max-w-lg`=512px, `max-w-xl`=576px, `max-w-2xl`=672px, `max-w-4xl`=896px, `max-w-6xl`=1152px)
+- `clamp()` font sizes and grid template columns are acceptable exceptions
+
 ## Other notes
 
 - No CI/CD pipelines, no pre-commit hooks, no formatter config

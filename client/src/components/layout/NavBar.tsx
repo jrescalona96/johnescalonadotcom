@@ -1,9 +1,9 @@
 import { useLocation } from "react-router-dom";
 import { Container } from "./Container";
 import { NavLink } from "../ui/NavLink";
-import { Endpoints } from "../../assets/constants/AppUrls";
+import { Endpoints } from "../../assets/constants/app-urls";
 import { cn } from "../../lib/utils";
-import { useScrollSpy } from "../../hooks/useScrollSpy";
+import { useScrollSpy } from "../../hooks/use-scroll-spy";
 
 const sectionLinks = [
   { id: "home", label: "Home" },

@@ -1,5 +1,5 @@
-import { Image } from "./Image";
-import { Video } from "./Video";
+import { Image } from "./image";
+import { Video } from "./video";
 
 export type ProjectCategory = "web" | "mobile" | "tool";
 

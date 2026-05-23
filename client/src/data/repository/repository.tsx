@@ -1,6 +1,6 @@
-import { Project, type ProjectCategory, type ProjectLink } from "../models/Project";
-import { Skill, type SkillCategory } from "../models/Skill";
-import { Experience, type ExperienceType } from "../models/Experience";
+import { Project, type ProjectCategory, type ProjectLink } from "../models/project";
+import { Skill, type SkillCategory } from "../models/skill";
+import { Experience, type ExperienceType } from "../models/experience";
 
 export type CategorizedSkills = {
   languages: Skill[];

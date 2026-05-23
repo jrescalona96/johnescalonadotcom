@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Container } from "../components/layout/Container";
 import { NavLink } from "../components/ui/NavLink";
 import { FilterChip } from "../components/ui/FilterChip";
-import { Endpoints } from "../assets/constants/AppUrls";
-import { Repository } from "../data/repository/Repository";
-import { Project, type ProjectCategory } from "../data/models/Project";
+import { Endpoints } from "../assets/constants/app-urls";
+import { Repository } from "../data/repository/repository";
+import { Project, type ProjectCategory } from "../data/models/project";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowUpRightFromSquare,

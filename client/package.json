@@ -28,7 +28,9 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/",
     "lint:typecheck": "pnpm lint && pnpm typecheck",
-    "precommit": "pnpm lint:typecheck && pnpm exec vitest run"
+    "precommit": "pnpm lint:typecheck && pnpm exec vitest run && pnpm build",
+    "commit": "pnpm precommit && git add -A && git commit",
+    "prepare": "git config core.hooksPath .husky"
   },
   "browserslist": {
     "production": [
@@ -56,6 +58,7 @@
     "eslint": "^10.4.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
+    "husky": "^9.1.7",
     "jsdom": "^29.1.1",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3",
