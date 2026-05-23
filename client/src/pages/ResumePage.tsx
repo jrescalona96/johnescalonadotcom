@@ -3,7 +3,7 @@ import { NavLink } from "../components/ui/NavLink";
 import { Button } from "../components/ui/Button";
 import { Endpoints, ExtEndpoints } from "../assets/constants/app-urls";
 import { Repository } from "../data/repository/repository";
-import { Experience } from "../data/models/experience";
+import { formatDate } from "../shared/date-utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
@@ -16,14 +16,6 @@ const repo = Repository.getInstance();
 export function ResumePage() {
   const experiences = repo.getExperiences();
   const skillsByCategory = repo.getSkillsByCategory();
-
-  const formatDate = (exp: Experience) => {
-    if (!exp.startDate && !exp.endDate) return "";
-    if (exp.startDate && !exp.endDate) return "Present";
-    if (exp.startDate && exp.endDate && exp.startDate === exp.endDate) return String(exp.startDate);
-    if (exp.startDate && exp.endDate) return `${exp.startDate} – ${exp.endDate}`;
-    return "";
-  };
 
   return (
     <>

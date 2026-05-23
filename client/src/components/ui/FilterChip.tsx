@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "../../lib/utils";
+import { cn } from "../../shared/classname-utils";
 
 const filterChipVariants = cva(
   "rounded-full border px-4 py-1.5 font-body text-sm leading-snug transition-all duration-150 cursor-pointer",

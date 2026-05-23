@@ -1,5 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "../../lib/utils";
+import { cn } from "../../shared/classname-utils";
 import { Link, type LinkProps } from "react-router-dom";
 
 const navLinkVariants = cva(

@@ -1,6 +1,7 @@
 import { Project, type ProjectCategory, type ProjectLink } from "../models/project";
 import { Skill, type SkillCategory } from "../models/skill";
 import { Experience, type ExperienceType } from "../models/experience";
+import { generateRandomID } from "../../shared/string-utils";
 
 export type CategorizedSkills = {
   languages: Skill[];
@@ -20,14 +21,10 @@ export class Repository {
     return Repository.instance;
   }
 
-  public generateRandomID = (): string => {
-    return "_" + Math.random().toString(36).substring(2, 9);
-  };
-
   getAllProjects = (): Project[] => {
     return [
       new Project({
-        id: this.generateRandomID(),
+        id: generateRandomID(),
         projectName: "Algo Visualization",
         description: [
           "Interactive algorithm visualizer demonstrating Binary Search, Merge Sort, and Quick Sort via real-time animations. Features adjustable array sizes, speed controls, and step-by-step tracing to make algorithm learning intuitive.",
@@ -42,7 +39,7 @@ export class Repository {
         techStack: ["React", "Sass", "Material UI"],
       }),
       new Project({
-        id: this.generateRandomID(),
+        id: generateRandomID(),
         projectName: "lfti",
         description: [
           "Cross-platform Flutter workout application for managing routines with guided timers, session tracking, workout summaries, and Firebase-backed persistence. Deployed on Android with real-time data sync.",
@@ -57,7 +54,7 @@ export class Repository {
         techStack: ["Flutter", "Firebase", "Dart"],
       }),
       new Project({
-        id: this.generateRandomID(),
+        id: generateRandomID(),
         projectName: "Truss Solver",
         description: [
           "Engineering tool that calculates node displacements, internal and external forces, and stress distribution across structural trusses. Combines a Python numerical backend with an interactive React visualization frontend.",
@@ -72,7 +69,7 @@ export class Repository {
         techStack: ["React", "Python", "Bootstrap", "Sass"],
       }),
       new Project({
-        id: this.generateRandomID(),
+        id: generateRandomID(),
         projectName: "Debt Counter",
         description: [
           "Dashboard app for tracking debt with running totals, payment progress visualization, and configurable debt categories. Designed as a persistent financial motivator with clear visual indicators.",
@@ -87,7 +84,7 @@ export class Repository {
         techStack: ["React", "CSS", "Bootstrap"],
       }),
       new Project({
-        id: this.generateRandomID(),
+        id: generateRandomID(),
         projectName: "The Shuffling",
         description: [
           "Magic: The Gathering deck builder app using the Scryfall API. Implements full CRUD operations for card collections, deck assembly, card search with filtering, and persistent collection management.",
@@ -106,7 +103,7 @@ export class Repository {
   getExperiences = (): Experience[] => {
     return [
       new Experience({
-        id: this.generateRandomID(),
+        id: generateRandomID(),
         entity: "Mercury Insurance",
         role: "Software Developer II",
         location: "Brea, CA",
@@ -123,7 +120,7 @@ export class Repository {
         startDate: 2021,
       }),
       new Experience({
-        id: this.generateRandomID(),
+        id: generateRandomID(),
         entity: "Cal Poly Pomona",
         location: "Pomona, CA",
         role: "B.S. Computer Science",
@@ -136,7 +133,7 @@ export class Repository {
         endDate: 2020,
       }),
       new Experience({
-        id: this.generateRandomID(),
+        id: generateRandomID(),
         entity: "Cerritos College",
         location: "Norwalk, CA",
         role: "Computer Science Transfer Program",
@@ -153,23 +150,23 @@ export class Repository {
 
   getSkills = (): Skill[] => {
     return [
-      new Skill({ id: this.generateRandomID(), name: "JavaScript", category: "languages" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "TypeScript", category: "languages" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "Java", category: "languages" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "HTML", category: "languages" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "CSS", category: "languages" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "SQL", category: "languages" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "Dart", category: "languages" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "React", category: "frameworks" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "Angular", category: "frameworks" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "Flutter", category: "frameworks" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "Node.js", category: "frameworks" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "Spring Boot", category: "frameworks" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "Tailwind", category: "frameworks" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "Git", category: "tools" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "Docker", category: "tools" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "Jenkins", category: "tools" as SkillCategory }),
-      new Skill({ id: this.generateRandomID(), name: "Agile", category: "tools" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "JavaScript", category: "languages" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "TypeScript", category: "languages" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "Java", category: "languages" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "HTML", category: "languages" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "CSS", category: "languages" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "SQL", category: "languages" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "Dart", category: "languages" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "React", category: "frameworks" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "Angular", category: "frameworks" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "Flutter", category: "frameworks" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "Node.js", category: "frameworks" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "Spring Boot", category: "frameworks" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "Tailwind", category: "frameworks" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "Git", category: "tools" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "Docker", category: "tools" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "Jenkins", category: "tools" as SkillCategory }),
+      new Skill({ id: generateRandomID(), name: "Agile", category: "tools" as SkillCategory }),
     ];
   };
 
