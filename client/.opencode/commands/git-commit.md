@@ -32,6 +32,6 @@ Fix any test failures found above before proceeding.
 
 ### 4. Commit guidance
 
-Summarize the changes and suggest an appropriate commit message following the project's conventions.
+Summarize the changes and suggest an appropriate commit message following the project's .
 
 5. **run commit commands** by grouping all related changes in a loop until all changes are commited or as instructed otherwise. Each commit should have a meaningful commit message.
