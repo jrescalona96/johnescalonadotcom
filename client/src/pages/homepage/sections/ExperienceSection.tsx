@@ -3,13 +3,16 @@ import { Button } from "../../../components/ui/Button";
 import { Endpoints } from "../../../assets/constants/app-urls";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileArrowDown } from "@fortawesome/free-solid-svg-icons";
-import { Repository } from "../../../data/repository/repository";
+import { fetchExperiences } from "../../../data/services";
+import { useAsyncData } from "../../../hooks/use-async-data";
 import { formatDate } from "../../../shared/date-utils";
 
-const repo = Repository.getInstance();
+const workPromise = fetchExperiences().then((experiences) =>
+  experiences.filter((e) => e.type !== "education"),
+);
 
 export function ExperienceSection() {
-  const experiences = repo.getExperiences().filter((e) => e.type !== "education");
+  const experiences = useAsyncData(workPromise);
 
   return (
     <section id="experience" className="scroll-mt-30">

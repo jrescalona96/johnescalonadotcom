@@ -1,12 +1,13 @@
 import { Container } from "../../../components/layout/Container";
 import { Button } from "../../../components/ui/Button";
 import { Endpoints } from "../../../assets/constants/app-urls";
-import { Repository } from "../../../data/repository/repository";
+import { fetchProjects } from "../../../data/services";
+import { useAsyncData } from "../../../hooks/use-async-data";
 
-const repo = Repository.getInstance();
+const projectsPromise = fetchProjects();
 
 export function ProjectsSection() {
-  const projects = repo.getAllProjects();
+  const projects = useAsyncData(projectsPromise);
 
   return (
     <section id="projects" className="border-y border-border bg-surface scroll-mt-16">

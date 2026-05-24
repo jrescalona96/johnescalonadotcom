@@ -1,11 +1,14 @@
 import { Container } from "../../../components/layout/Container";
-import { Repository } from "../../../data/repository/repository";
+import { fetchExperiences } from "../../../data/services";
+import { useAsyncData } from "../../../hooks/use-async-data";
 import { formatDate } from "../../../shared/date-utils";
 
-const repo = Repository.getInstance();
+const educationPromise = fetchExperiences().then((experiences) =>
+  experiences.filter((e) => e.type === "education"),
+);
 
 export function EducationSection() {
-  const education = repo.getExperiences().filter((e) => e.type === "education");
+  const education = useAsyncData(educationPromise);
 
   return (
     <section id="education" className="scroll-mt-12 pb-48">

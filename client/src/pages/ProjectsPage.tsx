@@ -3,15 +3,14 @@ import { Container } from "../components/layout/Container";
 import { NavLink } from "../components/ui/NavLink";
 import { FilterChip } from "../components/ui/FilterChip";
 import { Endpoints } from "../assets/constants/app-urls";
-import { Repository } from "../data/repository/repository";
-import { Project, type ProjectCategory } from "../data/models/project";
+import { fetchProjects } from "../data/services";
+import { useAsyncData } from "../hooks/use-async-data";
+import { type Project, type ProjectCategory } from "../data/models/project";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { faYoutube, faGithub as faGithubBrand } from "@fortawesome/free-brands-svg-icons";
-
-const repo = Repository.getInstance();
 
 type FilterOption = "all" | ProjectCategory;
 
@@ -22,9 +21,11 @@ const filters: { key: FilterOption; label: string }[] = [
   { key: "tool", label: "Tool" },
 ];
 
+const projectsPromise = fetchProjects();
+
 export function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState<FilterOption>("all");
-  const projects = repo.getAllProjects();
+  const projects = useAsyncData(projectsPromise);
 
   const filtered = activeFilter === "all"
     ? projects

@@ -1,6 +1,6 @@
 export type ExperienceType = "work" | "education";
 
-type Params = {
+export type Experience = {
   id?: string;
   entity: string;
   role?: string;
@@ -12,40 +12,3 @@ type Params = {
   type?: ExperienceType;
   previousRoles?: Experience[];
 };
-
-export class Experience {
-  public id?: string;
-  public entity!: string;
-  public role?: string;
-  public location?: string;
-  public description!: string[];
-  public url?: string;
-  public startDate?: number;
-  public endDate?: number;
-  public type?: ExperienceType;
-  public previousRoles?: Experience[];
-
-  constructor({
-    id,
-    entity,
-    role = "",
-    location,
-    description,
-    url,
-    startDate,
-    endDate,
-    type = "work",
-    previousRoles = [],
-  }: Params) {
-    this.id = id;
-    this.entity = entity;
-    this.role = role;
-    this.location = location;
-    this.description = description;
-    this.url = url;
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.type = type;
-    this.previousRoles = previousRoles;
-  }
-}

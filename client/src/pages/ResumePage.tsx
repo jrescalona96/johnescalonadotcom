@@ -2,7 +2,8 @@ import { Container } from "../components/layout/Container";
 import { NavLink } from "../components/ui/NavLink";
 import { Button } from "../components/ui/Button";
 import { Endpoints, ExtEndpoints } from "../assets/constants/app-urls";
-import { Repository } from "../data/repository/repository";
+import { fetchExperiences, fetchSkillsByCategory } from "../data/services";
+import { useAsyncData } from "../hooks/use-async-data";
 import { formatDate } from "../shared/date-utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,11 +12,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub as faGithubBrand, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
-const repo = Repository.getInstance();
+const experiencesPromise = fetchExperiences();
+const skillsByCategoryPromise = fetchSkillsByCategory();
 
 export function ResumePage() {
-  const experiences = repo.getExperiences();
-  const skillsByCategory = repo.getSkillsByCategory();
+  const experiences = useAsyncData(experiencesPromise);
+  const skillsByCategory = useAsyncData(skillsByCategoryPromise);
 
   return (
     <>

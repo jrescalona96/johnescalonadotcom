@@ -1,13 +1,5 @@
-import { Media } from "./interface/media";
-
-export class Video implements Media {
-	public label?: string;
-	public id?: string;
-	public src?: string;
-
-	constructor({ id, src, label }: Media) {
-		this.id = id;
-		this.src = src;
-		this.label = label;
-	}
-}
+export type Video = {
+  id?: string;
+  src?: string;
+  label?: string;
+};

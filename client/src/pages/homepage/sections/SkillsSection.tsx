@@ -18,9 +18,8 @@ import {
   faGitAlt,
   faDocker,
 } from "@fortawesome/free-brands-svg-icons";
-import { Repository } from "../../../data/repository/repository";
-
-const repo = Repository.getInstance();
+import { fetchSkillsByCategory } from "../../../data/services";
+import { useAsyncData } from "../../../hooks/use-async-data";
 
 const skillCategoryConfig: Record<string, { label: string; icon: React.ReactElement }> = {
   languages: { label: "Languages", icon: <FontAwesomeIcon icon={faCode} /> },
@@ -44,8 +43,10 @@ const brandIcons: Record<string, React.ReactElement> = {
   Docker: <FontAwesomeIcon icon={faDocker} />,
 };
 
+const skillsByCategoryPromise = fetchSkillsByCategory();
+
 export function SkillsSection() {
-  const skillsByCategory = repo.getSkillsByCategory();
+  const skillsByCategory = useAsyncData(skillsByCategoryPromise);
 
   return (
     <section id="skills" className="scroll-mt-16">

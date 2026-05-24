@@ -1,4 +1,4 @@
-import { Experience } from "../data/models/experience";
+import { type Experience } from "../data/models/experience";
 
 export const formatDate = (exp: Experience) => {
   if (!exp.startDate && !exp.endDate) return "";
